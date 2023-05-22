@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF4B7"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+       >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Username"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/nexa_black"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Local Time"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/nexa_black"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Door Status"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/nexa_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="username"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/nexa_black"/>
+
+            <TextClock
+                android:format24Hour="hh:mm:ss"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/nexa_black"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="door status"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/nexa_black"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/largeCircle"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_x="5dp"
+            android:layout_y="90dp"
+            android:background="@drawable/circle_large"/>
+
+        <View
+            android:id="@+id/smallCircle"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_x="80dp"
+            android:layout_y="170dp"
+            android:background="@drawable/circle_small" />
+
+
+    </AbsoluteLayout>
+
+
+    <Button
+        android:id="@+id/XbtnBack"
+        android:text="Back"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+        android:backgroundTint="@android:color/holo_orange_light" 
+        />
+
+</LinearLayout>
