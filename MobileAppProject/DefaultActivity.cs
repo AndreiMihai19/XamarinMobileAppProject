@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 //using MobileAppProject.Classes.Parameters;
 
-
+ 
 namespace MobileAppProject
 {
     [Activity(Label = "DefaultActivity")]
