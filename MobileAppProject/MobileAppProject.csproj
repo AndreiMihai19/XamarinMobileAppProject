@@ -66,6 +66,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityMenuSelection.cs" />
     <Compile Include="Classes\Activities.cs" />
     <Compile Include="Classes\Parameters.cs" />
     <Compile Include="DefaultActivity.cs" />
@@ -172,10 +173,13 @@
     <AndroidResource Include="Resources\layout\default_activity.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\add_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\minus_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\add_icon.png" />
+    <AndroidResource Include="Resources\layout\activity_menu.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.Awt.Font;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,18 @@ namespace MobileAppProject.Classes
     {
         private static string nume;
 
+
+
+        public static String getNume()
+        {
+            return nume;
+        }
+
+        public static void setNume(string Nume)
+        {
+            nume = Nume;
+        }
     }
+
+    
 }

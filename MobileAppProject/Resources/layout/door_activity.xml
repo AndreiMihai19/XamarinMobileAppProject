@@ -79,10 +79,11 @@
                 android:fontFamily="@font/nexa_black"/>
 
             <TextView
+                 android:id="@+id/door_status"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="door status"
+                android:text=""
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -107,7 +108,7 @@
         />
 
     <Button
-        android:id="@+id/XbtnOpendoor"
+        android:id="@+id/XbtnOpenDoor"
         android:layout_width="330dp"
         android:layout_height="130dp"
         android:layout_gravity="center_horizontal"
