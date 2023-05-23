@@ -66,9 +66,6 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Activity.cs" />
-    <Compile Include="Classes\Parameters.cs" />
-    <Compile Include="DefaultActivity.cs" />
     <Compile Include="DoorActivity.cs" />
     <Compile Include="TemperatureActivity.cs" />
     <Compile Include="AdminActivity.cs" />

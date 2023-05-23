@@ -13,7 +13,7 @@ using System.Text;
 namespace MobileAppProject
 {
     [Activity(Label = "Activity1")]
-    public class MenuActivity : Android.App.Activity
+    public class MenuActivity : Activity
     {
         private Button btnLight;
         private Button btnTemperature;
