@@ -13,7 +13,7 @@ using System.Text;
 namespace MobileAppProject
 {
     [Activity(Label = "AdminActivity")]
-    public class AdminActivity : Activity
+    public class AdminActivity : Android.App.Activity
     {
         private Button btnCreateUsers;
         private Button btnMenu;
