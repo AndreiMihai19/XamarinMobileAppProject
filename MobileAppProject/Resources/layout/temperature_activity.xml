@@ -154,7 +154,7 @@
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
-            
+            android:background="@drawable/minus_icon"
             android:layout_x="15dp"
             android:layout_y="255dp"
             android:textColor="#000000"
@@ -163,7 +163,7 @@
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
-           
+            android:background="@drawable/add_icon"
             android:layout_x="333dp"
             android:layout_y="255dp"
             android:textColor="#000000"
