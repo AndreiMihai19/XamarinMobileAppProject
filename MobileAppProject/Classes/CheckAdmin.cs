@@ -14,6 +14,5 @@ namespace MobileAppProject.Classes
     internal class CheckAdmin
     {
         public static bool isadminActive = false;
-
     }
 }
