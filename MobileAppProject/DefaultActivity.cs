@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MobileAppProject.Classes;
+//using MobileAppProject.Classes.Parameters;
 
 
 namespace MobileAppProject
@@ -42,7 +42,7 @@ namespace MobileAppProject
 
         private void btnWeekend_Clicked(object sender, EventArgs e)
         {
-            tvCurentActivity.Text = Parameters.getLight().ToString();
+           // tvCurentActivity.Text = Parameters.getLight().ToString();
         }
 
         private void btnHoliday_Clicked(object sender, EventArgs e)

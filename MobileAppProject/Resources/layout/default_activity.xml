@@ -122,7 +122,7 @@
     <Button
         android:id="@+id/XbtnJob"
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/usa_deschisa"
         android:text="Job"
@@ -132,7 +132,7 @@
     <Button
         android:id="@+id/XbtnHoliday"
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/usa_inchisa"
         android:text="Holiday"
@@ -142,7 +142,7 @@
      <Button
         android:id="@+id/XbtnWeekend"
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
         android:text="Weekend"
