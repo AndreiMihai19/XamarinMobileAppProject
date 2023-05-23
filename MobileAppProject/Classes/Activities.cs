@@ -11,9 +11,9 @@ using System.Text;
 
 namespace MobileAppProject.Classes
 {
-    internal class CheckAdmin
+    internal class Activity
     {
-        public static bool isadminActive = false;
+        private static string nume;
 
     }
 }
