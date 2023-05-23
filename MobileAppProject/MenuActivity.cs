@@ -18,6 +18,7 @@ namespace MobileAppProject
         private Button btnLight;
         private Button btnTemperature;
         private Button btnInsert;
+        private Button btnDoor;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,10 +31,18 @@ namespace MobileAppProject
             btnLight = FindViewById<Button>(Resource.Id.XbtnLight);
             btnTemperature = FindViewById<Button>(Resource.Id.XbtnTemperature);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnBack);
+            btnDoor = FindViewById<Button>(Resource.Id.XbtnDoor);
 
             btnLight.Click += BtnLight_Clicked;
             btnInsert.Click += BtnBack_Click;
             btnTemperature.Click += BtnTemperature_Clicked;
+            btnDoor.Click += BtnDoor_Clicked;
+        }
+
+        private void BtnDoor_Clicked(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(DoorActivity));
+            StartActivity(nextActivity);
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -64,6 +73,8 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(TemperatureActivity));
             StartActivity(nextActivity);
         }
+
+
     }
 
 }

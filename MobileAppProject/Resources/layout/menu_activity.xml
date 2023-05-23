@@ -127,6 +127,7 @@
         android:fontFamily="@font/nexa_black"/>
 
     <Button
+        android:id="@+id/XbtnDoor"
         android:layout_width="330dp"
         android:layout_height="130dp"
         android:layout_gravity="center_horizontal"
