@@ -18,6 +18,7 @@ namespace MobileAppProject
         private SeekBar lightseekBar;
         private Button btnBack;
         private TextView tvDoorStatus;
+        private TextView tvUser;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,13 +30,14 @@ namespace MobileAppProject
             lightseekBar = FindViewById<SeekBar>(Resource.Id.seekBar);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
+            tvUser = FindViewById<TextView>(Resource.Id.username);
 
             btnBack.Click += btnBack_Clicked;
-           UpdateDoorStatus();
+           UpdateDoorStatusUser();
 
         }
 
-        private void UpdateDoorStatus()
+        private void UpdateDoorStatusUser()
         {
             if (Parameters.getDoorStatus() == 1)
             {
@@ -45,6 +47,7 @@ namespace MobileAppProject
             {
                 tvDoorStatus.Text = "Open";
             }
+            tvUser.Text = User.getUser();
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)

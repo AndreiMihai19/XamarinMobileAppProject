@@ -25,6 +25,7 @@ namespace MobileAppProject
         private TextView tvCurentActivityTemperature;
         private TextView tvCurentActivityDoor;
         private TextView tvDoorStatus;
+        private TextView tvUser;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,6 +41,7 @@ namespace MobileAppProject
             tvCurentActivityTemperature = FindViewById<TextView>(Resource.Id.textCurentActivityTemperature);
             tvCurentActivityDoor = FindViewById<TextView>(Resource.Id.textCurentActivityDoor);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
+            tvUser = FindViewById<TextView>(Resource.Id.username);
 
             btnBack.Click += btnBack_Clicked;
             btnJobActivity.Click += btnJob_Clicked;
@@ -48,10 +50,10 @@ namespace MobileAppProject
             btnManualActivity.Click += btnManual_Clicked;
             // Create your application here
         
-        UpdateDoorStatus();
+        UpdateDoorStatusUser();
         }
 
-        private void UpdateDoorStatus()
+        private void UpdateDoorStatusUser()
         {
             if (Parameters.getDoorStatus() == 1)
             {
@@ -61,6 +63,7 @@ namespace MobileAppProject
             {
                 tvDoorStatus.Text = "Open";
             }
+            tvUser.Text = User.getUser();
         }
 
         private void btnManual_Clicked(object sender, EventArgs e)

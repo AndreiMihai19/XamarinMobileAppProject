@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+    
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -79,11 +80,10 @@
                 android:fontFamily="@font/nexa_black"/>
 
             <TextView
-                 android:id="@+id/door_status"
+                android:id="@+id/door_status"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text=""
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -97,37 +97,39 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Door Status"
+        android:text="Aici ar trebuii sa apara IMEI-ul "
         android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:fontFamily="@font/nexa_black"
         
         />
+    <TextView
+        android:id="@+id/tvImei"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textColor="#0aa0b0"
+        android:paddingTop="40dp"
+        android:paddingBottom="10dp"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+     
 
     <Button
-        android:id="@+id/XbtnOpenDoor"
+        android:id="@+id/XbtnImei"
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_deschisa"
-        android:text="Open Door"
+        android:text="Get Device ID"
         android:textSize="30dp"
         android:fontFamily="@font/nexa_black"/>
 
-    <Button
-        android:id="@+id/XbtnCloseDoor"
-        android:layout_width="330dp"
-        android:layout_height="130dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_inchisa"
-        android:text="Close Door"
-        android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
-
-   
     <Button
         android:id="@+id/XbtnBack"
         android:text="Back"

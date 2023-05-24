@@ -20,6 +20,7 @@ namespace MobileAppProject
         private Button btnOpen;
         private Button btnClose;
         private TextView tvDoorStatus;
+        private TextView tvUser;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,17 +30,18 @@ namespace MobileAppProject
             btnOpen = FindViewById<Button>(Resource.Id.XbtnOpenDoor);
             btnClose = FindViewById<Button>(Resource.Id.XbtnCloseDoor);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
+            tvUser = FindViewById<TextView>(Resource.Id.username);
 
             btnBack.Click += btnBack_Clicked;
             btnOpen.Click += btnOpen_Clicked;
             btnClose.Click += btnClose_Clicked;
 
-            UpdateDoorStatus();
+            UpdateDoorStatusUser();
            
             // Create your application here
         }
-       
-        private void UpdateDoorStatus()
+
+        private void UpdateDoorStatusUser()
         {
             if (Parameters.getDoorStatus() == 1)
             {
@@ -49,18 +51,19 @@ namespace MobileAppProject
             {
                 tvDoorStatus.Text = "Open";
             }
+            tvUser.Text = User.getUser();
         }
 
         private void btnClose_Clicked(object sender, EventArgs e)
         {
             Parameters.setDoorStatus(1);
-            UpdateDoorStatus() ;
+            UpdateDoorStatusUser() ;
         }
 
         private void btnOpen_Clicked(object sender, EventArgs e)
         {
             Parameters.setDoorStatus(0);
-            UpdateDoorStatus() ;
+            UpdateDoorStatusUser() ;
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)

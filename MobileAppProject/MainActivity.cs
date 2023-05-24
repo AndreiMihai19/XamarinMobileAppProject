@@ -9,6 +9,7 @@ using MobileAppProject.Classes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using Android.Provider;
 
 namespace MobileAppProject
 {
@@ -25,27 +26,28 @@ namespace MobileAppProject
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            etUsername = FindViewById<EditText>(Resource.Id.XetUsername);
+           etUsername = FindViewById<EditText>(Resource.Id.XetUsername);
             etPassword = FindViewById<EditText>(Resource.Id.XetPassword);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnInsert);
-            
-
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+etUsername.Text.ToString());
             btnInsert.Click += BtnInsert_Click;
           
         }
 
-        private async void BtnInsert_Click(object sender, EventArgs e)
+        private void BtnInsert_Click(object sender, EventArgs e)
         {
-
-            if (etUsername.Text=="admin")
+            string androidID = Settings.Secure.GetString(ContentResolver, Settings.Secure.AndroidId);
+            User.setIMEI(androidID);
+            if (etUsername.Text =="admin")
             {
-                CheckAdmin.isadminActive= true;
-
+                User.setUser(etUsername.Text);
+                User.isAdmin= true;
                 Intent nextActivity = new Intent(this, typeof(AdminActivity));
                 StartActivity(nextActivity);
             }
             else
             {
+                User.setUser(etUsername.Text);
                 Intent nextActivity = new Intent(this, typeof(MenuActivity));
                 StartActivity(nextActivity);
             }
