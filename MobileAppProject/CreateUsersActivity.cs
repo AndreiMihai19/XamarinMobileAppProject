@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using MobileAppProject.Classes;
 
 namespace MobileAppProject
 {
@@ -20,6 +21,7 @@ namespace MobileAppProject
         private EditText etPassword;
         private Button btnAdd;
         private Button btnBack;
+        private TextView tvDoorStatus;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,9 +33,23 @@ namespace MobileAppProject
             etPassword = FindViewById<EditText>(Resource.Id.XcreatePassword);
             btnAdd = FindViewById<Button>(Resource.Id.XbtnaddUser);
             btnBack = FindViewById<Button> (Resource.Id.XbtnBack);
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
 
             btnAdd.Click += BtnAddUser_Click;
             btnBack.Click += BtnBack_Click;
+            UpdateDoorStatus();
+        }
+
+        private void UpdateDoorStatus()
+        {
+            if (Parameters.getDoorStatus() == 1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
         }
 
         private async void BtnAddUser_Click(object sender, EventArgs e)

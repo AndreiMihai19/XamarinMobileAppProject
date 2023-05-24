@@ -19,6 +19,9 @@ namespace MobileAppProject
         private Button btnTemperature;
         private Button btnInsert;
         private Button btnDoor;
+        private Button btnActivity;
+        private TextView tvActivityName;
+        private TextView tvDoorStatus;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,11 +35,44 @@ namespace MobileAppProject
             btnTemperature = FindViewById<Button>(Resource.Id.XbtnTemperature);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnBack);
             btnDoor = FindViewById<Button>(Resource.Id.XbtnDoor);
+            btnActivity = FindViewById<Button>(Resource.Id.XbtnActivity);
+            tvActivityName = FindViewById<TextView>(Resource.Id.textViewActivityName);
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.textViewDoorStatus);
+
 
             btnLight.Click += BtnLight_Clicked;
             btnInsert.Click += BtnBack_Click;
             btnTemperature.Click += BtnTemperature_Clicked;
             btnDoor.Click += BtnDoor_Clicked;
+            btnActivity.Click += BtnActivity_Clicked;
+
+            activityCheck();
+            DoorCheck();
+
+        }
+
+        private void DoorCheck()
+        {
+            
+            if(Parameters.getDoorStatus() ==1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
+        }
+
+        private void activityCheck()
+        {
+            tvActivityName.Text = Activities.getNume();
+        }
+
+        private void BtnActivity_Clicked(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(ActivityMenuSelection));
+            StartActivity(nextActivity);
         }
 
         private void BtnDoor_Clicked(object sender, EventArgs e)

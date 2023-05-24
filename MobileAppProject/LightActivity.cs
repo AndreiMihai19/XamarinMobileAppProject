@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MobileAppProject.Classes;
 
 namespace MobileAppProject
 {
@@ -16,6 +17,7 @@ namespace MobileAppProject
     {
         private SeekBar lightseekBar;
         private Button btnBack;
+        private TextView tvDoorStatus;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,10 +28,23 @@ namespace MobileAppProject
 
             lightseekBar = FindViewById<SeekBar>(Resource.Id.seekBar);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
 
             btnBack.Click += btnBack_Clicked;
-           
+           UpdateDoorStatus();
 
+        }
+
+        private void UpdateDoorStatus()
+        {
+            if (Parameters.getDoorStatus() == 1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using MobileAppProject.Classes.Parameters;
+using MobileAppProject.Classes;
 
 
 namespace MobileAppProject
@@ -20,7 +20,11 @@ namespace MobileAppProject
         private Button btnJobActivity;
         private Button btnHolidayActivity;
         private Button btnWeekendActivity;
-        private TextView tvCurentActivity;
+        private Button btnManualActivity;
+        private TextView tvCurentActivityLight;
+        private TextView tvCurentActivityTemperature;
+        private TextView tvCurentActivityDoor;
+        private TextView tvDoorStatus;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,23 +35,65 @@ namespace MobileAppProject
             btnHolidayActivity = FindViewById<Button>(Resource.Id.XbtnHoliday);
             btnJobActivity = FindViewById<Button>(Resource.Id.XbtnJob);
             btnWeekendActivity = FindViewById<Button>(Resource.Id.XbtnWeekend);
-            tvCurentActivity = FindViewById<TextView>(Resource.Id.textCurentActivity);
+            btnManualActivity = FindViewById<Button>(Resource.Id.XbtnManual);
+            tvCurentActivityLight = FindViewById<TextView>(Resource.Id.textCurentActivityLight);
+            tvCurentActivityTemperature = FindViewById<TextView>(Resource.Id.textCurentActivityTemperature);
+            tvCurentActivityDoor = FindViewById<TextView>(Resource.Id.textCurentActivityDoor);
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
 
             btnBack.Click += btnBack_Clicked;
             btnJobActivity.Click += btnJob_Clicked;
             btnHolidayActivity.Click += btnHoliday_Clicked;
             btnWeekendActivity.Click += btnWeekend_Clicked;
+            btnManualActivity.Click += btnManual_Clicked;
             // Create your application here
+        
+        UpdateDoorStatus();
+        }
+
+        private void UpdateDoorStatus()
+        {
+            if (Parameters.getDoorStatus() == 1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
+        }
+
+        private void btnManual_Clicked(object sender, EventArgs e)
+        {
+            Activities.setNume("Manual");
+            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            StartActivity(nextActivity);
         }
 
         private void btnWeekend_Clicked(object sender, EventArgs e)
         {
-           // tvCurentActivity.Text = Parameters.getLight().ToString();
+            Parameters.setLight(80);
+            tvCurentActivityLight.Text = Parameters.getLight().ToString();
+            Parameters.setTemperature(80);
+            tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
+            Parameters.setDoorStatus(1);
+            tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
+            Activities.setNume("Weekend");
+            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            StartActivity(nextActivity);
         }
 
         private void btnHoliday_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Parameters.setLight(20);
+            tvCurentActivityLight.Text = Parameters.getLight().ToString();
+            Parameters.setTemperature(20);
+            tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
+            Parameters.setDoorStatus(1);
+            tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
+            Activities.setNume("Holiday");
+            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            StartActivity(nextActivity);
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)
@@ -57,6 +103,13 @@ namespace MobileAppProject
         }
         private void btnJob_Clicked(object sender, EventArgs e)
         {
+            Parameters.setLight(40);
+            tvCurentActivityLight.Text = Parameters.getLight().ToString();
+            Parameters.setTemperature(40);
+            tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
+            Parameters.setDoorStatus(0);
+            tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
+            Activities.setNume("Job");
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
         }

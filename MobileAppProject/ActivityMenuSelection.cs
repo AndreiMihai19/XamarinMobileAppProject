@@ -4,41 +4,39 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using MobileAppProject.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MobileAppProject.Classes;
 
 namespace MobileAppProject
 {
-    [Activity(Label = "AdminActivity")]
-    public class AdminActivity : Activity
+    [Activity(Label = "ActivityMenuSelection")]
+    public class ActivityMenuSelection : Activity
     {
-        private Button btnCreateUsers;
-        private Button btnMenu;
         private Button btnBack;
+        private Button btnDefault;
+        private Button btnPersonalized;
         private TextView tvDoorStatus;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.activity_menu);
 
-            SetContentView(Resource.Layout.admin_activity);
-
-            // Create your application here
-
-            btnCreateUsers = FindViewById<Button>(Resource.Id.XbtncreateUsers);
-            btnMenu = FindViewById<Button>(Resource.Id.XbtnMenu);
+            btnDefault = FindViewById<Button>(Resource.Id.XbtnDefault);
+            btnPersonalized = FindViewById<Button>(Resource.Id.XbtnPersonalized);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
 
-            btnCreateUsers.Click += BtnCreateUsers_Click;
-            btnMenu.Click += BtnMenu_Click; 
-            btnBack.Click += BtnBack_Click;
+            btnBack.Click += btnBack_Clicked;
+            btnDefault.Click += btnDefault_Clicked;
+            btnPersonalized.Click += btnPersonalized_Clicked;
             UpdateDoorStatus();
 
-        }
 
+            // Create your application here
+        }
         private void UpdateDoorStatus()
         {
             if (Parameters.getDoorStatus() == 1)
@@ -51,23 +49,19 @@ namespace MobileAppProject
             }
         }
 
-        private void BtnCreateUsers_Click(object sender, EventArgs e)
+        private void btnPersonalized_Clicked(object sender, EventArgs e)
         {
-            Intent nextActivity = new Intent(this, typeof(CreateUsersActivity));
+            Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
-
         }
 
-        private void BtnBack_Click(object sender, EventArgs e)
+        private void btnDefault_Clicked(object sender, EventArgs e)
         {
-            CheckAdmin.isadminActive = false;
-
-            Intent nextActivity = new Intent(this, typeof(MainActivity));
+            Intent nextActivity = new Intent(this, typeof(DefaultActivity));
             StartActivity(nextActivity);
-
         }
 
-        private void BtnMenu_Click(object sender, EventArgs e)
+        private void btnBack_Clicked(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);

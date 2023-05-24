@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
-<LinearLayout
+    <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="door status"
+                android:text=""
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -91,102 +91,47 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    
+    
 
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Default Activities"
+        android:text="Activities"
         android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#000000"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
-    <TextView
-        android:id="@+id/textCurentActivityLight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
-     <TextView
-        android:id="@+id/textCurentActivityTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
-     <TextView
-        android:id="@+id/textCurentActivityDoor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="30dp"
         android:fontFamily="@font/nexa_black"
         
         />
 
     <Button
-        android:id="@+id/XbtnJob"
+        android:id="@+id/XbtnDefault"
         android:layout_width="330dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_deschisa"
-        android:text="Job"
+        android:drawableLeft="@drawable/light_bulb"
+        android:text="Default Activities"
         android:textSize="30dp"
         android:fontFamily="@font/nexa_black"/>
 
     <Button
-        android:id="@+id/XbtnHoliday"
+        android:id="@+id/XbtnPersonalized"
         android:layout_width="330dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_inchisa"
-        android:text="Holiday"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/temperature"
+        android:text="Personalized Activities"
         android:textSize="30dp"
         android:fontFamily="@font/nexa_black"/>
 
-     <Button
-        android:id="@+id/XbtnWeekend"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:text="Weekend"
-        android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
-
-    <Button
-        android:id="@+id/XbtnManual"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:text="Manual"
-        android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
-   
-   
+    
     <Button
         android:id="@+id/XbtnBack"
         android:text="Back"
