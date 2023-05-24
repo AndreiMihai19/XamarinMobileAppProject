@@ -8,5 +8,22 @@
        
     </style>
 
+  <style name="TableLayoutStyle">
+    <item name="android:background">@color/colorPrimary</item>
+    <!-- Culoarea de fundal -->
+    <item name="android:padding">16dp</item>
+    <!-- Padding-ul -->
+    <item name="android:layout_margin">20dp</item>
+    <!-- Marginile -->
+    <item name="android:showDividers">middle</item>
+    <!-- Afișarea divizoarelor între rânduri și celule -->
+    <item name="android:divider">@android:color/white</item>
+    <!-- Culoarea divizorului -->
+    <item name="android:dividerHeight">10dp</item>
+    <!-- Înălțimea divizorului -->
+    <item name="android:textColor">@android:color/white</item>
+    <!-- Înălțimea divizorului -->
+  </style>
+
 
 </resources>

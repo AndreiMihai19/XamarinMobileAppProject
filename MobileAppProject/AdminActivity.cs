@@ -16,6 +16,7 @@ namespace MobileAppProject
     public class AdminActivity : Activity
     {
         private Button btnCreateUsers;
+        private Button btnShowUsers;
         private Button btnMenu;
         private Button btnBack;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,14 +29,15 @@ namespace MobileAppProject
 
             btnCreateUsers = FindViewById<Button>(Resource.Id.XbtncreateUsers);
             btnMenu = FindViewById<Button>(Resource.Id.XbtnMenu);
+            btnShowUsers = FindViewById<Button>(Resource.Id.XbtnshowUsers);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
 
             btnCreateUsers.Click += BtnCreateUsers_Click;
-            btnMenu.Click += BtnMenu_Click; 
+            btnMenu.Click += BtnMenu_Click;
+            btnShowUsers.Click += BtnShowUsers_Click;
             btnBack.Click += BtnBack_Click;
 
         }
-
         private void BtnCreateUsers_Click(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(CreateUsersActivity));
@@ -50,6 +52,11 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(MainActivity));
             StartActivity(nextActivity);
 
+        }
+        private void BtnShowUsers_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(ShowUsersActivity));
+            StartActivity(nextActivity);
         }
 
         private void BtnMenu_Click(object sender, EventArgs e)

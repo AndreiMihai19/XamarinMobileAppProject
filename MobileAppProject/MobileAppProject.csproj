@@ -70,6 +70,7 @@
     <Compile Include="Classes\Parameters.cs" />
     <Compile Include="DefaultActivity.cs" />
     <Compile Include="DoorActivity.cs" />
+    <Compile Include="ShowUsersActivity.cs" />
     <Compile Include="TemperatureActivity.cs" />
     <Compile Include="AdminActivity.cs" />
     <Compile Include="Classes\CheckAdmin.cs" />
@@ -176,6 +177,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\add_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\show_users_activity.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\border.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
