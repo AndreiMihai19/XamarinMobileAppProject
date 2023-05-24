@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using MobileAppProject.Classes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace MobileAppProject
     public class ShowUsersActivity : Activity
     {
         private TableLayout tableLayout;
+        private TextView tvDoorStatus;
+        private TextView tvUser;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,6 +32,9 @@ namespace MobileAppProject
             SetContentView(Resource.Layout.show_users_activity);
 
             tableLayout = FindViewById<TableLayout>(Resource.Id.tblLayout);
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
+            tvUser = FindViewById<TextView>(Resource.Id.username);
+            UpdateDoorStatusUser();
 
             MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
             try
@@ -94,7 +100,7 @@ namespace MobileAppProject
         private void TableRow_Click(object sender, EventArgs e)
         {
             TableRow selectedRow = (TableRow)sender;
-            string selectedUsername = selectedRow.Text;
+            //string selectedUsername = selectedRow.Text;
 
             Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
             builder.SetTitle("Editor");
@@ -105,7 +111,7 @@ namespace MobileAppProject
             });
             builder.SetNegativeButton("Delete user", (s, args) =>
             {
-                DeleteUserAndPassword(selectedUsername);
+               // DeleteUserAndPassword(selectedUsername);
             });
             builder.SetNeutralButton("Exit", (s, args) =>
             {
@@ -115,6 +121,19 @@ namespace MobileAppProject
             // Afișarea ferestrei pop-up
             Android.App.AlertDialog dialog = builder.Create();
             dialog.Show();
+        }
+
+        private void UpdateDoorStatusUser()
+        {
+            if (Parameters.getDoorStatus() == 1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
+            tvUser.Text = User.getUser();
         }
 
         private void DeleteUserAndPassword(string username)

@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+    
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -79,11 +80,11 @@
                 android:fontFamily="@font/nexa_black"/>
 
             <TextView
-                 android:id="@+id/door_status"
+                android:id="@+id/door_status"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text=""
+                android:text="door status"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -97,36 +98,95 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Door Status"
+        android:text="Default Activities"
         android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+    <TextView
+        android:id="@+id/textCurentActivityLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="10dp"
+        android:textAlignment="center"
+        android:textColor="#0aa0b0"
+        android:paddingTop="1dp"
+        android:paddingBottom="10dp"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+     <TextView
+        android:id="@+id/textCurentActivityTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="10dp"
+        android:textAlignment="center"
+        android:textColor="#0aa0b0"
+        android:paddingTop="1dp"
+        android:paddingBottom="10dp"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+     <TextView
+        android:id="@+id/textCurentActivityDoor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="10dp"
+        android:textAlignment="center"
+        android:textColor="#0aa0b0"
+        android:paddingTop="1dp"
+        android:paddingBottom="10dp"
         android:fontFamily="@font/nexa_black"
         
         />
 
     <Button
-        android:id="@+id/XbtnOpenDoor"
+        android:id="@+id/XbtnJob"
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/usa_deschisa"
-        android:text="Open Door"
+        android:text="Job"
         android:textSize="30dp"
         android:fontFamily="@font/nexa_black"/>
 
     <Button
-        android:id="@+id/XbtnCloseDoor"
+        android:id="@+id/XbtnHoliday"
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/usa_inchisa"
-        android:text="Close Door"
+        android:text="Holiday"
         android:textSize="30dp"
         android:fontFamily="@font/nexa_black"/>
 
+     <Button
+        android:id="@+id/XbtnWeekend"
+        android:layout_width="330dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
+        android:text="Weekend"
+        android:textSize="30dp"
+        android:fontFamily="@font/nexa_black"/>
+
+    <Button
+        android:id="@+id/XbtnManual"
+        android:layout_width="330dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
+        android:text="Manual"
+        android:textSize="30dp"
+        android:fontFamily="@font/nexa_black"/>
+   
    
     <Button
         android:id="@+id/XbtnBack"
