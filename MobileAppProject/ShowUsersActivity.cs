@@ -94,14 +94,53 @@ namespace MobileAppProject
         private void TableRow_Click(object sender, EventArgs e)
         {
             TableRow selectedRow = (TableRow)sender;
-            string selectedUsername = selectedRow.Text;
+            TextView usernameTextView = (TextView)selectedRow.GetChildAt(0);
+            TextView passwordTextView = (TextView)selectedRow.GetChildAt(1);
+            string selectedUsername = usernameTextView.Text;
+            string selectedPassword = passwordTextView.Text;
 
             Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
+
             builder.SetTitle("Editor");
-            builder.SetMessage("Ați selectat un rând.");
+
             builder.SetPositiveButton("Modify user", (s, args) =>
             {
-                // Acțiunea când se apasă butonul "OK"
+                builder.SetTitle("Set user credentials");
+
+                LinearLayout layout = new LinearLayout(this);
+                layout.Orientation = Orientation.Vertical;
+
+                TextView message1 = new TextView(this);
+                message1.Text = "Username";
+                layout.AddView(message1);
+
+                // Adăugarea primului EditText în layout
+                EditText editText1 = new EditText(this);
+                layout.AddView(editText1);
+
+                TextView message2 = new TextView(this);
+                message2.Text = "Password";
+                message2.InputType = Android.Text.InputTypes.TextVariationPassword;
+                layout.AddView(message2);
+
+                // Adăugarea celui de-al doilea EditText în layout
+                EditText editText2 = new EditText(this);
+                layout.AddView(editText2);
+
+                builder.SetView(layout);
+
+                builder.SetPositiveButton("Modify", (dialog, which) =>
+                {
+                    EditUserAndPassword(selectedUsername, selectedPassword, editText1.Text, editText2.Text);
+                });
+
+                builder.SetNegativeButton("Anulare", (dialog, which) =>
+                {
+                });
+
+                // Afișarea dialogului alert
+                Android.App.AlertDialog dialog1 = builder.Create();
+                dialog1.Show();
             });
             builder.SetNegativeButton("Delete user", (s, args) =>
             {
@@ -127,9 +166,42 @@ namespace MobileAppProject
                 {
                     con.Open();
 
-                    MySqlCommand cmd = new MySqlCommand("DELETE FROM USERS WHERE username=@username", con);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM login WHERE username=@Username", con);
 
                     cmd.Parameters.AddWithValue("@Username", username);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+        }
+
+        private void EditUserAndPassword(string oldUsername,string oldPassword,string newUsername, string newPassword)
+        {
+            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
+            try
+            {
+
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+
+                    MySqlCommand cmd = new MySqlCommand("UPDATE login SET username=@newUsername,password=@newPassword WHERE username=@oldUsername AND password=@oldPassword", con);
+                    cmd.Parameters.AddWithValue("@newUsername", newUsername);
+                    cmd.Parameters.AddWithValue("@newPassword", newPassword);
+                    cmd.Parameters.AddWithValue("@oldUsername", oldUsername);
+                    cmd.Parameters.AddWithValue("@oldPassword", oldPassword);
 
                     cmd.ExecuteNonQuery();
 

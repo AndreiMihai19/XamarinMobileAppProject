@@ -68,5 +68,17 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
         }
+
+        private void UpdateDoorStatus()
+        {
+            if (Parameters.getDoorStatus() == 1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
+        }
     }
 }
