@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF4B7"
+    android:background="#6E6E6E"
     >
 
     <LinearLayout
@@ -27,7 +27,7 @@
                 android:text="Username"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/nexa_black"/>
 
             <TextView
@@ -37,7 +37,7 @@
                 android:text="Local Time"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/nexa_black"/>
 
             <TextView
@@ -47,7 +47,7 @@
                 android:text="Door Status"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/nexa_black"/>
 
         </LinearLayout>
@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/nexa_black"/>
 
             <TextClock
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/nexa_black"/>
 
             <TextView
@@ -86,7 +86,7 @@
                 android:text=""
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/nexa_black"/>
 
         </LinearLayout>
@@ -102,7 +102,7 @@
         android:text="Activities"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:paddingTop="10dp"
         android:paddingBottom="30dp"
         android:fontFamily="@font/nexa_black"
@@ -112,6 +112,7 @@
     <Button
         android:id="@+id/XbtnDefault"
         android:layout_width="330dp"
+        android:background="#E9AB17"
         android:layout_height="120dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
@@ -124,6 +125,7 @@
         android:id="@+id/XbtnPersonalized"
         android:layout_width="330dp"
         android:layout_height="120dp"
+        android:background="#E9AB17"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:drawableLeft="@drawable/personalized_activity_final"
