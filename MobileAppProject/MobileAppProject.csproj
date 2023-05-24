@@ -72,6 +72,7 @@
     <Compile Include="Classes\User.cs" />
     <Compile Include="DefaultActivity.cs" />
     <Compile Include="DoorActivity.cs" />
+    <Compile Include="GetIMEI.cs" />
     <Compile Include="ShowUsersActivity.cs" />
     <Compile Include="TemperatureActivity.cs" />
     <Compile Include="AdminActivity.cs" />

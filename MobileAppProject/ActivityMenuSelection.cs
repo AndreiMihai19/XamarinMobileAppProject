@@ -55,7 +55,7 @@ namespace MobileAppProject
 
         private void btnPersonalized_Clicked(object sender, EventArgs e)
         {
-            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            Intent nextActivity = new Intent(this, typeof(GetIMEI));
             StartActivity(nextActivity);
         }
 

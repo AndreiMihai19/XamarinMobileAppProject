@@ -84,7 +84,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="door status"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -98,7 +97,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Default Activities"
+        android:text="Aici ar trebuii sa apara IMEI-ul "
         android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -108,86 +107,29 @@
         
         />
     <TextView
-        android:id="@+id/textCurentActivityLight"
+        android:id="@+id/tvImei"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="10dp"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
+        android:paddingTop="40dp"
         android:paddingBottom="10dp"
         android:fontFamily="@font/nexa_black"
         
         />
-     <TextView
-        android:id="@+id/textCurentActivityTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
-     <TextView
-        android:id="@+id/textCurentActivityDoor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
+     
 
     <Button
-        android:id="@+id/XbtnJob"
+        android:id="@+id/XbtnImei"
         android:layout_width="330dp"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_deschisa"
-        android:text="Job"
+        android:text="Get Device ID"
         android:textSize="30dp"
         android:fontFamily="@font/nexa_black"/>
 
-    <Button
-        android:id="@+id/XbtnHoliday"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_inchisa"
-        android:text="Holiday"
-        android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
-
-     <Button
-        android:id="@+id/XbtnWeekend"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:text="Weekend"
-        android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
-
-    <Button
-        android:id="@+id/XbtnManual"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:text="Manual"
-        android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
-   
-   
     <Button
         android:id="@+id/XbtnBack"
         android:text="Back"
