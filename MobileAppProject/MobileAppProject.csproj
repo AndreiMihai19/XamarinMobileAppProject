@@ -73,6 +73,7 @@
     <Compile Include="DefaultActivity.cs" />
     <Compile Include="DoorActivity.cs" />
     <Compile Include="GetIMEI.cs" />
+    <Compile Include="PersonalizedActivity.cs" />
     <Compile Include="ShowUsersActivity.cs" />
     <Compile Include="TemperatureActivity.cs" />
     <Compile Include="AdminActivity.cs" />
@@ -192,6 +193,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\get_imei.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\personalized_activity_final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\personalized_activity.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\default_activity_final.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

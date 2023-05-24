@@ -16,6 +16,7 @@ namespace MobileAppProject.Classes
         private static string username;
         private static string password;
         private static string IMEI;
+        public static bool isAdmin = false;
 
 
         public static void setUser(string Username)

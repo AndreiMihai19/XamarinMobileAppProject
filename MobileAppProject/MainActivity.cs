@@ -9,6 +9,7 @@ using MobileAppProject.Classes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using Android.Provider;
 
 namespace MobileAppProject
 {
@@ -35,11 +36,12 @@ namespace MobileAppProject
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
-
+            string androidID = Settings.Secure.GetString(ContentResolver, Settings.Secure.AndroidId);
+            User.setIMEI(androidID);
             if (etUsername.Text =="admin")
             {
                 User.setUser(etUsername.Text);
-                CheckAdmin.isadminActive= true;
+                User.isAdmin= true;
                 Intent nextActivity = new Intent(this, typeof(AdminActivity));
                 StartActivity(nextActivity);
             }
