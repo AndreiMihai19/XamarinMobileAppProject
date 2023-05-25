@@ -77,7 +77,7 @@ namespace MobileAppProject
         {
             Parameters.setLight(80);
             tvCurentActivityLight.Text = Parameters.getLight().ToString();
-            Parameters.setTemperature(80);
+            Parameters.setTemperature(21);
             tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
             Parameters.setDoorStatus(1);
             tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
@@ -88,7 +88,7 @@ namespace MobileAppProject
 
         private void btnHoliday_Clicked(object sender, EventArgs e)
         {
-            Parameters.setLight(20);
+            Parameters.setLight(75);
             tvCurentActivityLight.Text = Parameters.getLight().ToString();
             Parameters.setTemperature(20);
             tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
@@ -108,7 +108,7 @@ namespace MobileAppProject
         {
             Parameters.setLight(40);
             tvCurentActivityLight.Text = Parameters.getLight().ToString();
-            Parameters.setTemperature(40);
+            Parameters.setTemperature(16);
             tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
             Parameters.setDoorStatus(0);
             tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
