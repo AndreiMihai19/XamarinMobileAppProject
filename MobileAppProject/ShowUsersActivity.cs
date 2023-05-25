@@ -27,6 +27,7 @@ namespace MobileAppProject
         private TableLayout tableLayout;
         private TextView tvDoorStatus;
         private TextView tvUser;
+        private Button btnBack;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -38,40 +39,75 @@ namespace MobileAppProject
             tableLayout = FindViewById<TableLayout>(Resource.Id.tblLayout);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
             tvUser = FindViewById<TextView>(Resource.Id.username);
+            btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             UpdateDoorStatusUser();
 
             TableRow tableRowOne = new TableRow(this);
             tableRowOne.Clickable = true;
             tableRowOne.SetBackgroundResource(Android.Resource.Drawable.ListSelectorBackground);
 
+            TextView textViewTitleDID = new TextView(this)
+            {
+                Text = "DEVICE ID",
+                TextSize = 10,
+                Gravity = GravityFlags.Center
+            };
+            TableRow.LayoutParams layoutParamsTitleDID = new TableRow.LayoutParams();
+            layoutParamsTitleDID.Weight = 1; // Se extinde pe tot spațiul disponibil
+            textViewTitleDID.LayoutParameters = layoutParamsTitleDID;
+
             TextView textViewTitleU = new TextView(this)
             {
                 Text = "USERNAME",
-                TextSize = 25,
+                TextSize = 10,
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleU = new TableRow.LayoutParams();
             layoutParamsTitleU.Weight = 1; // Se extinde pe tot spațiul disponibil
             textViewTitleU.LayoutParameters = layoutParamsTitleU;
 
-            TextView textViewTitleP = new TextView(this)
+            TextView textViewTitleFN = new TextView(this)
             {
-                Text = "PASSWORD",
-                TextSize = 25,
+                Text = "FIRST NAME",
+                TextSize = 10,
                 Gravity = GravityFlags.Center
             };
-            TableRow.LayoutParams layoutParamsTitleP = new TableRow.LayoutParams();
-            layoutParamsTitleP.Weight = 1; // Se extinde pe tot spațiul disponibil
-            textViewTitleP.LayoutParameters = layoutParamsTitleP;
-            
+            TableRow.LayoutParams layoutParamsTitleFN = new TableRow.LayoutParams();
+            layoutParamsTitleFN.Weight = 1; // Se extinde pe tot spațiul disponibil
+            textViewTitleFN.LayoutParameters = layoutParamsTitleFN;
+
+            TextView textViewTitleLN = new TextView(this)
+            {
+                Text = "LAST NAME",
+                TextSize = 10,
+                Gravity = GravityFlags.Center
+            };
+            TableRow.LayoutParams layoutParamsTitleLN = new TableRow.LayoutParams();
+            layoutParamsTitleLN.Weight = 1; // Se extinde pe tot spațiul disponibil
+            textViewTitleLN.LayoutParameters = layoutParamsTitleLN;
+
+            TextView textViewTitleCNP = new TextView(this)
+            {
+                Text = "CNP",
+                TextSize = 10,
+                Gravity = GravityFlags.Center
+            };
+            TableRow.LayoutParams layoutParamsTitleCNP = new TableRow.LayoutParams();
+            layoutParamsTitleCNP.Weight = 1; // Se extinde pe tot spațiul disponibil
+            textViewTitleCNP.LayoutParameters = layoutParamsTitleCNP;
+
+
+            tableRowOne.AddView(textViewTitleDID);
             tableRowOne.AddView(textViewTitleU);
-            tableRowOne.AddView(textViewTitleP);
+            tableRowOne.AddView(textViewTitleFN);
+            tableRowOne.AddView(textViewTitleLN);
+            tableRowOne.AddView(textViewTitleCNP);
 
             tableLayout.AddView(tableRowOne);
 
 
 
-            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
+            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
             try
             {
 
@@ -79,49 +115,96 @@ namespace MobileAppProject
                 {
                     con.Open();
 
-                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM login", con);
+                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", con);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            string username = reader.GetString("username");
-                            string password = reader.GetString("password");
+                            string device_id= reader.GetString("device_id");
+                            string username = reader.GetString("email");
+                            string first_name = reader.GetString("first_name");
+                            string last_name = reader.GetString("last_name");
+                            string cnp = reader.GetString("CNP");
 
                             TableRow tableRow = new TableRow(this);
                             tableRow.Clickable = true;
                             tableRow.SetBackgroundResource(Android.Resource.Drawable.ListSelectorBackground);
 
-                            TextView textView1 = new TextView(this)
+                            TextView txtDeviceID = new TextView(this)
                             {
-                                Text = username,
-                                TextSize = 20,
+                                Text = device_id,
+                                TextSize = 10,
                                 Gravity = GravityFlags.Center
                             };
-                            TableRow.LayoutParams layoutParams1 = new TableRow.LayoutParams
+
+                            var layoutParamsDeviceID = new TableRow.LayoutParams
                             {
                                 Weight = 1 // Se extinde pe tot spațiul disponibil
                             };
-                            textView1.LayoutParameters = layoutParams1;
+                            txtDeviceID.LayoutParameters = layoutParamsDeviceID;
 
-                            TextView textView2 = new TextView(this)
+                            TextView txtUsername = new TextView(this)
                             {
-                                Text = password,
-                                TextSize = 20,
+                                Text = username,
+                                TextSize = 10,
                                 Gravity = GravityFlags.Center
                             };
-                            TableRow.LayoutParams layoutParams2 = new TableRow.LayoutParams();
-                            layoutParams2.Weight = 1; // Se extinde pe tot spațiul disponibil
-                            textView2.LayoutParameters = layoutParams2;
 
-                            tableRow.AddView(textView1);
-                            tableRow.AddView(textView2);
+                            var layoutParamsUsername = new TableRow.LayoutParams
+                            {
+                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                            };
+                            txtUsername.LayoutParameters = layoutParamsUsername;
+
+                            TextView txtFirstName = new TextView(this)
+                            {
+                                Text = first_name,
+                                TextSize = 10,
+                                Gravity = GravityFlags.Center
+                            };
+                            var layoutParamsFirstName = new TableRow.LayoutParams
+                            {
+                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                            };
+                            txtFirstName.LayoutParameters = layoutParamsFirstName;
+
+                            TextView txtLastName = new TextView(this)
+                            {
+                                Text = last_name,
+                                TextSize = 10,
+                                Gravity = GravityFlags.Center
+                            };
+                            var layoutParamsLastName = new TableRow.LayoutParams
+                            {
+                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                            };
+                            txtLastName.LayoutParameters = layoutParamsLastName;
+
+                            TextView txtCNP = new TextView(this)
+                            {
+                                Text = cnp,
+                                TextSize = 10,
+                                Gravity = GravityFlags.Center
+                            };
+                            var layoutParamsCNP = new TableRow.LayoutParams
+                            {
+                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                            };
+                            txtCNP.LayoutParameters = layoutParamsCNP;
+
+
+                            tableRow.AddView(txtDeviceID);
+                            tableRow.AddView(txtUsername);
+                            tableRow.AddView(txtFirstName);
+                            tableRow.AddView(txtLastName);
+                            tableRow.AddView(txtCNP);
 
                             tableRow.Click += TableRow_Click;
 
                             tableLayout.AddView(tableRow);
                         }
-
+                      //  reader.Close();
                     }
 
                     cmd.ExecuteNonQuery();
@@ -137,6 +220,8 @@ namespace MobileAppProject
             {
                 con.Close();
             }
+
+            btnBack.Click += btnBack_Clicked;
 
         }
 
@@ -289,6 +374,12 @@ namespace MobileAppProject
 
 
             Recreate();
+        }
+
+        private void btnBack_Clicked(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(AdminActivity));
+            StartActivity(nextActivity);
         }
     }
 }

@@ -28,7 +28,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -38,7 +38,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -48,7 +48,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
@@ -66,7 +66,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextClock
                 android:format24Hour="hh:mm:ss"
@@ -76,7 +76,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                  android:id="@+id/door_status"
@@ -87,7 +87,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
@@ -103,7 +103,7 @@
         android:textColor="#000000"
         android:paddingTop="30dp"
         android:paddingBottom="30dp"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
         
         />
 
@@ -115,7 +115,7 @@
         android:drawableLeft="@drawable/usa_deschisa"
         android:text="Open Door"
         android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
+        android:fontFamily="@font/roboto_black"/>
 
     <Button
         android:id="@+id/XbtnCloseDoor"
@@ -125,7 +125,7 @@
         android:drawableLeft="@drawable/usa_inchisa"
         android:text="Close Door"
         android:textSize="30dp"
-        android:fontFamily="@font/nexa_black"/>
+        android:fontFamily="@font/roboto_black"/>
 
    
     <Button
@@ -136,7 +136,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
         android:backgroundTint="@android:color/holo_orange_light" 
         />
 

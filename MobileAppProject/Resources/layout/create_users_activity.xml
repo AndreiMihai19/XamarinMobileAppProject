@@ -31,7 +31,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -41,7 +41,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -51,7 +51,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextClock
                 android:format24Hour="hh:mm:ss"
@@ -79,7 +79,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:id="@+id/door_status"
@@ -89,7 +89,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
@@ -106,7 +106,7 @@
         android:textColor="#000000"
         android:paddingBottom="60dp"
         android:paddingTop="60dp"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
            
             />
 
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
             
  
         />
@@ -130,7 +130,7 @@
         android:textColor="#000000"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
         />
     <TextView
         android:text="Password"
@@ -139,30 +139,10 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
   />
     <EditText
         android:id="@+id/XcreatePassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#000000"
-
-        />
-
-    <TextView
-        android:text="Email"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
-  />
-    <EditText
-        android:id="@+id/XcreateEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -179,13 +159,12 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
   />
     <EditText
         android:id="@+id/XcreateFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textColor="#000000"
@@ -193,19 +172,18 @@
         />
 
     <TextView
-        android:text="Password"
+        android:text="Last name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
   />
     <EditText
         android:id="@+id/XcreateLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textColor="#000000"
@@ -219,13 +197,12 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
   />
     <EditText
         android:id="@+id/XcreateCNP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textColor="#000000"
@@ -253,7 +230,7 @@
             android:layout_weight="1"
            
             android:textColor="#000000"
-            android:fontFamily="@font/nexa_black"
+            android:fontFamily="@font/roboto_black"
             android:backgroundTint="@android:color/holo_orange_light" 
         />
 
@@ -264,7 +241,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="#000000"
-            android:fontFamily="@font/nexa_black"
+            android:fontFamily="@font/roboto_black"
             android:backgroundTint="@android:color/holo_orange_light" 
         />
 

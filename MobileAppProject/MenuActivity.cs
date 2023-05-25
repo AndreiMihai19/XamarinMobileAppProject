@@ -23,6 +23,10 @@ namespace MobileAppProject
         private TextView tvActivityName;
         private TextView tvDoorStatus;
         private TextView tvUser;
+        private TextView tvLight;
+        private TextView tvTemperature;
+        private TextView tvDoor2;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,6 +44,9 @@ namespace MobileAppProject
             tvActivityName = FindViewById<TextView>(Resource.Id.textViewActivityName);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.textViewDoorStatus);
             tvUser = FindViewById<TextView>(Resource.Id.username);
+            tvLight = FindViewById<TextView>(Resource.Id.tvLight);
+            tvTemperature = FindViewById<TextView>(Resource.Id.tvTemperature);
+            tvDoor2 = FindViewById<TextView>(Resource.Id.tvDoor);
 
 
             btnLight.Click += BtnLight_Clicked;
@@ -58,12 +65,18 @@ namespace MobileAppProject
             if (Parameters.getDoorStatus() == 1)
             {
                 tvDoorStatus.Text = "Close";
+                tvDoor2.Text = "Close";
             }
             else
             {
                 tvDoorStatus.Text = "Open";
+                tvDoor2.Text = "Open";
             }
-            tvUser.Text = User.getUser();
+            tvUser.Text = User.getUser().ToString();
+            tvLight.Text = Parameters.getLight().ToString()+"%";
+            tvTemperature.Text = Parameters.getTemperature().ToString()+ "°C";
+
+
         }
 
         private void activityCheck()

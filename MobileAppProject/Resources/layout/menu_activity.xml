@@ -28,7 +28,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -38,7 +38,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -48,7 +48,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
@@ -66,7 +66,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextClock
                 android:format24Hour="hh:mm:ss"
@@ -76,7 +76,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:id="@+id/textViewDoorStatus"
@@ -87,11 +87,12 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:fontFamily="@font/nexa_black"/>
+                android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -104,19 +105,18 @@
             android:layout_marginLeft="20dp"
             android:text="Activity"
             android:textSize="15dp"
-            android:fontFamily="@font/nexa_black"/>
+            android:fontFamily="@font/roboto_black"/>
 
         <TextView
             android:id="@+id/textViewActivityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menu Page"
             android:textSize="20dp"
             android:textAlignment="viewEnd"
             android:layout_marginRight="20dp"
             android:textColor="#000000"
             android:paddingRight="10dp"
-            android:fontFamily="@font/nexa_black"
+            android:fontFamily="@font/roboto_black"
         
         />
 
@@ -131,9 +131,112 @@
         android:textColor="#000000"
         android:paddingTop="10dp"
         android:paddingBottom="30dp"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
         
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
+        
+       
+        <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="130dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        >
+        <ImageView android:id="@+id/myImage"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:src="@drawable/light_bulb" />
+
+             <TextView
+        android:id="@+id/tvLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:text="99"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/roboto_black"
+        
+        />
+
+
+
+            </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        >
+        <ImageView android:id="@+id/myImage"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/temperature" />
+
+             <TextView
+                android:id="@+id/tvTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:text="18"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/roboto_black"
+        
+        />
+
+
+
+            </LinearLayout>
+        <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        >
+        <ImageView android:id="@+id/myImage"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/door" />
+
+             <TextView
+                android:id="@+id/tvDoor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Close"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:fontFamily="@font/roboto_black"
+        
+        />
+
+
+
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+     
+
+    
 
     <Button
         android:id="@+id/XbtnLight"
@@ -143,7 +246,7 @@
         android:drawableLeft="@drawable/light_bulb"
         android:text="Light"
         android:textSize="20dp"
-        android:fontFamily="@font/nexa_black"/>
+        android:fontFamily="@font/roboto_black"/>
 
     <Button
         android:id="@+id/XbtnTemperature"
@@ -153,7 +256,7 @@
         android:drawableLeft="@drawable/temperature"
         android:text="Temperature"
         android:textSize="20dp"
-        android:fontFamily="@font/nexa_black"/>
+        android:fontFamily="@font/roboto_black"/>
 
     <Button
         android:id="@+id/XbtnDoor"
@@ -163,7 +266,7 @@
         android:drawableLeft="@drawable/door"
         android:text="Door"
         android:textSize="20dp"
-        android:fontFamily="@font/nexa_black"/>
+        android:fontFamily="@font/roboto_black"/>
 
     <Button
         android:id="@+id/XbtnBack"
@@ -173,7 +276,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
+        android:fontFamily="@font/roboto_black"
         android:backgroundTint="@android:color/holo_orange_light" 
         />
 
