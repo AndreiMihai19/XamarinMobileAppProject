@@ -77,7 +77,6 @@
     <Compile Include="ShowUsersActivity.cs" />
     <Compile Include="TemperatureActivity.cs" />
     <Compile Include="AdminActivity.cs" />
-    <Compile Include="Classes\CheckAdmin.cs" />
     <Compile Include="CreateUsersActivity.cs" />
     <Compile Include="LightActivity.cs" />
     <Compile Include="MenuActivity.cs" />

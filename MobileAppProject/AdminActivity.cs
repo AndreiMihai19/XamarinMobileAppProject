@@ -66,7 +66,7 @@ namespace MobileAppProject
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            CheckAdmin.isadminActive = false;
+            User.isAdmin = false;
 
             Intent nextActivity = new Intent(this, typeof(MainActivity));
             StartActivity(nextActivity);

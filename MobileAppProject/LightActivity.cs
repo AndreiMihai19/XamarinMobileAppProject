@@ -19,6 +19,7 @@ namespace MobileAppProject
         private Button btnBack;
         private TextView tvDoorStatus;
         private TextView tvUser;
+        private TextView tvLight;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,10 +32,21 @@ namespace MobileAppProject
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
             tvUser = FindViewById<TextView>(Resource.Id.username);
+            tvLight = FindViewById<TextView>(Resource.Id.tvLight);
 
+
+            lightseekBar.ProgressChanged+= SeekBar_ProgressChanged;
             btnBack.Click += btnBack_Clicked;
            UpdateDoorStatusUser();
+            lightseekBar.Progress = Parameters.getLight();
 
+        }
+
+        private void SeekBar_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
+        {
+            int progress = e.Progress;
+            tvLight.Text = progress.ToString()+"%";
+            Parameters.setLight(progress);
         }
 
         private void UpdateDoorStatusUser()

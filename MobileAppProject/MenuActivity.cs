@@ -100,7 +100,7 @@ namespace MobileAppProject
         {
 
 
-            if (CheckAdmin.isadminActive==true)
+            if (User.isAdmin==true)
             {
                 Intent nextActivity = new Intent(this, typeof(AdminActivity));
                 StartActivity(nextActivity);

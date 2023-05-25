@@ -14,7 +14,7 @@ namespace MobileAppProject.Classes
     internal class Parameters
     {
         public static int DoorStatus = 1;
-        public static int Temperature = 0;
+        public static int Temperature = 18;
         public static int Light = 0;
 
 

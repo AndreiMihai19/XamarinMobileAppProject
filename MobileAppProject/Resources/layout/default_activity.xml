@@ -105,37 +105,11 @@
         android:fontFamily="@font/nexa_black"
         
         />
-    <TextView
-        android:id="@+id/textCurentActivityLight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
-     <TextView
-        android:id="@+id/textCurentActivityTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/nexa_black"
-        
-        />
      <TextView
         android:id="@+id/textCurentActivityDoor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Option Code"
         android:textSize="10dp"
         android:textAlignment="center"
         android:textColor="#0aa0b0"
