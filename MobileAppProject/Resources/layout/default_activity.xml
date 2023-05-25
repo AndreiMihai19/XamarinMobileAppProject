@@ -115,7 +115,7 @@
         android:textColor="#0aa0b0"
         android:paddingTop="1dp"
         android:paddingBottom="10dp"
-        android:fontFamily="@font/roboto_black"
+        android:fontFamily="@font/nexa_black"
         
         />
      <TextView
@@ -128,7 +128,7 @@
         android:textColor="#0aa0b0"
         android:paddingTop="1dp"
         android:paddingBottom="10dp"
-        android:fontFamily="@font/roboto_black"
+        android:fontFamily="@font/nexa_black"
         
         />
      <TextView
