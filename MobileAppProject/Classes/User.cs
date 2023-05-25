@@ -13,7 +13,7 @@ namespace MobileAppProject.Classes
 {
     internal class User
     {
-        private static string username;
+        private static string username="ion";
         private static string password;
         private static string IMEI;
         public static bool isAdmin = false;

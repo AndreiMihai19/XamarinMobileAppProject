@@ -92,6 +92,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -110,7 +111,6 @@
             android:id="@+id/textViewActivityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menu Page"
             android:textSize="20dp"
             android:textAlignment="viewEnd"
             android:layout_marginRight="20dp"
@@ -134,6 +134,109 @@
         android:fontFamily="@font/nexa_black"
         
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
+        
+       
+        <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="130dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        >
+        <ImageView android:id="@+id/myImage"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:src="@drawable/light_bulb" />
+
+             <TextView
+        android:id="@+id/tvLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:text="99"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+
+
+
+            </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        >
+        <ImageView android:id="@+id/myImage"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/temperature" />
+
+             <TextView
+                android:id="@+id/tvTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:text="18"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+
+
+
+            </LinearLayout>
+        <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        >
+        <ImageView android:id="@+id/myImage"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/door" />
+
+             <TextView
+                android:id="@+id/tvDoor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Close"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+        
+        />
+
+
+
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+     
+
+    
 
     <Button
         android:id="@+id/XbtnLight"

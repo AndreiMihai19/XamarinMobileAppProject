@@ -20,6 +20,7 @@ namespace MobileAppProject
         private EditText etUsername;
         private EditText etPassword;
         private Button btnInsert;
+        private Button btnIntra;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,8 +31,18 @@ namespace MobileAppProject
             etUsername = FindViewById<EditText>(Resource.Id.XetUsername);
             etPassword = FindViewById<EditText>(Resource.Id.XetPassword);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnInsert);
+            btnIntra = FindViewById<Button>(Resource.Id.XbtnIntra);
             btnInsert.Click += BtnInsert_Click;
+            btnIntra.Click += BtnIntra_Click;
           
+        }
+
+        private void BtnIntra_Click(object sender, EventArgs e)
+        {
+            User.setUser(etUsername.Text);
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++"+etUsername.Text+"+++++++++++++++++++++++++");
+            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            StartActivity(nextActivity);
         }
 
         private void BtnInsert_Click(object sender, EventArgs e)
