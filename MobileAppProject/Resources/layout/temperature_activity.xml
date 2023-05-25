@@ -156,6 +156,7 @@
             />
 
         <Button
+            android:id="@+id/XbtnMinus"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/minus_icon"
@@ -165,6 +166,7 @@
             />
 
         <Button
+            android:id="@+id/XbtnPlus"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/add_icon"

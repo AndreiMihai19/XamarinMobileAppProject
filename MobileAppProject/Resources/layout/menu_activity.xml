@@ -148,7 +148,7 @@
         android:orientation="vertical"
         android:layout_gravity="top"
         >
-        <ImageView android:id="@+id/myImage"
+        <ImageView 
         android:layout_width="140dp"
         android:layout_height="80dp"
         android:src="@drawable/light_bulb" />
@@ -177,7 +177,7 @@
         android:orientation="vertical"
         android:layout_gravity="top"
         >
-        <ImageView android:id="@+id/myImage"
+        <ImageView 
         android:layout_width="140dp"
         android:layout_height="80dp"
         android:paddingTop="10dp"
@@ -206,7 +206,7 @@
         android:orientation="vertical"
         android:layout_gravity="top"
         >
-        <ImageView android:id="@+id/myImage"
+        <ImageView 
         android:layout_width="130dp"
         android:layout_height="80dp"
         android:paddingTop="10dp"

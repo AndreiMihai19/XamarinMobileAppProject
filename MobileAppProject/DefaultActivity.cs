@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MobileAppProject.Classes;
-
+using Xamarin.KotlinX.Coroutines;
 
 namespace MobileAppProject
 {
@@ -21,8 +21,6 @@ namespace MobileAppProject
         private Button btnHolidayActivity;
         private Button btnWeekendActivity;
         private Button btnManualActivity;
-        private TextView tvCurentActivityLight;
-        private TextView tvCurentActivityTemperature;
         private TextView tvCurentActivityDoor;
         private TextView tvDoorStatus;
         private TextView tvUser;
@@ -37,8 +35,6 @@ namespace MobileAppProject
             btnJobActivity = FindViewById<Button>(Resource.Id.XbtnJob);
             btnWeekendActivity = FindViewById<Button>(Resource.Id.XbtnWeekend);
             btnManualActivity = FindViewById<Button>(Resource.Id.XbtnManual);
-            tvCurentActivityLight = FindViewById<TextView>(Resource.Id.textCurentActivityLight);
-            tvCurentActivityTemperature = FindViewById<TextView>(Resource.Id.textCurentActivityTemperature);
             tvCurentActivityDoor = FindViewById<TextView>(Resource.Id.textCurentActivityDoor);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
             tvUser = FindViewById<TextView>(Resource.Id.username);
@@ -76,27 +72,25 @@ namespace MobileAppProject
         private void btnWeekend_Clicked(object sender, EventArgs e)
         {
             Parameters.setLight(80);
-            tvCurentActivityLight.Text = Parameters.getLight().ToString();
             Parameters.setTemperature(21);
-            tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
             Parameters.setDoorStatus(1);
-            tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
+            Activities.setOptionCode(21, 80);
+            tvCurentActivityDoor.Text = Activities.getOptionCode();
             Activities.setNume("Weekend");
-            Intent nextActivity = new Intent(this, typeof(MenuActivity));
-            StartActivity(nextActivity);
+            //Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            //StartActivity(nextActivity);
         }
 
         private void btnHoliday_Clicked(object sender, EventArgs e)
         {
             Parameters.setLight(75);
-            tvCurentActivityLight.Text = Parameters.getLight().ToString();
             Parameters.setTemperature(20);
-            tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
             Parameters.setDoorStatus(1);
-            tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
             Activities.setNume("Holiday");
-            Intent nextActivity = new Intent(this, typeof(MenuActivity));
-            StartActivity(nextActivity);
+            Activities.setOptionCode(20, 75);
+            tvCurentActivityDoor.Text = Activities.getOptionCode();
+            //Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            //StartActivity(nextActivity);
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)
@@ -107,14 +101,14 @@ namespace MobileAppProject
         private void btnJob_Clicked(object sender, EventArgs e)
         {
             Parameters.setLight(40);
-            tvCurentActivityLight.Text = Parameters.getLight().ToString();
             Parameters.setTemperature(16);
-            tvCurentActivityTemperature.Text = Parameters.getTemperature().ToString();
             Parameters.setDoorStatus(0);
-            tvCurentActivityDoor.Text = Parameters.getDoorStatus().ToString();
             Activities.setNume("Job");
-            Intent nextActivity = new Intent(this, typeof(MenuActivity));
-            StartActivity(nextActivity);
+            Activities.setOptionCode(16, 40);
+            tvCurentActivityDoor.Text = Activities.getOptionCode();
+
+            //Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            //StartActivity(nextActivity);
         }
     }
 }
