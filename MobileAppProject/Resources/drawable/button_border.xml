@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <!-- https://go.microsoft.com/fwlink/?linkid=2124038
+    <issue id="HardcodedText" severity="error">
+        <ignore path="Resources\layout\content_main.xml" />
+    </issue>
+    -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#000000" /> <!-- Setează culoarea fundalului -->
+    <stroke android:color="#000000" android:width="2dp" /> <!-- Setează culoarea și grosimea marginii -->
+    <corners android:radius="5dp" /> <!-- Setează raza colțurilor (opțional) -->
+</shape>
+</configuration>
+
