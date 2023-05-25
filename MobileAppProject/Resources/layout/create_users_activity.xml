@@ -96,12 +96,6 @@
     </LinearLayout>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="80dp"
-        />
-
 
     <TextView
         android:layout_width="match_parent"
@@ -110,7 +104,8 @@
         android:textSize="40dp"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:paddingBottom="100dp"
+        android:paddingBottom="60dp"
+        android:paddingTop="60dp"
         android:fontFamily="@font/nexa_black"
            
             />
@@ -156,29 +151,124 @@
         android:textColor="#000000"
 
         />
-    <Button
-        android:id="@+id/XbtnaddUser"
-        android:text="Add"
-        android:layout_width="150dp"
+
+    <TextView
+        android:text="Email"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="10dp"
+        android:paddingLeft="30dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+  />
+    <EditText
+        android:id="@+id/XcreateEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textColor="#000000"
-        android:fontFamily="@font/nexa_black"
-        android:backgroundTint="@android:color/holo_orange_light" 
+
         />
 
-    <Button
-        android:id="@id/XbtnBack"
-        android:text="Back"
-        android:layout_width="200dp"
+    <TextView
+        android:text="First name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:paddingLeft="30dp"
         android:textColor="#000000"
         android:fontFamily="@font/nexa_black"
-        android:backgroundTint="@android:color/holo_orange_light" 
+  />
+    <EditText
+        android:id="@+id/XcreateFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#000000"
+
         />
+
+    <TextView
+        android:text="Password"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+  />
+    <EditText
+        android:id="@+id/XcreateLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#000000"
+
+        />
+
+    <TextView
+        android:text="CNP"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/nexa_black"
+  />
+    <EditText
+        android:id="@+id/XcreateCNP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#000000"
+
+        />
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="15dp">
+
+         <Button
+            android:id="@id/XbtnBack"
+            android:text="Back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+           
+            android:textColor="#000000"
+            android:fontFamily="@font/nexa_black"
+            android:backgroundTint="@android:color/holo_orange_light" 
+        />
+
+        <Button
+            android:id="@+id/XbtnaddUser"
+            android:text="Add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:fontFamily="@font/nexa_black"
+            android:backgroundTint="@android:color/holo_orange_light" 
+        />
+
+    </LinearLayout>
+
 
 </LinearLayout>

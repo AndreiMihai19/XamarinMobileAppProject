@@ -10,6 +10,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using Android.Provider;
+using Android.Views;
 
 namespace MobileAppProject
 {
@@ -38,10 +39,15 @@ namespace MobileAppProject
             string androidID = Settings.Secure.GetString(ContentResolver, Settings.Secure.AndroidId);
             User.setIMEI(androidID);
 
+            var toast = Toast.MakeText(this, "Please wait...", ToastLength.Short);
+
+            toast.SetGravity(GravityFlags.Center, 0, 0);
+
+            toast.Show();
 
             Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
 
-            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
+            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
             try
             {
 
@@ -49,20 +55,26 @@ namespace MobileAppProject
                 {
                     con.Open();
                  //   MySqlCommand cmd = new MySqlCommand("SELECT username,password FROM login WHERE username=@username AND password=@password", con);
-                    MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM login WHERE username = @username AND password = @password", con);
+                    MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users WHERE email = @username AND passwrd = @password", con);
+                    MySqlCommand cmdStatus = new MySqlCommand("SELECT is_admin FROM users WHERE email = @username AND passwrd = @password", con);
                     cmd.Parameters.AddWithValue("@username", etUsername.Text);
                     cmd.Parameters.AddWithValue("@password", etPassword.Text);
+                    cmdStatus.Parameters.AddWithValue("@username", etUsername.Text);
+                    cmdStatus.Parameters.AddWithValue("@password", etPassword.Text);
 
                     object result = cmd.ExecuteScalar();
+                    object status = cmdStatus.ExecuteScalar();
+
 
                     if (result != null && result != DBNull.Value)
                     {
                         int count = Convert.ToInt32(result);
-
+                        bool admin = Convert.ToBoolean(status);
+                    
                         if (count > 0)
                         {
 
-                            if (etUsername.Text == "admin")
+                            if (admin==true)
                             {
                                 User.setUser(etUsername.Text);
                                 User.isAdmin = true;
@@ -102,7 +114,7 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Clone();
+                con.Close();
             }
 
         }

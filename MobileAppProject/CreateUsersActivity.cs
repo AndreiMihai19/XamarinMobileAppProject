@@ -67,8 +67,11 @@ namespace MobileAppProject
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO login(username,password) VALUES (@nume,@parola)", con);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO users(device_id,passwrd,email,first_name,last_name,is_admin,cnp) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", con);
                     cmd.Parameters.AddWithValue("@nume", etUsername.Text);
+                    cmd.Parameters.AddWithValue("@parola", etPassword.Text);
+                    cmd.Parameters.AddWithValue("@parola", etPassword.Text);
+                    cmd.Parameters.AddWithValue("@parola", etPassword.Text);
                     cmd.Parameters.AddWithValue("@parola", etPassword.Text);
                     cmd.ExecuteNonQuery();
 

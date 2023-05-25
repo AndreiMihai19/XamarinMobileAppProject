@@ -2,9 +2,11 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.Core.Widget;
 using Google.Android.Material.Snackbar;
 using MobileAppProject.Classes;
 using MySql.Data.MySqlClient;
@@ -38,6 +40,37 @@ namespace MobileAppProject
             tvUser = FindViewById<TextView>(Resource.Id.username);
             UpdateDoorStatusUser();
 
+            TableRow tableRowOne = new TableRow(this);
+            tableRowOne.Clickable = true;
+            tableRowOne.SetBackgroundResource(Android.Resource.Drawable.ListSelectorBackground);
+
+            TextView textViewTitleU = new TextView(this)
+            {
+                Text = "USERNAME",
+                TextSize = 25,
+                Gravity = GravityFlags.Center
+            };
+            TableRow.LayoutParams layoutParamsTitleU = new TableRow.LayoutParams();
+            layoutParamsTitleU.Weight = 1; // Se extinde pe tot spațiul disponibil
+            textViewTitleU.LayoutParameters = layoutParamsTitleU;
+
+            TextView textViewTitleP = new TextView(this)
+            {
+                Text = "PASSWORD",
+                TextSize = 25,
+                Gravity = GravityFlags.Center
+            };
+            TableRow.LayoutParams layoutParamsTitleP = new TableRow.LayoutParams();
+            layoutParamsTitleP.Weight = 1; // Se extinde pe tot spațiul disponibil
+            textViewTitleP.LayoutParameters = layoutParamsTitleP;
+            
+            tableRowOne.AddView(textViewTitleU);
+            tableRowOne.AddView(textViewTitleP);
+
+            tableLayout.AddView(tableRowOne);
+
+
+
             MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
             try
             {
@@ -59,16 +92,24 @@ namespace MobileAppProject
                             tableRow.Clickable = true;
                             tableRow.SetBackgroundResource(Android.Resource.Drawable.ListSelectorBackground);
 
-                            TextView textView1 = new TextView(this);
-                            textView1.Text = username;
-                            textView1.Gravity = GravityFlags.Center; // Aliniere la stânga
-                            TableRow.LayoutParams layoutParams1 = new TableRow.LayoutParams();
-                            layoutParams1.Weight = 1; // Se extinde pe tot spațiul disponibil
+                            TextView textView1 = new TextView(this)
+                            {
+                                Text = username,
+                                TextSize = 20,
+                                Gravity = GravityFlags.Center
+                            };
+                            TableRow.LayoutParams layoutParams1 = new TableRow.LayoutParams
+                            {
+                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                            };
                             textView1.LayoutParameters = layoutParams1;
 
-                            TextView textView2 = new TextView(this);
-                            textView2.Text = password;
-                            textView2.Gravity = GravityFlags.Center; // Aliniere la dreapta
+                            TextView textView2 = new TextView(this)
+                            {
+                                Text = password,
+                                TextSize = 20,
+                                Gravity = GravityFlags.Center
+                            };
                             TableRow.LayoutParams layoutParams2 = new TableRow.LayoutParams();
                             layoutParams2.Weight = 1; // Se extinde pe tot spațiul disponibil
                             textView2.LayoutParameters = layoutParams2;
@@ -143,11 +184,7 @@ namespace MobileAppProject
                     EditUserAndPassword(selectedUsername, selectedPassword, editText1.Text, editText2.Text);
                 });
 
-                builder.SetNegativeButton("Anulare", (dialog, which) =>
-                {
-                });
 
-                // Afișarea dialogului alert
                 Android.App.AlertDialog dialog1 = builder.Create();
                 dialog1.Show();
             });
@@ -157,7 +194,7 @@ namespace MobileAppProject
             });
             builder.SetNeutralButton("Exit", (s, args) =>
             {
-                // Acțiunea când se apasă butonul "OK"
+              
             });
 
             // Afișarea ferestrei pop-up
@@ -245,10 +282,10 @@ namespace MobileAppProject
                 con.Close();
             }
 
-            var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);
-            toast.SetGravity(GravityFlags.Center, 0, 0);
+            //var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);
+            //toast.SetGravity(GravityFlags.Center, 0, 0);
 
-            toast.Show();
+            //toast.Show();
 
 
             Recreate();
