@@ -100,7 +100,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="80dp"
-        />
+        android:minWidth="25px"
+        android:minHeight="25px">
+
+
+    </FrameLayout>
 
 
     <TextView
@@ -165,14 +169,12 @@
  
         />
 
-
-        <TimePicker
-            android:layout_width="159.0dp"
-            android:layout_height="80.5dp"
-            android:layout_marginHorizontal="0dp"
-            android:layout_marginTop="0.0dp" 
-           
-            />
+        <Button
+            android:id="@+id/btnShowTimePicker"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="19dp"/>
 
 
     </LinearLayout>
@@ -197,20 +199,20 @@
         />
 
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:progressDrawable="@drawable/seekbar_progress"
-        android:progress="0"
-        android:max="100"
-        android:minHeight="20dp"
-        android:minWidth="20dp"
-        android:maxHeight="40dp"
-        android:maxWidth="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-        </LinearLayout>
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:progressDrawable="@drawable/seekbar_progress"
+            android:progress="0"
+            android:max="100"
+            android:minHeight="20dp"
+            android:minWidth="20dp"
+            android:maxHeight="40dp"
+            android:maxWidth="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-     <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_weight="10"
@@ -227,15 +229,13 @@
             android:layout_marginBottom="14.0dp"
         />
 
-        <ListView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-
+        <NumberPicker
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:id="@+id/numberPicker1"
             />
-            
 
-    
-        </LinearLayout>
+    </LinearLayout>
 
     
     <Button

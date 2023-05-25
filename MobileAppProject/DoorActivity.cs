@@ -37,8 +37,7 @@ namespace MobileAppProject
             btnClose.Click += btnClose_Clicked;
 
             UpdateDoorStatusUser();
-           
-            // Create your application here
+
         }
 
         private void UpdateDoorStatusUser()

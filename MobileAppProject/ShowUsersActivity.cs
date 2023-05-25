@@ -5,6 +5,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using Google.Android.Material.Snackbar;
+using MobileAppProject.Classes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using static Android.Provider.CalendarContract;
 
 namespace MobileAppProject
@@ -20,6 +23,8 @@ namespace MobileAppProject
     public class ShowUsersActivity : Activity
     {
         private TableLayout tableLayout;
+        private TextView tvDoorStatus;
+        private TextView tvUser;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,6 +34,9 @@ namespace MobileAppProject
             SetContentView(Resource.Layout.show_users_activity);
 
             tableLayout = FindViewById<TableLayout>(Resource.Id.tblLayout);
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
+            tvUser = FindViewById<TextView>(Resource.Id.username);
+            UpdateDoorStatusUser();
 
             MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
             try
@@ -94,10 +102,11 @@ namespace MobileAppProject
         private void TableRow_Click(object sender, EventArgs e)
         {
             TableRow selectedRow = (TableRow)sender;
+
             TextView usernameTextView = (TextView)selectedRow.GetChildAt(0);
             TextView passwordTextView = (TextView)selectedRow.GetChildAt(1);
             string selectedUsername = usernameTextView.Text;
-            string selectedPassword = passwordTextView.Text;
+            string selectedPassword = usernameTextView.Text;
 
             Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
 
@@ -144,7 +153,7 @@ namespace MobileAppProject
             });
             builder.SetNegativeButton("Delete user", (s, args) =>
             {
-                DeleteUserAndPassword(selectedUsername);
+                 DeleteUserAndPassword(selectedUsername);
             });
             builder.SetNeutralButton("Exit", (s, args) =>
             {
@@ -154,6 +163,19 @@ namespace MobileAppProject
             // Afișarea ferestrei pop-up
             Android.App.AlertDialog dialog = builder.Create();
             dialog.Show();
+        }
+
+        private void UpdateDoorStatusUser()
+        {
+            if (Parameters.getDoorStatus() == 1)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
+            tvUser.Text = User.getUser();
         }
 
         private void DeleteUserAndPassword(string username)
@@ -184,7 +206,13 @@ namespace MobileAppProject
                 con.Close();
             }
 
+            var toast = Toast.MakeText(this, "Please wait...", ToastLength.Short);
 
+            toast.SetGravity(GravityFlags.Center, 0, 0);
+
+            toast.Show();
+
+            Recreate();
         }
 
         private void EditUserAndPassword(string oldUsername,string oldPassword,string newUsername, string newPassword)
@@ -217,7 +245,13 @@ namespace MobileAppProject
                 con.Close();
             }
 
+            var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);
+            toast.SetGravity(GravityFlags.Center, 0, 0);
 
+            toast.Show();
+
+
+            Recreate();
         }
     }
 }

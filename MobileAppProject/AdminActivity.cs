@@ -16,6 +16,7 @@ namespace MobileAppProject
     public class AdminActivity : Activity
     {
         private Button btnCreateUsers;
+        private Button btnShowUsers;
         private Button btnMenu;
         private Button btnBack;
         private TextView tvDoorStatus;
@@ -30,12 +31,14 @@ namespace MobileAppProject
 
             btnCreateUsers = FindViewById<Button>(Resource.Id.XbtncreateUsers);
             btnMenu = FindViewById<Button>(Resource.Id.XbtnMenu);
+            btnShowUsers = FindViewById<Button>(Resource.Id.XbtnshowUsers);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
             tvUser = FindViewById<TextView>(Resource.Id.username);
 
             btnCreateUsers.Click += BtnCreateUsers_Click;
-            btnMenu.Click += BtnMenu_Click; 
+            btnMenu.Click += BtnMenu_Click;
+            btnShowUsers.Click += BtnShowUsers_Click;
             btnBack.Click += BtnBack_Click;
             UpdateDoorStatusUser();
 
@@ -69,11 +72,18 @@ namespace MobileAppProject
             StartActivity(nextActivity);
 
         }
+        private void BtnShowUsers_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(ShowUsersActivity));
+            StartActivity(nextActivity);
+        }
 
         private void BtnMenu_Click(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
         }
+
+  
     }
 }

@@ -26,10 +26,9 @@ namespace MobileAppProject
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-           etUsername = FindViewById<EditText>(Resource.Id.XetUsername);
+            etUsername = FindViewById<EditText>(Resource.Id.XetUsername);
             etPassword = FindViewById<EditText>(Resource.Id.XetPassword);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnInsert);
-            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+etUsername.Text.ToString());
             btnInsert.Click += BtnInsert_Click;
           
         }
@@ -38,18 +37,72 @@ namespace MobileAppProject
         {
             string androidID = Settings.Secure.GetString(ContentResolver, Settings.Secure.AndroidId);
             User.setIMEI(androidID);
-            if (etUsername.Text =="admin")
+
+
+            Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
+
+            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
+            try
             {
-                User.setUser(etUsername.Text);
-                User.isAdmin= true;
-                Intent nextActivity = new Intent(this, typeof(AdminActivity));
-                StartActivity(nextActivity);
+
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                 //   MySqlCommand cmd = new MySqlCommand("SELECT username,password FROM login WHERE username=@username AND password=@password", con);
+                    MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM login WHERE username = @username AND password = @password", con);
+                    cmd.Parameters.AddWithValue("@username", etUsername.Text);
+                    cmd.Parameters.AddWithValue("@password", etPassword.Text);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        int count = Convert.ToInt32(result);
+
+                        if (count > 0)
+                        {
+
+                            if (etUsername.Text == "admin")
+                            {
+                                User.setUser(etUsername.Text);
+                                User.isAdmin = true;
+                                Intent nextActivity = new Intent(this, typeof(AdminActivity));
+                                StartActivity(nextActivity);
+                            }
+                            else
+                            {
+                                User.setUser(etUsername.Text);
+                                Intent nextActivity = new Intent(this, typeof(MenuActivity));
+                                StartActivity(nextActivity);
+                            }
+                        }
+                        else
+                        {
+                            alertDialog.SetMessage($"{etUsername.Text} or password is not correct!");
+                            alertDialog.SetNeutralButton("Ok", delegate
+                            {
+                                alertDialog.Dispose();
+                            });
+                            alertDialog.Show();
+                        }
+                    }
+                }
+
             }
-            else
+            catch (MySqlException ex)
             {
-                User.setUser(etUsername.Text);
-                Intent nextActivity = new Intent(this, typeof(MenuActivity));
-                StartActivity(nextActivity);
+                alertDialog.SetMessage($"We have an error here!");
+                alertDialog.SetNeutralButton("Ok", delegate
+                {
+                    alertDialog.Dispose();
+                });
+
+                alertDialog.Show();
+
+            }
+            finally
+            {
+                con.Clone();
             }
 
         }
