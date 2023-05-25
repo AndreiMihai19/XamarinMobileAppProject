@@ -135,7 +135,7 @@
         android:id="@+id/textCurentActivityDoor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Option Code"
         android:textSize="10dp"
         android:textAlignment="center"
         android:textColor="#0aa0b0"

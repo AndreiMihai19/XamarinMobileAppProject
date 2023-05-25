@@ -68,15 +68,15 @@
                 android:textColor="#000000"
                 android:fontFamily="@font/roboto_black"/>
 
-      <TextClock
-        android:format24Hour="hh:mm:ss"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:fontFamily="@font/roboto_black"/>
+            <TextClock
+                android:format24Hour="hh:mm:ss"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/roboto_black"/>
 
             <TextView
                 android:id="@+id/door_status"
