@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MobileAppProject.Classes;
+using MySql.Data.MySqlClient;
+using static Android.Renderscripts.Sampler;
+using System.Data;
 
 namespace MobileAppProject
 {
@@ -21,11 +24,14 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         private TextView tvTemperature;
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            connection.Open();
 
             SetContentView(Resource.Layout.temperature_activity);
 
@@ -41,6 +47,7 @@ namespace MobileAppProject
             btnBack.Click += btnBack_Clicked;
             btnMinus.Click += btnMinus_Clicked;
             btnPlus.Click += btnPlus_Clicked;
+
             UpdateDoorStatusUser();
             updateTemperature();
 
@@ -53,6 +60,12 @@ namespace MobileAppProject
                 Parameters.setTemperature(Parameters.getTemperature() + 1);
                 updateTemperature();
             }
+
+            string query = "UPDATE parameters SET temperature = @temperature";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.ExecuteNonQuery();
+
         }
 
         private void btnMinus_Clicked(object sender, EventArgs e)
@@ -62,6 +75,11 @@ namespace MobileAppProject
                 Parameters.setTemperature(Parameters.getTemperature() - 1);
                 updateTemperature();
             }
+
+            string query = "UPDATE parameters SET temperature = @temperature";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.ExecuteNonQuery();
         }
 
         private void updateTemperature()
@@ -87,6 +105,17 @@ namespace MobileAppProject
         {
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
         }
     }
 

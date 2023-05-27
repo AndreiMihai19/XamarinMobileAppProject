@@ -5,8 +5,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MobileAppProject.Classes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -26,13 +28,27 @@ namespace MobileAppProject
         private TextView tvLight;
         private TextView tvTemperature;
         private TextView tvDoor2;
-
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            string query = "SELECT * FROM parameters";
+
+            connection.Open();
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                Parameters.setTemperature(reader.GetFloat(1));
+                Parameters.setLight(reader.GetInt32(2));
+                Parameters.setDoorStatus(reader.GetInt32(3));
+            }
+
+            reader.Close();
 
             SetContentView(Resource.Layout.menu_activity);
 
@@ -123,6 +139,17 @@ namespace MobileAppProject
         {
             Intent nextActivity = new Intent(this, typeof(TemperatureActivity));
             StartActivity(nextActivity);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
         }
 
 

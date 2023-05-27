@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MobileAppProject.Classes;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace MobileAppProject
 {
@@ -20,11 +22,12 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         private TextView tvLight;
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            connection.Open();  
 
             SetContentView(Resource.Layout.light_activity);
 
@@ -37,7 +40,7 @@ namespace MobileAppProject
 
             lightseekBar.ProgressChanged+= SeekBar_ProgressChanged;
             btnBack.Click += btnBack_Clicked;
-           UpdateDoorStatusUser();
+            UpdateDoorStatusUser();
             lightseekBar.Progress = Parameters.getLight();
 
         }
@@ -47,6 +50,12 @@ namespace MobileAppProject
             int progress = e.Progress;
             tvLight.Text = progress.ToString()+"%";
             Parameters.setLight(progress);
+
+                string query = "UPDATE parameters SET light_intensity = @light";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@light", Parameters.getLight());
+                command.ExecuteNonQuery();
+
         }
 
         private void UpdateDoorStatusUser()
@@ -66,6 +75,17 @@ namespace MobileAppProject
         {
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
         }
     }
 }

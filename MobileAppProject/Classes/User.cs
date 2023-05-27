@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace MobileAppProject.Classes
     {
         private static string username="ion";
         private static string password;
-        private static string IMEI = "";
+        private static string deviceId = "";
         public static bool isAdmin = false;
 
 
@@ -29,17 +30,15 @@ namespace MobileAppProject.Classes
             return username;
         }
 
-        public static string getIMEI()
+        public static string getDeviceId()
         {
-            return IMEI;
+            return deviceId;
         }
 
-        public static void setIMEI(string imei) 
+        public static void setDeviceId(string deviceid) 
         {
-            IMEI = imei;
+            deviceId = deviceid;
         }
-
-
     }
 
     
