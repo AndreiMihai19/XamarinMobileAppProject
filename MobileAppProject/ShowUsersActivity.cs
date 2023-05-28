@@ -44,57 +44,63 @@ namespace MobileAppProject
 
             TableRow tableRowOne = new TableRow(this);
             tableRowOne.Clickable = true;
-            tableRowOne.SetBackgroundResource(Android.Resource.Drawable.ListSelectorBackground);
-
+            tableRowOne.SetBackgroundResource(Resource.Drawable.inner_border);
+             
             TextView textViewTitleDID = new TextView(this)
             {
                 Text = "DEVICE ID",
-                TextSize = 10,
+                TextSize = 11,
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleDID = new TableRow.LayoutParams();
             layoutParamsTitleDID.Weight = 1; // Se extinde pe tot spațiul disponibil
             textViewTitleDID.LayoutParameters = layoutParamsTitleDID;
+            textViewTitleDID.SetBackgroundResource(Resource.Drawable.inner_border);
 
             TextView textViewTitleU = new TextView(this)
             {
                 Text = "USERNAME",
-                TextSize = 10,
+                TextSize = 11,
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleU = new TableRow.LayoutParams();
             layoutParamsTitleU.Weight = 1; // Se extinde pe tot spațiul disponibil
             textViewTitleU.LayoutParameters = layoutParamsTitleU;
+            textViewTitleU.SetBackgroundResource(Resource.Drawable.inner_border);
+
 
             TextView textViewTitleFN = new TextView(this)
             {
                 Text = "FIRST NAME",
-                TextSize = 10,
+                TextSize = 11,
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleFN = new TableRow.LayoutParams();
             layoutParamsTitleFN.Weight = 1; // Se extinde pe tot spațiul disponibil
             textViewTitleFN.LayoutParameters = layoutParamsTitleFN;
+            textViewTitleFN.SetBackgroundResource(Resource.Drawable.inner_border);
 
             TextView textViewTitleLN = new TextView(this)
             {
                 Text = "LAST NAME",
-                TextSize = 10,
+                TextSize = 11,
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleLN = new TableRow.LayoutParams();
             layoutParamsTitleLN.Weight = 1; // Se extinde pe tot spațiul disponibil
             textViewTitleLN.LayoutParameters = layoutParamsTitleLN;
+            textViewTitleLN.SetBackgroundResource(Resource.Drawable.inner_border);
 
             TextView textViewTitleCNP = new TextView(this)
             {
                 Text = "CNP",
-                TextSize = 10,
+                TextSize = 11,
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleCNP = new TableRow.LayoutParams();
             layoutParamsTitleCNP.Weight = 1; // Se extinde pe tot spațiul disponibil
             textViewTitleCNP.LayoutParameters = layoutParamsTitleCNP;
+            textViewTitleCNP.SetBackgroundResource(Resource.Drawable.inner_border);
 
 
             tableRowOne.AddView(textViewTitleDID);
@@ -129,7 +135,12 @@ namespace MobileAppProject
 
                             TableRow tableRow = new TableRow(this);
                             tableRow.Clickable = true;
-                            tableRow.SetBackgroundResource(Android.Resource.Drawable.ListSelectorBackground);
+
+                            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.WrapContent);
+                            layoutParams.LeftMargin = 40; 
+                            layoutParams.RightMargin = 0; 
+                            tableRow.LayoutParameters = layoutParams;
+                            tableRow.SetBackgroundResource(Resource.Drawable.inner_border);
 
                             TextView txtDeviceID = new TextView(this)
                             {
@@ -141,8 +152,10 @@ namespace MobileAppProject
                             var layoutParamsDeviceID = new TableRow.LayoutParams
                             {
                                 Weight = 1 // Se extinde pe tot spațiul disponibil
+
                             };
                             txtDeviceID.LayoutParameters = layoutParamsDeviceID;
+                            txtDeviceID.SetBackgroundResource(Resource.Drawable.inner_border);
 
                             TextView txtUsername = new TextView(this)
                             {
@@ -156,6 +169,7 @@ namespace MobileAppProject
                                 Weight = 1 // Se extinde pe tot spațiul disponibil
                             };
                             txtUsername.LayoutParameters = layoutParamsUsername;
+                            txtUsername.SetBackgroundResource(Resource.Drawable.inner_border);
 
                             TextView txtFirstName = new TextView(this)
                             {
@@ -168,6 +182,7 @@ namespace MobileAppProject
                                 Weight = 1 // Se extinde pe tot spațiul disponibil
                             };
                             txtFirstName.LayoutParameters = layoutParamsFirstName;
+                            txtFirstName.SetBackgroundResource(Resource.Drawable.inner_border);
 
                             TextView txtLastName = new TextView(this)
                             {
@@ -180,6 +195,7 @@ namespace MobileAppProject
                                 Weight = 1 // Se extinde pe tot spațiul disponibil
                             };
                             txtLastName.LayoutParameters = layoutParamsLastName;
+                            txtLastName.SetBackgroundResource(Resource.Drawable.inner_border);
 
                             TextView txtCNP = new TextView(this)
                             {
@@ -192,6 +208,7 @@ namespace MobileAppProject
                                 Weight = 1 // Se extinde pe tot spațiul disponibil
                             };
                             txtCNP.LayoutParameters = layoutParamsCNP;
+                            txtCNP.SetBackgroundResource(Resource.Drawable.inner_border);
 
 
                             tableRow.AddView(txtDeviceID);

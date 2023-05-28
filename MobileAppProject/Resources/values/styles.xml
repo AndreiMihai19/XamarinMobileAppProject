@@ -9,7 +9,7 @@
     </style>
 
   <style name="TableLayoutStyle">
-    <item name="android:background">@color/colorPrimary</item>
+    <item name="android:background">@android:color/white</item>
     <!-- Culoarea de fundal -->
     <item name="android:padding">16dp</item>
     <!-- Padding-ul -->
@@ -22,6 +22,8 @@
     <item name="android:dividerHeight">10dp</item>
     <!-- Înălțimea divizorului -->
     <item name="android:textColor">@android:color/white</item>
+    <!-- Înălțimea divizorului -->
+    <item name="android:textSize">10dp</item>
     <!-- Înălțimea divizorului -->
   </style>
 

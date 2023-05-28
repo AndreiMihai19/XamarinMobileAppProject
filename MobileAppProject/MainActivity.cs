@@ -84,7 +84,7 @@ namespace MobileAppProject
                         bool admin = Convert.ToBoolean(status);
                         string device_id = Convert.ToString(did);
 
-                        if (currentDeviceID == device_id)
+                        if (currentDeviceID == device_id || device_id.Length != 16 || admin==true)
                         {
                             if (count > 0)
                             {

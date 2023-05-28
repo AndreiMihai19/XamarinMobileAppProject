@@ -65,7 +65,6 @@ namespace MobileAppProject
         private async void BtnAddUser_Click(object sender, EventArgs e)
         {
 
-            string deviceID = string.Empty;
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
             MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
@@ -76,26 +75,11 @@ namespace MobileAppProject
                 {
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand("INSERT INTO users(device_id,passwrd,email,first_name,last_name,is_admin,cnp) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", con);
-                    MySqlCommand cmdID = new MySqlCommand("SELECT * FROM users", con);
+              
+                    Random random = new Random();
 
-                    MySqlDataReader reader = cmdID.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        deviceID = reader.GetString(0);
-                    }
-
-                    reader.Close();
-
-                    if (deviceID.Length < 15)
-                    {
-                        deviceID += "O";
-                    }
-                    else
-                    {
-                        deviceID= "";
-                    }
-
+                    string deviceID = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", 15)
+                        .Select(s => s[random.Next(s.Length)]).ToArray());
 
                     cmd.Parameters.AddWithValue("@device_id", deviceID);
                     cmd.Parameters.AddWithValue("@password", etPassword.Text);
