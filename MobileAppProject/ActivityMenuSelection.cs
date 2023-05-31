@@ -10,7 +10,6 @@ using System.Linq;
 using System.Text;
 using MobileAppProject.Classes;
 using Android.Graphics.Drawables;
-//using MobileAppProject.Resource.drawable;
 
 namespace MobileAppProject
 {
@@ -63,7 +62,7 @@ namespace MobileAppProject
 
         private void btnPersonalized_Clicked(object sender, EventArgs e)
         {
-            Intent nextActivity = new Intent(this, typeof(GetIMEI));
+            Intent nextActivity = new Intent(this, typeof(PersonalizedActivity));
             StartActivity(nextActivity);
         }
 
