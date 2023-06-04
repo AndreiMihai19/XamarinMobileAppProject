@@ -14,9 +14,9 @@ namespace MobileAppProject.Classes
 {
     internal class User
     {
-        private static string username="ion";
-        private static string password;
-        private static string deviceId = "";
+        private static string username= null;
+        private static string password = null;
+        private static string deviceId = null;
         public static bool isAdmin = false;
 
 

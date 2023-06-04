@@ -48,7 +48,7 @@ namespace MobileAppProject
         }
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }

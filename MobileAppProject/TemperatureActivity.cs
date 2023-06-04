@@ -25,7 +25,7 @@ namespace MobileAppProject
         private TextView tvUser;
         private TextView tvTemperature;
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
-
+        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -61,6 +61,7 @@ namespace MobileAppProject
                 updateTemperature();
             }
 
+            //string query = "UPDATE Parameters SET temperature = @temperature";
             string query = "UPDATE parameters SET temperature = @temperature";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
@@ -76,6 +77,7 @@ namespace MobileAppProject
                 updateTemperature();
             }
 
+           // string query = "UPDATE Parameters SET temperature = @temperature";
             string query = "UPDATE parameters SET temperature = @temperature";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
@@ -90,7 +92,7 @@ namespace MobileAppProject
 
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }

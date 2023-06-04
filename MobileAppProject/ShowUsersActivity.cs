@@ -28,11 +28,11 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         private Button btnBack;
+        private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
+        //private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your application here
 
             SetContentView(Resource.Layout.show_users_activity);
 
@@ -53,7 +53,7 @@ namespace MobileAppProject
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleDID = new TableRow.LayoutParams();
-            layoutParamsTitleDID.Weight = 1; // Se extinde pe tot spațiul disponibil
+            layoutParamsTitleDID.Weight = 1; 
             textViewTitleDID.LayoutParameters = layoutParamsTitleDID;
             textViewTitleDID.SetBackgroundResource(Resource.Drawable.inner_border);
 
@@ -64,7 +64,7 @@ namespace MobileAppProject
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleU = new TableRow.LayoutParams();
-            layoutParamsTitleU.Weight = 1; // Se extinde pe tot spațiul disponibil
+            layoutParamsTitleU.Weight = 1;
             textViewTitleU.LayoutParameters = layoutParamsTitleU;
             textViewTitleU.SetBackgroundResource(Resource.Drawable.inner_border);
 
@@ -76,7 +76,7 @@ namespace MobileAppProject
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleFN = new TableRow.LayoutParams();
-            layoutParamsTitleFN.Weight = 1; // Se extinde pe tot spațiul disponibil
+            layoutParamsTitleFN.Weight = 1; 
             textViewTitleFN.LayoutParameters = layoutParamsTitleFN;
             textViewTitleFN.SetBackgroundResource(Resource.Drawable.inner_border);
 
@@ -87,7 +87,7 @@ namespace MobileAppProject
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleLN = new TableRow.LayoutParams();
-            layoutParamsTitleLN.Weight = 1; // Se extinde pe tot spațiul disponibil
+            layoutParamsTitleLN.Weight = 1; 
             textViewTitleLN.LayoutParameters = layoutParamsTitleLN;
             textViewTitleLN.SetBackgroundResource(Resource.Drawable.inner_border);
 
@@ -98,7 +98,7 @@ namespace MobileAppProject
                 Gravity = GravityFlags.Center
             };
             TableRow.LayoutParams layoutParamsTitleCNP = new TableRow.LayoutParams();
-            layoutParamsTitleCNP.Weight = 1; // Se extinde pe tot spațiul disponibil
+            layoutParamsTitleCNP.Weight = 1;
             textViewTitleCNP.LayoutParameters = layoutParamsTitleCNP;
             textViewTitleCNP.SetBackgroundResource(Resource.Drawable.inner_border);
 
@@ -111,9 +111,6 @@ namespace MobileAppProject
 
             tableLayout.AddView(tableRowOne);
 
-
-
-            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
             try
             {
 
@@ -121,6 +118,7 @@ namespace MobileAppProject
                 {
                     con.Open();
 
+                   // MySqlCommand cmd = new MySqlCommand("SELECT * FROM Users", con);
                     MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", con);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -151,7 +149,7 @@ namespace MobileAppProject
 
                             var layoutParamsDeviceID = new TableRow.LayoutParams
                             {
-                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                                Weight = 1 
 
                             };
                             txtDeviceID.LayoutParameters = layoutParamsDeviceID;
@@ -166,7 +164,7 @@ namespace MobileAppProject
 
                             var layoutParamsUsername = new TableRow.LayoutParams
                             {
-                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                                Weight = 1 
                             };
                             txtUsername.LayoutParameters = layoutParamsUsername;
                             txtUsername.SetBackgroundResource(Resource.Drawable.inner_border);
@@ -179,7 +177,7 @@ namespace MobileAppProject
                             };
                             var layoutParamsFirstName = new TableRow.LayoutParams
                             {
-                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                                Weight = 1 
                             };
                             txtFirstName.LayoutParameters = layoutParamsFirstName;
                             txtFirstName.SetBackgroundResource(Resource.Drawable.inner_border);
@@ -192,7 +190,7 @@ namespace MobileAppProject
                             };
                             var layoutParamsLastName = new TableRow.LayoutParams
                             {
-                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                                Weight = 1 
                             };
                             txtLastName.LayoutParameters = layoutParamsLastName;
                             txtLastName.SetBackgroundResource(Resource.Drawable.inner_border);
@@ -205,7 +203,7 @@ namespace MobileAppProject
                             };
                             var layoutParamsCNP = new TableRow.LayoutParams
                             {
-                                Weight = 1 // Se extinde pe tot spațiul disponibil
+                                Weight = 1 
                             };
                             txtCNP.LayoutParameters = layoutParamsCNP;
                             txtCNP.SetBackgroundResource(Resource.Drawable.inner_border);
@@ -221,7 +219,7 @@ namespace MobileAppProject
 
                             tableLayout.AddView(tableRow);
                         }
-                      //  reader.Close();
+                         reader.Close(); // DACA NU MERGE, TREBUIE COMENTAT
                     }
 
                     cmd.ExecuteNonQuery();
@@ -246,10 +244,33 @@ namespace MobileAppProject
         {
             TableRow selectedRow = (TableRow)sender;
 
-            TextView usernameTextView = (TextView)selectedRow.GetChildAt(0);
-            TextView passwordTextView = (TextView)selectedRow.GetChildAt(1);
+            TextView usernameTextView = (TextView)selectedRow.GetChildAt(1);
             string selectedUsername = usernameTextView.Text;
-            string selectedPassword = usernameTextView.Text;
+            string selectedPassword = null;
+            try
+            {
+
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+
+                  //  MySqlCommand cmd = new MySqlCommand("SELECT passwrd FROM Users WHERE email=@Username", con);
+                    MySqlCommand cmd = new MySqlCommand("SELECT passwrd FROM users WHERE email=@Username", con);
+                    cmd.Parameters.AddWithValue("@Username", selectedUsername);
+
+                    object result = cmd.ExecuteScalar();
+                    selectedPassword = (string)result;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+            }
+            finally
+            {
+                con.Close();
+            }
 
             Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
 
@@ -257,7 +278,8 @@ namespace MobileAppProject
 
             builder.SetPositiveButton("Modify user", (s, args) =>
             {
-                builder.SetTitle("Set user credentials");
+                Android.App.AlertDialog.Builder builderModify = new Android.App.AlertDialog.Builder(this);
+                builderModify.SetTitle($"Set user credentials for {selectedUsername}");
 
                 LinearLayout layout = new LinearLayout(this);
                 layout.Orientation = Orientation.Vertical;
@@ -266,7 +288,6 @@ namespace MobileAppProject
                 message1.Text = "Username";
                 layout.AddView(message1);
 
-                // Adăugarea primului EditText în layout
                 EditText editText1 = new EditText(this);
                 layout.AddView(editText1);
 
@@ -275,24 +296,44 @@ namespace MobileAppProject
                 message2.InputType = Android.Text.InputTypes.TextVariationPassword;
                 layout.AddView(message2);
 
-                // Adăugarea celui de-al doilea EditText în layout
                 EditText editText2 = new EditText(this);
                 layout.AddView(editText2);
 
-                builder.SetView(layout);
+                builderModify.SetView(layout);
 
-                builder.SetPositiveButton("Modify", (dialog, which) =>
+                builderModify.SetPositiveButton("Modify", (s, args) =>
                 {
                     EditUserAndPassword(selectedUsername, selectedPassword, editText1.Text, editText2.Text);
                 });
 
+                builderModify.SetNeutralButton("Exit", (s, args) =>
+                {
 
-                Android.App.AlertDialog dialog1 = builder.Create();
-                dialog1.Show();
+                });
+
+                Android.App.AlertDialog dialogModify = builderModify.Create();
+                dialogModify.Show();
             });
             builder.SetNegativeButton("Delete user", (s, args) =>
             {
-                 DeleteUserAndPassword(selectedUsername);
+                Android.App.AlertDialog.Builder builderDelete = new Android.App.AlertDialog.Builder(this);
+
+                builderDelete.SetTitle($"Are you sure you want to delete {selectedUsername} user?");
+
+                builderDelete.SetPositiveButton("Yes", (s, args) =>
+                {
+                    DeleteUserAndPassword(selectedUsername);
+                });
+
+                builderDelete.SetNegativeButton("No", (s, args) =>
+                {
+
+                });
+
+                Android.App.AlertDialog dialogDelete= builderDelete.Create();
+                dialogDelete.Show();
+
+
             });
             builder.SetNeutralButton("Exit", (s, args) =>
             {
@@ -306,7 +347,7 @@ namespace MobileAppProject
 
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }
@@ -319,7 +360,6 @@ namespace MobileAppProject
 
         private void DeleteUserAndPassword(string username)
         {
-            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
             try
             {
 
@@ -327,7 +367,8 @@ namespace MobileAppProject
                 {
                     con.Open();
 
-                    MySqlCommand cmd = new MySqlCommand("DELETE FROM login WHERE username=@Username", con);
+                  //  MySqlCommand cmd = new MySqlCommand("DELETE FROM Users WHERE email=@Username", con);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM users WHERE email=@Username", con);
 
                     cmd.Parameters.AddWithValue("@Username", username);
 
@@ -356,7 +397,9 @@ namespace MobileAppProject
 
         private void EditUserAndPassword(string oldUsername,string oldPassword,string newUsername, string newPassword)
         {
-            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=mobile_app;User Id=root;Password=;charset=utf8");
+            HashConfiguration hashConfig = new HashConfiguration();
+            var hashPassword = hashConfig.HashPassword(newPassword);
+
             try
             {
 
@@ -364,13 +407,17 @@ namespace MobileAppProject
                 {
                     con.Open();
 
-                    MySqlCommand cmd = new MySqlCommand("UPDATE login SET username=@newUsername,password=@newPassword WHERE username=@oldUsername AND password=@oldPassword", con);
-                    cmd.Parameters.AddWithValue("@newUsername", newUsername);
-                    cmd.Parameters.AddWithValue("@newPassword", newPassword);
-                    cmd.Parameters.AddWithValue("@oldUsername", oldUsername);
-                    cmd.Parameters.AddWithValue("@oldPassword", oldPassword);
+                    MySqlCommand cmdUsr = new MySqlCommand("UPDATE users SET email=@newUsername WHERE email=@oldUsername", con);
+                    //MySqlCommand cmdUsr = new MySqlCommand("UPDATE users SET email=@newUsername WHERE email=@oldUsername", con);
+                  //  MySqlCommand cmdPwd = new MySqlCommand("UPDATE Users SET passwrd=@newPassword WHERE passwrd=@oldPassword", con);
+                    MySqlCommand cmdPwd = new MySqlCommand("UPDATE users SET passwrd=@newPassword WHERE passwrd=@oldPassword", con);
+                    cmdUsr.Parameters.AddWithValue("@newUsername", newUsername);
+                    cmdPwd.Parameters.AddWithValue("@newPassword", hashPassword);
+                    cmdUsr.Parameters.AddWithValue("@oldUsername", oldUsername);
+                    cmdPwd.Parameters.AddWithValue("@oldPassword", oldPassword);
 
-                    cmd.ExecuteNonQuery();
+                    cmdUsr.ExecuteNonQueryAsync();
+                    cmdPwd.ExecuteNonQueryAsync();
 
                 }
             }
@@ -384,10 +431,10 @@ namespace MobileAppProject
                 con.Close();
             }
 
-            //var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);
-            //toast.SetGravity(GravityFlags.Center, 0, 0);
+            var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);
+            toast.SetGravity(GravityFlags.Center, 0, 0);
 
-            //toast.Show();
+            toast.Show();
 
 
             Recreate();

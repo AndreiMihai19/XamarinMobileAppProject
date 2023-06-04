@@ -25,6 +25,7 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
 
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,7 +52,7 @@ namespace MobileAppProject
 
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }

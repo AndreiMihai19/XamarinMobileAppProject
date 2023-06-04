@@ -27,7 +27,8 @@ namespace MobileAppProject
         private Button btnBack;
         private TextView tvDoorStatus;
         private TextView tvUser;
-
+        private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
+       // private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,7 +52,7 @@ namespace MobileAppProject
 
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }
@@ -67,13 +68,13 @@ namespace MobileAppProject
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
-            MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
             try
             {
 
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
+                  //  MySqlCommand cmd = new MySqlCommand("INSERT INTO Users(device_id,passwrd,email,first_name,last_name,is_admin,cnp) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", con);
                     MySqlCommand cmd = new MySqlCommand("INSERT INTO users(device_id,passwrd,email,first_name,last_name,is_admin,cnp) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", con);
               
                     Random random = new Random();
@@ -82,7 +83,11 @@ namespace MobileAppProject
                         .Select(s => s[random.Next(s.Length)]).ToArray());
 
                     cmd.Parameters.AddWithValue("@device_id", deviceID);
-                    cmd.Parameters.AddWithValue("@password", etPassword.Text);
+
+                    HashConfiguration hashConfig = new HashConfiguration();
+                    var hashPassword = hashConfig.HashPassword(etPassword.Text);
+                 
+                    cmd.Parameters.AddWithValue("@password", hashPassword);
                     cmd.Parameters.AddWithValue("@email", etUsername.Text);
                     cmd.Parameters.AddWithValue("@first_name", etFirstName.Text);
                     cmd.Parameters.AddWithValue("@last_name", etLastName.Text);
@@ -101,7 +106,7 @@ namespace MobileAppProject
             }
             catch (MySqlException ex)
             {
-                // alertDialog.SetMessage($"We have an error here!");
+                //alertDialog.SetMessage($"We have an error here!");
                 alertDialog.SetMessage(ex.ToString());
                 alertDialog.SetNeutralButton("Ok", delegate
                 {

@@ -15,9 +15,9 @@ namespace MobileAppProject.Classes
     internal class Activities
     {
         private static int preset_id;
-        private static string nume;
-        private static string device_id;
-        private static string option_code;
+        private static string nume = null;
+        private static string device_id = null;
+        private static string option_code = null;
 
 
 

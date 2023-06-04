@@ -23,6 +23,7 @@ namespace MobileAppProject
         private Button btnClose;
         private TextView tvDoorStatus;
         private TextView tvUser;
+       // private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -47,7 +48,7 @@ namespace MobileAppProject
 
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }
@@ -60,9 +61,10 @@ namespace MobileAppProject
 
         private void btnClose_Clicked(object sender, EventArgs e)
         {
-            Parameters.setDoorStatus(1);
+            Parameters.setDoorStatus(0);
             UpdateDoorStatusUser() ;
 
+            //string query = "UPDATE Parameters SET opened_door = @door";
             string query = "UPDATE parameters SET opened_door = @door";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@door", Parameters.getDoorStatus());
@@ -71,9 +73,10 @@ namespace MobileAppProject
 
         private void btnOpen_Clicked(object sender, EventArgs e)
         {
-            Parameters.setDoorStatus(0);
+            Parameters.setDoorStatus(1);
             UpdateDoorStatusUser() ;
 
+           // string query = "UPDATE Parameters SET opened_door = @door";
             string query = "UPDATE parameters SET opened_door = @door";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@door", Parameters.getDoorStatus());

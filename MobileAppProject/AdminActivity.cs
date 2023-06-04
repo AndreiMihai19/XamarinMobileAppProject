@@ -27,8 +27,6 @@ namespace MobileAppProject
 
             SetContentView(Resource.Layout.admin_activity);
 
-            // Create your application here
-
             btnCreateUsers = FindViewById<Button>(Resource.Id.XbtncreateUsers);
             btnMenu = FindViewById<Button>(Resource.Id.XbtnMenu);
             btnShowUsers = FindViewById<Button>(Resource.Id.XbtnshowUsers);
@@ -46,7 +44,7 @@ namespace MobileAppProject
 
         private void UpdateDoorStatusUser()
         {
-            if (Parameters.getDoorStatus() == 1)
+            if (Parameters.getDoorStatus() == 0)
             {
                 tvDoorStatus.Text = "Close";
             }
