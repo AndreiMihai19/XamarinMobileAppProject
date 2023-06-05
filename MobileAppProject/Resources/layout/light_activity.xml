@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF4B7">
+    android:background="#6E6E6E">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:text="Username"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -38,7 +38,7 @@
                 android:text="Local Time"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -48,7 +48,7 @@
                 android:text="Door Status"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             
@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextClock
@@ -77,7 +77,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
 
@@ -104,7 +104,7 @@
         android:text="Light"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/roboto_black"
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/roboto_black"
@@ -145,7 +145,7 @@
         android:layout_marginTop="200dp"
         android:textColor="#000000"
         android:fontFamily="@font/roboto_black"
-        android:backgroundTint="@android:color/holo_orange_light" 
+        android:backgroundTint="#E9AB17" 
       />
 
 </LinearLayout>

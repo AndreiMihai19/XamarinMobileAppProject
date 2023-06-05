@@ -5,7 +5,7 @@
     android:layout_height="match_parent" 
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
-    android:background="#FFF4B7">
+    android:background="#6E6E6E">
 
     
     <LinearLayout
@@ -30,7 +30,7 @@
                 android:text="Username"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -40,7 +40,7 @@
                 android:text="Local Time"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -50,7 +50,7 @@
                 android:text="Door Status"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
@@ -68,7 +68,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextClock
@@ -78,7 +78,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
@@ -113,7 +113,7 @@
         android:text="Personalized activity"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:paddingBottom="8dp"
         android:fontFamily="@font/roboto_black"
            
@@ -123,6 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
     <TextView
@@ -131,7 +132,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:fontFamily="@font/roboto_black"
             
  
@@ -142,47 +143,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:fontFamily="@font/roboto_black"
         />
 
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="10"
-        android:orientation="horizontal"
-        android:layout_marginBottom="0.0dp">
-
-        <TextView
-            android:text="Hours interval"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:textColor="#000000"
-            android:fontFamily="@font/roboto_black"
-            android:layout_marginBottom="14.0dp" 
-            
- 
-        />
-
-        <Button
-            android:id="@+id/btnShowTimePicker"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="00:00"
-            android:textSize="19dp"/>
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_weight="10"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <TextView
@@ -191,7 +164,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:fontFamily="@font/roboto_black"
             android:layout_marginBottom="14.0dp" 
             
@@ -224,7 +197,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:fontFamily="@font/roboto_black"
             android:layout_marginBottom="14.0dp"
         />
@@ -232,6 +205,7 @@
         <NumberPicker
             android:layout_width="50dp"
             android:layout_height="70dp"
+            android:solidColor="#E9AB17"
             android:id="@+id/numberPicker1"
             />
 

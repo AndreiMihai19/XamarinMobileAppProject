@@ -14,7 +14,7 @@ using Android.Views;
 
 namespace MobileAppProject
 {
-    [Activity( MainLauncher = true)]
+    [Activity(MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
         private EditText etUsername;

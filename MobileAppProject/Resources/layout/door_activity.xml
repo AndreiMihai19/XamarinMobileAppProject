@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF4B7"
+    android:background="#6E6E6E"
     >
 
     <LinearLayout
@@ -27,7 +27,7 @@
                 android:text="Username"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -37,7 +37,7 @@
                 android:text="Local Time"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -47,7 +47,7 @@
                 android:text="Door Status"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextClock
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -86,13 +86,12 @@
                 android:text=""
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
 
     </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"
@@ -100,7 +99,7 @@
         android:text="Door Status"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:paddingTop="30dp"
         android:paddingBottom="30dp"
         android:fontFamily="@font/roboto_black"
@@ -115,6 +114,9 @@
         android:drawableLeft="@drawable/usa_deschisa"
         android:text="Open Door"
         android:textSize="30dp"
+        android:background="#E9AB17"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000"
         android:fontFamily="@font/roboto_black"/>
 
     <Button
@@ -124,7 +126,10 @@
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/usa_inchisa"
         android:text="Close Door"
+        android:background="#E9AB17"
         android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000"
         android:fontFamily="@font/roboto_black"/>
 
    
@@ -134,10 +139,10 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:textColor="#000000"
         android:fontFamily="@font/roboto_black"
-        android:backgroundTint="@android:color/holo_orange_light" 
+        android:backgroundTint="#E9AB17" 
         />
 
 </LinearLayout>

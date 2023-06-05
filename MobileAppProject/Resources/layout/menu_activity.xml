@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF4B7"
+    android:background="#6E6E6E"
     >
 
     <LinearLayout
@@ -27,7 +27,7 @@
                 android:text="Username"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -37,7 +37,7 @@
                 android:text="Local Time"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -47,7 +47,7 @@
                 android:text="Door Status"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextClock
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
             <TextView
@@ -86,7 +86,7 @@
                 android:text=""
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:fontFamily="@font/roboto_black"/>
 
         </LinearLayout>
@@ -103,6 +103,7 @@
             android:layout_width="120dp"
             android:layout_height="80dp"
             android:layout_marginLeft="20dp"
+            android:background="#E9AB17"
             android:text="Activity"
             android:textSize="15dp"
             android:fontFamily="@font/roboto_black"/>
@@ -128,7 +129,7 @@
         android:text="Menu Page"
         android:textSize="30dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:paddingTop="10dp"
         android:paddingBottom="30dp"
         android:fontFamily="@font/roboto_black"
@@ -162,7 +163,7 @@
         android:text="99"
         android:textAlignment="center"
         android:paddingTop="10dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:fontFamily="@font/roboto_black"
         
         />
@@ -192,7 +193,7 @@
         android:text="18"
         android:textAlignment="center"
         android:paddingTop="10dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:fontFamily="@font/roboto_black"
         
         />
@@ -221,7 +222,7 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:fontFamily="@font/roboto_black"
         
         />
@@ -246,6 +247,9 @@
         android:drawableLeft="@drawable/light_bulb"
         android:text="Light"
         android:textSize="20dp"
+        android:textColor="#000000"
+        android:background="#E9AB17"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/roboto_black"/>
 
     <Button
@@ -256,6 +260,9 @@
         android:drawableLeft="@drawable/temperature"
         android:text="Temperature"
         android:textSize="20dp"
+        android:textColor="#000000"
+        android:background="#E9AB17"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_black"/>
 
     <Button
@@ -266,6 +273,9 @@
         android:drawableLeft="@drawable/door"
         android:text="Door"
         android:textSize="20dp"
+        android:textColor="#000000"
+        android:background="#E9AB17"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_black"/>
 
     <Button
@@ -277,7 +287,7 @@
         android:layout_marginTop="30dp"
         android:textColor="#000000"
         android:fontFamily="@font/roboto_black"
-        android:backgroundTint="@android:color/holo_orange_light" 
+        android:backgroundTint="#E9AB17" 
         />
 
 </LinearLayout>
