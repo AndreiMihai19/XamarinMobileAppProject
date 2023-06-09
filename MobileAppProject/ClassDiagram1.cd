@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MobileAppProject.MainActivity">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEQQgAAAAAAABiAIAAAAQAAACAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>MainActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.MenuActivity">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQRAAAAAAACAUAAAAARAgQAASAAAAEACgSAAIAAgQA=</HashCode>
+      <FileName>MenuActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.AdminActivity">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAACBAAEAAAAAAAAAAASAAQABABAAAEIAAAAA=</HashCode>
+      <FileName>AdminActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.CreateUsersActivity">
+    <Position X="4.25" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAEEiAAAAAAAAAASCAgABAAAAAAIAgAAE=</HashCode>
+      <FileName>CreateUsersActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.ShowUsersActivity">
+    <Position X="2.25" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAEAgAAAAAAAABSAgAABCAAAAAAAAAAE=</HashCode>
+      <FileName>ShowUsersActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.ActivityMenuSelection">
+    <Position X="4" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAQAAgAAAAAAAEAAAAAAAAAAASAgAABAAAgAAAAAAAE=</HashCode>
+      <FileName>ActivityMenuSelection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.DefaultActivity">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAEAAAAAAHAAIAAgAAAAASABAABgAAAAAAIAAAE=</HashCode>
+      <FileName>DefaultActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.PersonalizedActivity">
+    <Position X="4" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAACAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>PersonalizedActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.LightActivity">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAAAEAAAEABAAAAASAAAABAAEAAAAAAAQE=</HashCode>
+      <FileName>LightActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.DoorActivity">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAAAEAAAAABAAAAISAAAARAAIAACAAAAAE=</HashCode>
+      <FileName>DoorActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.TemperatureActivity">
+    <Position X="8" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AATBAAAAAAAAAkAAAAABAAAAISAABABACAAAAAAAAAE=</HashCode>
+      <FileName>TemperatureActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.GetDeviceID">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAABAAAAAAAAAAAACQAAABAAAAAAgAAAAA=</HashCode>
+      <FileName>GetIMEI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.TemperatureChart">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="MobileAppProject.TemperatureChart.DataPoint" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TemperatureChart.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAACAEAABAAAAAAAAAAAE=</HashCode>
+      <FileName>TemperatureChart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.Classes.Actions">
+    <Position X="6.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAAAAAAAAgAEAAAAEAAIAAAAAAgAQAAEAEAABEiQ=</HashCode>
+      <FileName>Classes\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.Classes.Activities">
+    <Position X="8" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAFAAAAAAAAUIQAAAAAAAAAAEAgAAgAAAEAEAAAA=</HashCode>
+      <FileName>Classes\Activities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.Classes.Parameters">
+    <Position X="11.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAAAEAAAAAAAAAAAAAgAAAAAEAAAAAAAAAEAEBCA=</HashCode>
+      <FileName>Classes\Parameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.Classes.User">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAEAAAAAEAAAAAAAgAAAAAEhAAAQA=</HashCode>
+      <FileName>Classes\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobileAppProject.LightChart">
+    <Position X="11.75" Y="4.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="MobileAppProject.LightChart.DataPoint" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TemperatureChart.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAACAEAABAAAAAAAAAAAE=</HashCode>
+      <FileName>TemperatureChart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

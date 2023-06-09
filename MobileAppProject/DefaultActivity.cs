@@ -87,6 +87,7 @@ namespace MobileAppProject
             Actions.setActionTime(DateTime.Now);
             //TODO:  introducere date din Action in tabela "Actions" in baza de date
 
+
             //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
             Actions.setActionType("Lumina");
             Actions.setValueAction(80);
