@@ -16,7 +16,7 @@ namespace MobileAppProject
 {
     [Activity(Label = "GetIMEI")]
 
-    public class GetIMEI : Activity
+    public class GetDeviceID : Activity
     {
         private Button btnBack;
         private Button btnIMEI;

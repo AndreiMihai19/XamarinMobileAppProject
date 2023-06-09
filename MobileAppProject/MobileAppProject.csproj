@@ -67,8 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityMenuSelection.cs" />
+    <Compile Include="Classes\Actions.cs" />
     <Compile Include="Classes\Activities.cs" />
-    <Compile Include="Classes\HashConfiguration.cs" />
     <Compile Include="Classes\Parameters.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="DefaultActivity.cs" />
@@ -85,8 +85,10 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemperatureChart.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -122,8 +124,8 @@
     <PackageReference Include="MaterialDesignThemes">
       <Version>4.9.0</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation">
-      <Version>7.0.5</Version>
+    <PackageReference Include="MPAndroidChart">
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI">
       <Version>1.0.0.19</Version>
@@ -246,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_rounded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\temperature_chart.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
