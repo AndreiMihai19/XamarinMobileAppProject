@@ -17,12 +17,15 @@ namespace MobileAppProject
     [Activity(MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        
         private EditText etUsername;
         private EditText etPassword;
         private Button btnInsert;
         private Button btnIntra;
         private string currentDeviceID; 
         private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
+        private string hashPassword;
+        
         //private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -66,7 +69,7 @@ namespace MobileAppProject
                     con.Open();
 
                     HashConfiguration hashConfig = new HashConfiguration();
-                    var hashPassword = hashConfig.HashPassword(etPassword.Text);
+                    hashPassword = hashConfig.HashPassword(etPassword.Text);
 
                   //  MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM Users WHERE email = @username AND passwrd = @password", con);
                     MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users WHERE email = @username AND passwrd = @password", con);
@@ -91,6 +94,7 @@ namespace MobileAppProject
                         bool admin = Convert.ToBoolean(status);
                         string device_id = Convert.ToString(did);
                         Actions.setDeviceId(currentDeviceID);
+                        Console.WriteLine(currentDeviceID + "------------------------------------------------------------------");
 
                         if (currentDeviceID == device_id || device_id.Length != 16 || admin==true)
                         {
@@ -164,12 +168,15 @@ namespace MobileAppProject
             if (length != 16)
             {
                 User.setDeviceId(currentDeviceID);
+                
 
-              //  string query = "UPDATE Users SET device_id = @deviceid WHERE email=@username AND passwrd=@password";
+                //  string query = "UPDATE Users SET device_id = @deviceid WHERE email=@username AND passwrd=@password";
                 string query = "UPDATE users SET device_id = @deviceid WHERE email=@username AND passwrd=@password";
                 MySqlCommand cmdsetID = new MySqlCommand(query, con);
                 cmdsetID.Parameters.AddWithValue("@username", etUsername.Text);
-                cmdsetID.Parameters.AddWithValue("@password", etPassword.Text);
+                Console.WriteLine(etUsername.Text + "------------------------------------------------------------------");
+                cmdsetID.Parameters.AddWithValue("@password", hashPassword);
+                Console.WriteLine(etPassword.Text + "------------------------------------------------------------------");
                 cmdsetID.Parameters.AddWithValue("@deviceid", User.getDeviceId());
                 cmdsetID.ExecuteNonQuery();
             }

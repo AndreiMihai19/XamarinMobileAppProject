@@ -10,12 +10,15 @@ using System.Linq;
 using System.Text;
 using MobileAppProject.Classes;
 using Xamarin.KotlinX.Coroutines;
+using MySql.Data.MySqlClient;
+using static Android.Bluetooth.BluetoothClass;
 
 namespace MobileAppProject
 {
     [Activity(Label = "DefaultActivity")]
     public class DefaultActivity : Activity
     {
+        private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
         private Button btnBack;
         private Button btnJobActivity;
         private Button btnHolidayActivity;
@@ -24,11 +27,13 @@ namespace MobileAppProject
         private TextView tvCurentActivityDoor;
         private TextView tvDoorStatus;
         private TextView tvUser;
+        private int lastID;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
 
             SetContentView(Resource.Layout.default_activity);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
@@ -78,22 +83,48 @@ namespace MobileAppProject
             Activities.setOptionCode(21, 80);
             tvCurentActivityDoor.Text = Activities.getOptionCode();
             Activities.setNume("Weekend");
-            //Intent nextActivity = new Intent(this, typeof(MenuActivity));
-            //StartActivity(nextActivity);
 
-            //Device_id l-am setat deja in pagina de login!!!
-            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
-            Actions.setActionType("Temperatura");
-            Actions.setValueAction(21);
+            con.Open();
+
+            string query = "UPDATE parameters SET temperature = @temperature,light_intensity = @light,opened_door = @door";
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.Parameters.AddWithValue("@light", Parameters.getLight());
+            command.Parameters.AddWithValue("@door", Parameters.getDoorStatus());
+            command.ExecuteNonQuery();
+
+            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", con);
+            object lastId = cmdId.ExecuteScalar();
+            lastID=Convert.ToInt32(lastId);
+            Actions.setActionId(lastID+1);
+            Actions.setActionType("Temperature");
+            Actions.setValueAction(Parameters.getTemperature());
             Actions.setActionTime(DateTime.Now);
-            //TODO:  introducere date din Action in tabela "Actions" in baza de date
 
 
-            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", con);
+            cmdTemperature.Parameters.AddWithValue("@action_id",Actions.getActionId());
+            cmdTemperature.Parameters.AddWithValue("@device_id",Actions.getDeviceId());
+            cmdTemperature.Parameters.AddWithValue("@action_type",Actions.getActionType());
+            cmdTemperature.Parameters.AddWithValue("@value_action",Actions.getValueAction());
+            cmdTemperature.Parameters.AddWithValue("@date_time",Actions.getActionTime());
+            cmdTemperature.ExecuteNonQuery();
+
+
+            Actions.setActionId(lastID + 2);
             Actions.setActionType("Lumina");
-            Actions.setValueAction(80);
+            Actions.setValueAction(Parameters.getLight());
             Actions.setActionTime(DateTime.Now);
-            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
+
+            MySqlCommand cmdLight = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", con);
+            cmdLight.Parameters.AddWithValue("@action_id", Actions.getActionId());
+            cmdLight.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
+            cmdLight.Parameters.AddWithValue("@action_type", Actions.getActionType());
+            cmdLight.Parameters.AddWithValue("@value_action", Actions.getValueAction());
+            cmdLight.Parameters.AddWithValue("@date_time", Actions.getActionTime());
+            cmdLight.ExecuteNonQuery();
+            con.Close();
         }
 
         private void btnHoliday_Clicked(object sender, EventArgs e)
@@ -107,18 +138,48 @@ namespace MobileAppProject
             //Intent nextActivity = new Intent(this, typeof(MenuActivity));
             //StartActivity(nextActivity);
 
-            //Device_id l-am setat deja in pagina de login!!!
-            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
-            Actions.setActionType("Temperatura");
-            Actions.setValueAction(21);
-            Actions.setActionTime(DateTime.Now);
-            //TODO:  introducere date din Action in tabela "Actions" in baza de date
 
-            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
-            Actions.setActionType("Lumina");
-            Actions.setValueAction(80);
+            con.Open();
+            
+            string query = "UPDATE parameters SET temperature = @temperature,light_intensity = @light,opened_door = @door";
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.Parameters.AddWithValue("@light", Parameters.getLight());
+            command.Parameters.AddWithValue("@door", Parameters.getDoorStatus());
+            command.ExecuteNonQuery();
+
+            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", con);
+            object lastId = cmdId.ExecuteScalar();
+            lastID = Convert.ToInt32(lastId);
+            Actions.setActionId(lastID + 1);
+            Actions.setActionType("Temperature");
+            Actions.setValueAction(Parameters.getTemperature());
             Actions.setActionTime(DateTime.Now);
-            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
+
+            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", con);
+            cmdTemperature.Parameters.AddWithValue("@action_id", Actions.getActionId());
+            cmdTemperature.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
+            cmdTemperature.Parameters.AddWithValue("@action_type", Actions.getActionType());
+            cmdTemperature.Parameters.AddWithValue("@value_action", Actions.getValueAction());
+            cmdTemperature.Parameters.AddWithValue("@date_time", Actions.getActionTime());
+            cmdTemperature.ExecuteNonQuery();
+
+
+            Actions.setActionId(lastID + 2);
+            Actions.setActionType("Lumina");
+            Actions.setValueAction(Parameters.getLight());
+            Actions.setActionTime(DateTime.Now);
+
+
+            MySqlCommand cmdLight = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", con);
+            cmdLight.Parameters.AddWithValue("@action_id", Actions.getActionId());
+            cmdLight.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
+            cmdLight.Parameters.AddWithValue("@action_type", Actions.getActionType());
+            cmdLight.Parameters.AddWithValue("@value_action", Actions.getValueAction());
+            cmdLight.Parameters.AddWithValue("@date_time", Actions.getActionTime());
+            cmdLight.ExecuteNonQuery();
+            con.Close();
 
         }
 
@@ -140,18 +201,48 @@ namespace MobileAppProject
             //StartActivity(nextActivity);
 
 
-            //Device_id l-am setat deja in pagina de login!!!
-            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
-            Actions.setActionType("Temperatura");
-            Actions.setValueAction(21);
-            Actions.setActionTime(DateTime.Now);
-            //TODO:  introducere date din Action in tabela "Actions" in baza de date
 
-            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
-            Actions.setActionType("Lumina");
-            Actions.setValueAction(80);
+            con.Open();
+            string query = "UPDATE parameters SET temperature = @temperature,light_intensity = @light,opened_door = @door";
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.Parameters.AddWithValue("@light", Parameters.getLight());
+            command.Parameters.AddWithValue("@door", Parameters.getDoorStatus());
+            command.ExecuteNonQuery();
+
+
+            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", con);
+            object lastId = cmdId.ExecuteScalar();
+            lastID = Convert.ToInt32(lastId);
+            Actions.setActionId(lastID + 1);
+            Actions.setActionType("Temperature");
+            Actions.setValueAction(Parameters.getTemperature());
             Actions.setActionTime(DateTime.Now);
-            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
+
+            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", con);
+            cmdTemperature.Parameters.AddWithValue("@action_id", Actions.getActionId());
+            cmdTemperature.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
+            cmdTemperature.Parameters.AddWithValue("@action_type", Actions.getActionType());
+            cmdTemperature.Parameters.AddWithValue("@value_action", Actions.getValueAction());
+            cmdTemperature.Parameters.AddWithValue("@date_time", Actions.getActionTime());
+            cmdTemperature.ExecuteNonQuery();
+
+
+            Actions.setActionId(lastID + 2);
+            Actions.setActionType("Lumina");
+            Actions.setValueAction(Parameters.getLight());
+            Actions.setActionTime(DateTime.Now);
+
+
+            MySqlCommand cmdLight = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", con);
+            cmdLight.Parameters.AddWithValue("@action_id", Actions.getActionId());
+            cmdLight.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
+            cmdLight.Parameters.AddWithValue("@action_type", Actions.getActionType());
+            cmdLight.Parameters.AddWithValue("@value_action", Actions.getValueAction());
+            cmdLight.Parameters.AddWithValue("@date_time", Actions.getActionTime());
+            cmdLight.ExecuteNonQuery();
+            con.Close();
         }
     }
 }

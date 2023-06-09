@@ -105,6 +105,27 @@ namespace MobileAppProject
 
         private void btnBack_Clicked(object sender, EventArgs e)
         {
+            int lastID;
+            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", connection);
+            object lastId = cmdId.ExecuteScalar();
+            lastID = Convert.ToInt32(lastId);
+            Actions.setActionId(lastID + 1);
+            Actions.setActionType("Temperature");
+            Actions.setValueAction(Parameters.getTemperature());
+            Actions.setActionTime(DateTime.Now);
+
+
+            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", connection);
+            cmdTemperature.Parameters.AddWithValue("@action_id", Actions.getActionId());
+            cmdTemperature.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
+            cmdTemperature.Parameters.AddWithValue("@action_type", Actions.getActionType());
+            cmdTemperature.Parameters.AddWithValue("@value_action", Actions.getValueAction());
+            cmdTemperature.Parameters.AddWithValue("@date_time", Actions.getActionTime());
+            cmdTemperature.ExecuteNonQuery();
+
+
+
+
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
         }
