@@ -43,9 +43,9 @@ namespace MobileAppProject
 
         private void BtnIntra_Click(object sender, EventArgs e)
         {
-            User.setUser(etUsername.Text);
+            //User.setUser(etUsername.Text);
           
-            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            Intent nextActivity = new Intent(this, typeof(TemperatureChart));
             StartActivity(nextActivity);
         }
 
@@ -90,6 +90,7 @@ namespace MobileAppProject
                         int count = Convert.ToInt32(result);
                         bool admin = Convert.ToBoolean(status);
                         string device_id = Convert.ToString(did);
+                        Actions.setDeviceId(currentDeviceID);
 
                         if (currentDeviceID == device_id || device_id.Length != 16 || admin==true)
                         {

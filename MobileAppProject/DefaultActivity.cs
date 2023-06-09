@@ -80,6 +80,20 @@ namespace MobileAppProject
             Activities.setNume("Weekend");
             //Intent nextActivity = new Intent(this, typeof(MenuActivity));
             //StartActivity(nextActivity);
+
+            //Device_id l-am setat deja in pagina de login!!!
+            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            Actions.setActionType("Temperatura");
+            Actions.setValueAction(21);
+            Actions.setActionTime(DateTime.Now);
+            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
+
+            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            Actions.setActionType("Lumina");
+            Actions.setValueAction(80);
+            Actions.setActionTime(DateTime.Now);
+            //TODO:  introducere date din Action in tabela "Actions" in baza de date
         }
 
         private void btnHoliday_Clicked(object sender, EventArgs e)
@@ -92,6 +106,20 @@ namespace MobileAppProject
             tvCurentActivityDoor.Text = Activities.getOptionCode();
             //Intent nextActivity = new Intent(this, typeof(MenuActivity));
             //StartActivity(nextActivity);
+
+            //Device_id l-am setat deja in pagina de login!!!
+            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            Actions.setActionType("Temperatura");
+            Actions.setValueAction(21);
+            Actions.setActionTime(DateTime.Now);
+            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
+            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            Actions.setActionType("Lumina");
+            Actions.setValueAction(80);
+            Actions.setActionTime(DateTime.Now);
+            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)
@@ -110,6 +138,20 @@ namespace MobileAppProject
 
             //Intent nextActivity = new Intent(this, typeof(MenuActivity));
             //StartActivity(nextActivity);
+
+
+            //Device_id l-am setat deja in pagina de login!!!
+            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            Actions.setActionType("Temperatura");
+            Actions.setValueAction(21);
+            Actions.setActionTime(DateTime.Now);
+            //TODO:  introducere date din Action in tabela "Actions" in baza de date
+
+            //TODO:  extragere din baza de date a coloanei action_id si incrementarea ei apoi ->Actions.setActionId(id-ul incrementat);
+            Actions.setActionType("Lumina");
+            Actions.setValueAction(80);
+            Actions.setActionTime(DateTime.Now);
+            //TODO:  introducere date din Action in tabela "Actions" in baza de date
         }
     }
 }

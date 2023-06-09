@@ -14,7 +14,7 @@ namespace MobileAppProject
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.2.0.99")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.2.0.104")]
 	public partial class Resource
 	{
 		
@@ -10214,10 +10214,13 @@ namespace MobileAppProject
 			public const int line1 = 2131296536;
 			
 			// aapt resource value: 0x7F090119
-			public const int line3 = 2131296537;
+			public const int linear = 2131296537;
 			
 			// aapt resource value: 0x7F09011A
 			public const int linear = 2131296538;
+			
+			// aapt resource value: 0x7F090119
+			public const int line_chart = 2131296537;
 			
 			// aapt resource value: 0x7F09011B
 			public const int listMode = 2131296539;
@@ -10319,7 +10322,7 @@ namespace MobileAppProject
 			public const int media_actions = 2131296570;
 			
 			// aapt resource value: 0x7F09013B
-			public const int media_controller_compat_view_tag = 2131296571;
+			public const int message = 2131296571;
 			
 			// aapt resource value: 0x7F09013C
 			public const int message = 2131296572;
@@ -10352,13 +10355,16 @@ namespace MobileAppProject
 			public const int month_title = 2131296580;
 			
 			// aapt resource value: 0x7F090145
-			public const int motion_base = 2131296581;
+			public const int mtrl_anchor_parent = 2131296581;
+			
+			// aapt resource value: 0x7F090147
+			public const int mtrl_calendar_days_of_week = 2131296583;
 			
 			// aapt resource value: 0x7F090146
 			public const int mtrl_anchor_parent = 2131296582;
 			
 			// aapt resource value: 0x7F090148
-			public const int mtrl_calendar_days_of_week = 2131296584;
+			public const int mtrl_calendar_frame = 2131296584;
 			
 			// aapt resource value: 0x7F090147
 			public const int mtrl_calendar_day_selector_frame = 2131296583;
@@ -10475,7 +10481,7 @@ namespace MobileAppProject
 			public const int notification_background = 2131296621;
 			
 			// aapt resource value: 0x7F09016E
-			public const int notification_main_column = 2131296622;
+			public const int notification_main_column_container = 2131296622;
 			
 			// aapt resource value: 0x7F09016F
 			public const int notification_main_column_container = 2131296623;
@@ -10607,10 +10613,13 @@ namespace MobileAppProject
 			public const int scale = 2131296664;
 			
 			// aapt resource value: 0x7F090199
-			public const int screen = 2131296665;
+			public const int scroll = 2131296665;
+			
+			// aapt resource value: 0x7F09019D
+			public const int scrollable = 2131296669;
 			
 			// aapt resource value: 0x7F09019A
-			public const int scroll = 2131296666;
+			public const int scrollIndicatorDown = 2131296666;
 			
 			// aapt resource value: 0x7F09019E
 			public const int scrollable = 2131296670;
@@ -11182,8 +11191,8 @@ namespace MobileAppProject
 			// aapt resource value: 0x7F09002B
 			public const int XetPassword = 2131296299;
 			
-			// aapt resource value: 0x7F09002C
-			public const int XetUsername = 2131296300;
+			// aapt resource value: 0x7F090234
+			public const int x_left = 2131296820;
 			
 			// aapt resource value: 0x7F090235
 			public const int x_left = 2131296821;
@@ -11871,6 +11880,9 @@ namespace MobileAppProject
 			
 			// aapt resource value: 0x7F0C0080
 			public const int temperature_activity = 2131492992;
+			
+			// aapt resource value: 0x7F0C0081
+			public const int temperature_chart = 2131492993;
 			
 			static Layout()
 			{
