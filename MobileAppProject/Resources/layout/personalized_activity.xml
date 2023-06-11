@@ -128,7 +128,7 @@
             android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
-    <TextView
+    <TextView   
         android:text="Name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="80dp"
@@ -137,11 +137,10 @@
         android:textColor="#ffffff"
         android:fontFamily="@font/roboto_black"
             
- 
         />
 
     <EditText
-        android:id="@+id/XcreateUsername" 
+        android:id="@+id/txtPersonalizedActivity" 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -175,7 +174,7 @@
 
 
         <SeekBar
-            android:id="@+id/seekBar"
+            android:id="@+id/seekBarPersonalizedActivity"
             android:progressDrawable="@drawable/seekbar_progress"
             android:progress="0"
             android:max="100"

@@ -13,19 +13,19 @@ namespace MobileAppProject.Classes
 {
     internal class Parameters
     {
-        public static int DoorStatus;
-        public static float Temperature;
-        public static int Light;
-
-
-        public static int getDoorStatus()
-        {
-            return DoorStatus;
-        }
+        private static int DoorStatus;
+        private static float Temperature;
+        private static int Light;
+        private static string CurrentPreset;
 
         public static float getTemperature()
         {
             return Temperature;
+        }
+
+        public static void setTemperature(float temperature)
+        {
+            Temperature = temperature;
         }
 
         public static int getLight()
@@ -33,18 +33,30 @@ namespace MobileAppProject.Classes
             return Light;
         }
 
+        public static void setLight(int light)
+        {
+            Light = light;
+        }
+
         public static void setDoorStatus(int status)
         {
             DoorStatus = status;
         }
 
-        public static void setTemperature(float temperature)
+
+        public static int getDoorStatus()
         {
-            Temperature = temperature;
+            return DoorStatus;
         }
-        public static void setLight(int light)
+
+        public static string getCurrentPreset()
         {
-            Light = light;
+            return CurrentPreset;
+        }
+
+        public static void setCurrentPreset(string preset) 
+        {
+            CurrentPreset = preset;
         }
 
     }

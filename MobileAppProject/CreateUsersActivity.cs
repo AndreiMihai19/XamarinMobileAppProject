@@ -27,8 +27,8 @@ namespace MobileAppProject
         private Button btnBack;
         private TextView tvDoorStatus;
         private TextView tvUser;
-        private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
-       // private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+    //    private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -71,11 +71,11 @@ namespace MobileAppProject
             try
             {
 
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
-                  //  MySqlCommand cmd = new MySqlCommand("INSERT INTO Users(device_id,passwrd,email,first_name,last_name,is_admin,cnp) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", con);
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO users(device_id,passwrd,email,first_name,last_name,is_admin,cnp) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", con);
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO Users(device_id,passwrd,email,first_name,last_name,is_admin,CNP) VALUES (@device_id,@password,@email,@first_name,@last_name,@is_admin,@cnp)", connection);
+                   
               
                     Random random = new Random();
 
@@ -118,7 +118,7 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Close();
+                connection.Close();
             }
 
         }

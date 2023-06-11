@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -92,14 +92,14 @@
 
     </LinearLayout>
 
-     <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-         <View
-         android:layout_width="match_parent"
-         android:layout_height="10dp"
-         android:background="#E9AB17" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#E9AB17" />
 
     </LinearLayout>
 
@@ -128,7 +128,7 @@
         android:fontFamily="@font/roboto_black"
         
         />
-     <TextView
+    <TextView
         android:id="@+id/textCurentActivityTemperature"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
         android:fontFamily="@font/roboto_black"
         
         />
-     <TextView
+    <TextView
         android:id="@+id/textCurentActivityDoor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -154,59 +154,29 @@
         android:fontFamily="@font/roboto_black"
         
         />
+    <Spinner
+        android:id="@+id/spinnerPresets" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E9AB17"
+        style="@style/SpinnerStyle"
+        />
 
-    <Button
-        android:id="@+id/XbtnJob"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_deschisa"
-        android:text="Job"
-        android:background="#E9AB17"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:fontFamily="@font/roboto_black"/>
-
-    <Button
-        android:id="@+id/XbtnHoliday"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="@drawable/usa_inchisa"
-        android:text="Holiday"
-        android:background="#E9AB17"
-        android:layout_marginTop="10dp"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:fontFamily="@font/roboto_black"/>
 
      <Button
-        android:id="@+id/XbtnWeekend"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
+        android:id="@+id/XbtnSelectPreset"
+        android:text="Select"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:text="Weekend"
-        android:background="#E9AB17"
         android:layout_marginTop="10dp"
         android:textColor="#000000"
-        android:textSize="30dp"
-        android:fontFamily="@font/roboto_black"/>
+        android:fontFamily="@font/roboto_black"
+        android:backgroundTint="#E9AB17" 
+        />
 
-    <Button
-        android:id="@+id/XbtnManual"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:text="Manual"
-        android:background="#E9AB17"
-        android:layout_marginTop="10dp"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:fontFamily="@font/roboto_black"/>
-   
-   
+
+
     <Button
         android:id="@+id/XbtnBack"
         android:text="Back"
