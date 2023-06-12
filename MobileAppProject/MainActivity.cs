@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Widget;
@@ -11,6 +12,7 @@ using System.Data;
 using Android.Provider;
 using Android.Views;
 
+
 namespace MobileAppProject
 {
     [Activity(MainLauncher = true)]
@@ -21,9 +23,10 @@ namespace MobileAppProject
         private EditText etPassword;
         private Button btnInsert;
         private Button btnIntra;
-        private string currentDeviceID; 
-        private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
+        private string currentDeviceID;
         private string hashPassword;
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,7 +40,19 @@ namespace MobileAppProject
             btnInsert = FindViewById<Button>(Resource.Id.XbtnInsert);
             btnIntra = FindViewById<Button>(Resource.Id.XbtnIntra);
             btnInsert.Click += BtnInsert_Click;
+            btnIntra.Click += BtnIntra_Click;
+          
+            Activities.ClearAllPresets();
         }
+
+        private void BtnIntra_Click(object sender, EventArgs e)
+        {
+            User.setUser(etUsername.Text);
+          
+            Intent nextActivity = new Intent(this, typeof(TemperatureChart));
+            StartActivity(nextActivity);
+        }
+
         private void BtnInsert_Click(object sender, EventArgs e)
         {
 
@@ -50,15 +65,19 @@ namespace MobileAppProject
             try
             {
 
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    connection.Open();
 
                     HashConfiguration hashConfig = new HashConfiguration();
                     hashPassword = hashConfig.HashPassword(etPassword.Text);
-                    MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users WHERE email = @username AND passwrd = @password", con);
-                    MySqlCommand cmdStatus = new MySqlCommand("SELECT is_admin FROM users WHERE email = @username AND passwrd = @password", con);
-                    MySqlCommand cmdID = new MySqlCommand("SELECT device_id FROM users WHERE email=@username AND passwrd=@password", con);
+
+                    MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM Users WHERE email = @username AND passwrd = @password", connection);
+                    MySqlCommand cmdStatus = new MySqlCommand("SELECT is_admin FROM Users WHERE email = @username AND passwrd = @password", connection);
+                    MySqlCommand cmdID = new MySqlCommand("SELECT device_id FROM Users WHERE email=@username AND passwrd=@password", connection);
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM Presets", connection);
+                    MySqlCommand cmdParameters = new MySqlCommand("SELECT * FROM Parameters", connection);
+
                     cmd.Parameters.AddWithValue("@username", etUsername.Text);
                     cmd.Parameters.AddWithValue("@password", hashPassword);
                     cmdStatus.Parameters.AddWithValue("@username", etUsername.Text);
@@ -68,7 +87,7 @@ namespace MobileAppProject
 
                     object result = cmd.ExecuteScalar();
                     object status = cmdStatus.ExecuteScalar();
-                    object did=cmdID.ExecuteScalar();
+                    object did = cmdID.ExecuteScalar();
 
                     if (result != null && result != DBNull.Value)
                     {
@@ -76,15 +95,16 @@ namespace MobileAppProject
                         bool admin = Convert.ToBoolean(status);
                         string device_id = Convert.ToString(did);
                         Actions.setDeviceId(currentDeviceID);
-                        Console.WriteLine(currentDeviceID + "------------------------------------------------------------------");
 
-                        if (currentDeviceID == device_id || device_id.Length != 16 || admin==true)
+                        if (currentDeviceID == device_id || device_id.Length != 16 || admin == true)
                         {
                             if (count > 0)
                             {
 
                                 if (admin == true)
                                 {
+                                    CheckFirstLogin(device_id.Length);
+
                                     User.setUser(etUsername.Text);
                                     User.isAdmin = true;
                                     Intent nextActivity = new Intent(this, typeof(AdminActivity));
@@ -121,6 +141,33 @@ namespace MobileAppProject
                             alertDialog.Show();
                         }
                     }
+
+                    MySqlDataReader readerParameters = cmdParameters.ExecuteReader();
+
+                    if (readerParameters.Read())
+                    {
+                        Parameters.setTemperature(readerParameters.GetFloat(1));
+                        Parameters.setLight(readerParameters.GetInt32(2));
+                        Parameters.setDoorStatus(readerParameters.GetInt32(3));
+                        Parameters.setCurrentPreset(readerParameters.GetString(4));
+                    }
+
+                    readerParameters.Close();
+
+                    MySqlDataReader readerPresets = command.ExecuteReader();
+
+                    while (readerPresets.Read())
+                    {
+                        string preset = readerPresets.GetString("preset_name");
+                        string deviceId = readerPresets.GetString("device_id");
+
+                        if (deviceId.CompareTo(currentDeviceID) == 0 || deviceId.CompareTo("default") == 0)
+                        {
+                            Activities.AddPreset(preset);
+                        }
+                    }
+
+                    readerPresets.Close();
                 }
 
             }
@@ -137,21 +184,23 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Close();
+                connection.Close();
             }
 
+
+
+
         }
+
         private void CheckFirstLogin(int length)
         {
             if (length != 16)
             {
                 User.setDeviceId(currentDeviceID);
-                string query = "UPDATE users SET device_id = @deviceid WHERE email=@username AND passwrd=@password";
-                MySqlCommand cmdsetID = new MySqlCommand(query, con);
+                
+                MySqlCommand cmdsetID = new MySqlCommand("UPDATE Users SET device_id = @deviceid WHERE email=@username AND passwrd=@password", connection);
                 cmdsetID.Parameters.AddWithValue("@username", etUsername.Text);
-                Console.WriteLine(etUsername.Text + "------------------------------------------------------------------");
                 cmdsetID.Parameters.AddWithValue("@password", hashPassword);
-                Console.WriteLine(etPassword.Text + "------------------------------------------------------------------");
                 cmdsetID.Parameters.AddWithValue("@deviceid", User.getDeviceId());
                 cmdsetID.ExecuteNonQuery();
             }

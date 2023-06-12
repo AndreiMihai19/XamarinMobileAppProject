@@ -126,9 +126,8 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textAlignment="viewEnd"
-            android:layout_marginRight="20dp"
-            android:textColor="#000000"
-            android:paddingRight="10dp"
+            android:layout_marginRight="50dp"
+            android:textColor="#E9AB17"
             android:fontFamily="@font/roboto_black"
         
         />

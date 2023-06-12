@@ -22,8 +22,8 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         private TextView tvLight;
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
-        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+       // private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -49,14 +49,16 @@ namespace MobileAppProject
         private void SeekBar_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
         {
             int progress = e.Progress;
+
             tvLight.Text = progress.ToString()+"%";
             Parameters.setLight(progress);
+            Parameters.setCurrentPreset("manual");
 
-               // string query = "UPDATE Parameters SET light_intensity = @light";
-                string query = "UPDATE parameters SET light_intensity = @light";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@light", Parameters.getLight());
-                command.ExecuteNonQuery();
+            string query = "UPDATE Parameters SET light_intensity = @light, current_preset=@current_preset";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@light", Parameters.getLight());
+            command.Parameters.AddWithValue("@current_preset", Parameters.getCurrentPreset());
+            command.ExecuteNonQuery();
 
         }
 
@@ -76,16 +78,18 @@ namespace MobileAppProject
         private void btnBack_Clicked(object sender, EventArgs e)
         {
             int lastID;
-            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", connection);
+
+            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM Actions ORDER BY action_id DESC LIMIT 1;", connection);
             object lastId = cmdId.ExecuteScalar();
             lastID = Convert.ToInt32(lastId);
             Actions.setActionId(lastID + 1);
-            Actions.setActionType("Light");
+            Actions.setActionType("light");
             Actions.setValueAction(Parameters.getLight());
             Actions.setActionTime(DateTime.Now);
 
 
-            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", connection);
+        
+            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO Actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", connection);
             cmdTemperature.Parameters.AddWithValue("@action_id", Actions.getActionId());
             cmdTemperature.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
             cmdTemperature.Parameters.AddWithValue("@action_type", Actions.getActionType());

@@ -42,6 +42,11 @@
     <item name="android:windowActionBar">true</item>
   </style>
 
+
+  <style name="SpinnerStyle" parent="@android:style/Widget.Spinner">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textAlignment">center</item>
+  </style>
   
 
 </resources>

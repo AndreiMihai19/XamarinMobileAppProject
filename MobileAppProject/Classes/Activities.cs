@@ -15,20 +15,20 @@ namespace MobileAppProject.Classes
     internal class Activities
     {
         private static int preset_id;
-        private static string nume = null;
+        private static string preset_name = null;
         private static string device_id = null;
         private static string option_code = null;
+        private static List<string> presetsList = new List<string>();
 
 
-
-        public static String getNume()
+        public static string getPresetName()
         {
-            return nume;
+            return preset_name;
         }
 
-        public static void setNume(string Nume)
+        public static void setPresetName(string name)
         {
-            nume = Nume;
+            preset_name = name;
         }
 
         public static int getPresetId()
@@ -60,7 +60,7 @@ namespace MobileAppProject.Classes
             string cod;
             if((temperature<30)&&(temperature>10)) 
             {
-                cod= temperature.ToString();
+                cod= temperature.ToString() + ".";
                 if((light>=0)&&(light<10)) 
                 {
                     cod += "00"+light.ToString();
@@ -88,7 +88,23 @@ namespace MobileAppProject.Classes
             option_code = cod;
         }
 
+        public static List<string> GetPresetList()
+        {
+            return presetsList;
+        }
+
+        public static void AddPreset(string presetName)
+        {
+            presetsList.Add(presetName);
+        }
+
+        public static void ClearAllPresets()
+        {
+            presetsList.Clear();
+        }
     }
+
+
 
     
 }

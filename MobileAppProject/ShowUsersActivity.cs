@@ -28,8 +28,9 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         private Button btnBack;
-        private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
-        //private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+
+      //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -114,10 +115,11 @@ namespace MobileAppProject
             try
             {
 
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
-                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", con);
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM Users", connection);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -217,7 +219,7 @@ namespace MobileAppProject
 
                             tableLayout.AddView(tableRow);
                         }
-                         reader.Close();
+                         reader.Close(); // DACA NU MERGE, TREBUIE COMENTAT
                     }
 
                     cmd.ExecuteNonQuery();
@@ -231,7 +233,7 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Close();
+                connection.Close();
             }
 
             btnBack.Click += btnBack_Clicked;
@@ -248,12 +250,11 @@ namespace MobileAppProject
             try
             {
 
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    connection.Open();
 
-                  //  MySqlCommand cmd = new MySqlCommand("SELECT passwrd FROM Users WHERE email=@Username", con);
-                    MySqlCommand cmd = new MySqlCommand("SELECT passwrd FROM users WHERE email=@Username", con);
+                    MySqlCommand cmd = new MySqlCommand("SELECT passwrd FROM Users WHERE email=@Username", connection);
                     cmd.Parameters.AddWithValue("@Username", selectedUsername);
 
                     object result = cmd.ExecuteScalar();
@@ -267,7 +268,7 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Close();
+                connection.Close();
             }
 
             Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
@@ -338,7 +339,6 @@ namespace MobileAppProject
               
             });
 
-            // Afișarea ferestrei pop-up
             Android.App.AlertDialog dialog = builder.Create();
             dialog.Show();
         }
@@ -361,12 +361,11 @@ namespace MobileAppProject
             try
             {
 
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    connection.Open();
 
-                  //  MySqlCommand cmd = new MySqlCommand("DELETE FROM Users WHERE email=@Username", con);
-                    MySqlCommand cmd = new MySqlCommand("DELETE FROM users WHERE email=@Username", con);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM Users WHERE email=@Username", connection);
 
                     cmd.Parameters.AddWithValue("@Username", username);
 
@@ -381,7 +380,7 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Close();
+                connection.Close();
             }
 
             var toast = Toast.MakeText(this, "Please wait...", ToastLength.Short);
@@ -401,14 +400,14 @@ namespace MobileAppProject
             try
             {
 
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    connection.Open();
 
-                    MySqlCommand cmdUsr = new MySqlCommand("UPDATE users SET email=@newUsername WHERE email=@oldUsername", con);
-                    //MySqlCommand cmdUsr = new MySqlCommand("UPDATE users SET email=@newUsername WHERE email=@oldUsername", con);
-                  //  MySqlCommand cmdPwd = new MySqlCommand("UPDATE Users SET passwrd=@newPassword WHERE passwrd=@oldPassword", con);
-                    MySqlCommand cmdPwd = new MySqlCommand("UPDATE users SET passwrd=@newPassword WHERE passwrd=@oldPassword", con);
+                 
+                    MySqlCommand cmdUsr = new MySqlCommand("UPDATE Users SET email=@newUsername WHERE email=@oldUsername", connection);
+                    MySqlCommand cmdPwd = new MySqlCommand("UPDATE Users SET passwrd=@newPassword WHERE passwrd=@oldPassword", connection);
+                   
                     cmdUsr.Parameters.AddWithValue("@newUsername", newUsername);
                     cmdPwd.Parameters.AddWithValue("@newPassword", hashPassword);
                     cmdUsr.Parameters.AddWithValue("@oldUsername", oldUsername);
@@ -426,7 +425,7 @@ namespace MobileAppProject
             }
             finally
             {
-                con.Close();
+                connection.Close();
             }
 
             var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);

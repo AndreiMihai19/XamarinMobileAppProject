@@ -24,9 +24,9 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         private TextView tvTemperature;
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
-        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-
+  
+      //  private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -55,32 +55,36 @@ namespace MobileAppProject
 
         private void btnPlus_Clicked(object sender, EventArgs e)
         {
-            if (Parameters.getTemperature() < 27)
+            if (Parameters.getTemperature() < 35)
             {
-                Parameters.setTemperature(Parameters.getTemperature() + 1);
+                Parameters.setTemperature((float)(Parameters.getTemperature() + 0.5));
                 updateTemperature();
             }
 
-            //string query = "UPDATE Parameters SET temperature = @temperature";
-            string query = "UPDATE parameters SET temperature = @temperature";
+            Parameters.setCurrentPreset("manual");
+
+            string query = "UPDATE Parameters SET temperature = @temperature, current_preset=@current_preset";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.Parameters.AddWithValue("@current_preset", Parameters.getCurrentPreset());
             command.ExecuteNonQuery();
 
         }
 
         private void btnMinus_Clicked(object sender, EventArgs e)
         {
-            if (Parameters.getTemperature() > 15)
+            if (Parameters.getTemperature() > 10)
             {
-                Parameters.setTemperature(Parameters.getTemperature() - 1);
+                Parameters.setTemperature((float)(Parameters.getTemperature() - 0.5));
                 updateTemperature();
             }
 
-           // string query = "UPDATE Parameters SET temperature = @temperature";
-            string query = "UPDATE parameters SET temperature = @temperature";
+            Parameters.setCurrentPreset("manual");
+
+            string query = "UPDATE Parameters SET temperature = @temperature, current_preset=@current_preset";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
+            command.Parameters.AddWithValue("@current_preset", Parameters.getCurrentPreset());
             command.ExecuteNonQuery();
         }
 
@@ -106,25 +110,24 @@ namespace MobileAppProject
         private void btnBack_Clicked(object sender, EventArgs e)
         {
             int lastID;
-            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", connection);
+          //  MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", connection);
+            MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM Actions ORDER BY action_id DESC LIMIT 1;", connection);
             object lastId = cmdId.ExecuteScalar();
             lastID = Convert.ToInt32(lastId);
             Actions.setActionId(lastID + 1);
-            Actions.setActionType("Temperature");
+            Actions.setActionType("temperature");
             Actions.setValueAction(Parameters.getTemperature());
             Actions.setActionTime(DateTime.Now);
 
 
-            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", connection);
+          //  MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", connection);
+            MySqlCommand cmdTemperature = new MySqlCommand("INSERT INTO Actions(action_id,device_id,action_type,value_action,date_time) VALUES (@action_id,@device_id,@action_type,@value_action,@date_time)", connection);
             cmdTemperature.Parameters.AddWithValue("@action_id", Actions.getActionId());
             cmdTemperature.Parameters.AddWithValue("@device_id", Actions.getDeviceId());
             cmdTemperature.Parameters.AddWithValue("@action_type", Actions.getActionType());
             cmdTemperature.Parameters.AddWithValue("@value_action", Actions.getValueAction());
             cmdTemperature.Parameters.AddWithValue("@date_time", Actions.getActionTime());
             cmdTemperature.ExecuteNonQuery();
-
-
-
 
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);

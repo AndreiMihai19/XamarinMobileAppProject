@@ -4,9 +4,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileAppProject.Classes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using Android.Provider;
 using System.Linq;
 using System.Text;
 
@@ -15,27 +18,82 @@ namespace MobileAppProject
     [Activity(Label = "PersonalizedActivity")]
     public class PersonalizedActivity : Activity
     {
-        private NumberPicker numberPicker;
-     //   private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private NumberPicker nrpTemperature;
+        private TextView txtName;
+        private SeekBar skbLight;
+        private Button btnAddActivity;
+        private int presetID;
+        private int selectedValue;
+        private int progressValue;
+        //   private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            connection.Open();
+
             SetContentView(Resource.Layout.personalized_activity);
 
-            numberPicker = FindViewById<NumberPicker>(Resource.Id.numberPicker1);
-            numberPicker.MinValue = 16; 
-            numberPicker.MaxValue = 25; 
-            numberPicker.Value = 18; 
-            numberPicker.WrapSelectorWheel = false;
- 
-            numberPicker.ValueChanged += NumberPicker_ValueChanged;
+            txtName = FindViewById<TextView>(Resource.Id.txtPersonalizedActivity);
+            skbLight = FindViewById<SeekBar>(Resource.Id.seekBarPersonalizedActivity);
+            nrpTemperature = FindViewById<NumberPicker>(Resource.Id.numberPicker1);
+            btnAddActivity = FindViewById<Button>(Resource.Id.XbtnaddActivity);
+
+
+            nrpTemperature = FindViewById<NumberPicker>(Resource.Id.numberPicker1);
+            nrpTemperature.MinValue = 10;
+            nrpTemperature.MaxValue = 35;
+            nrpTemperature.Value = 20; 
+            nrpTemperature.WrapSelectorWheel = false;
+
+            skbLight.ProgressChanged += SeekBar_ProgressChanged;
+            nrpTemperature.ValueChanged += NumberPicker_ValueChanged;
+            btnAddActivity.Click += AddActivity_Clicked;
 
         }
-        
+
+        private void SeekBar_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
+        {
+            progressValue = e.Progress;
+        }
+
         private void NumberPicker_ValueChanged(object sender, NumberPicker.ValueChangeEventArgs e)
         {
-            int selectedValue = e.NewVal;
-            // Utilizați valoarea selectată cum doriți
+            selectedValue = e.NewVal;
+            
+        }
+
+        private void AddActivity_Clicked(object sender, EventArgs e) 
+        {
+            MySqlCommand cmdId = new MySqlCommand("SELECT preset_id FROM Presets ORDER BY preset_id DESC LIMIT 1;", connection);
+            object lastId = cmdId.ExecuteScalar();
+            presetID = Convert.ToInt32(lastId);
+            
+            Activities.setPresetId(presetID + 1);
+            Activities.setPresetName(txtName.Text);
+            Activities.setDeviceId(Settings.Secure.GetString(ContentResolver, Settings.Secure.AndroidId));
+            Activities.setOptionCode(selectedValue,progressValue);
+            Activities.AddPreset(txtName.Text);
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Presets(preset_id,preset_name,device_id,option_code) VALUES (@preset_id,@preset_name,@device_id,@option_code)", connection);
+            cmd.Parameters.AddWithValue("@preset_id", Activities.getPresetId());
+            cmd.Parameters.AddWithValue("@preset_name", Activities.getPresetName());
+            cmd.Parameters.AddWithValue("@device_id", Activities.getDeviceId());
+            cmd.Parameters.AddWithValue("@option_code", Activities.getOptionCode());
+            cmd.ExecuteNonQuery();
+
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+                connection.Dispose();
+            }
         }
     }
 }
