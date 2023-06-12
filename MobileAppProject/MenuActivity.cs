@@ -29,30 +29,21 @@ namespace MobileAppProject
         private TextView tvTemperature;
         private TextView tvDoor2;
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
-        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-          //  string query = "SELECT * FROM Parameters";
             string query = "SELECT * FROM parameters";
-
             connection.Open();
-
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
-
             if (reader.Read())
             {
                 Parameters.setTemperature(reader.GetFloat(1));
                 Parameters.setLight(reader.GetInt32(2));
                 Parameters.setDoorStatus(reader.GetInt32(3));
             }
-
             reader.Close();
-
             SetContentView(Resource.Layout.menu_activity);
-
             btnLight = FindViewById<Button>(Resource.Id.XbtnLight);
             btnTemperature = FindViewById<Button>(Resource.Id.XbtnTemperature);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnBack);
@@ -64,19 +55,14 @@ namespace MobileAppProject
             tvLight = FindViewById<TextView>(Resource.Id.tvLight);
             tvTemperature = FindViewById<TextView>(Resource.Id.tvTemperature);
             tvDoor2 = FindViewById<TextView>(Resource.Id.tvDoor);
-
-
             btnLight.Click += BtnLight_Clicked;
             btnInsert.Click += BtnBack_Click;
             btnTemperature.Click += BtnTemperature_Clicked;
             btnDoor.Click += BtnDoor_Clicked;
             btnActivity.Click += BtnActivity_Clicked;
-
             activityCheck();
             UpdateDoorStatusUser();
-
         }
-
         private void UpdateDoorStatusUser()
         {
             if (Parameters.getDoorStatus() == 0)
@@ -92,15 +78,12 @@ namespace MobileAppProject
             tvUser.Text = User.getUser().ToString();
             tvLight.Text = Parameters.getLight().ToString()+"%";
             tvTemperature.Text = Parameters.getTemperature().ToString()+ "°C";
-
-
         }
 
         private void activityCheck()
         {
             tvActivityName.Text = Activities.getNume();
         }
-
         private void BtnActivity_Clicked(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(ActivityMenuSelection));
@@ -115,8 +98,6 @@ namespace MobileAppProject
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-
-
             if (User.isAdmin==true)
             {
                 Intent nextActivity = new Intent(this, typeof(AdminActivity));
@@ -127,7 +108,6 @@ namespace MobileAppProject
                 Intent nextActivity = new Intent(this, typeof(MainActivity));
                 StartActivity(nextActivity);
             }
-
         }
 
         private void BtnLight_Clicked(object sender, EventArgs e)
@@ -135,13 +115,11 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(LightActivity));
             StartActivity(nextActivity);
         }
-
         private void BtnTemperature_Clicked(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(TemperatureActivity));
             StartActivity(nextActivity);
         }
-
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -152,8 +130,5 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
-
-
     }
-
 }

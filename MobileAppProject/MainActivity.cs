@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Widget;
@@ -25,8 +24,6 @@ namespace MobileAppProject
         private string currentDeviceID; 
         private MySqlConnection con = new MySqlConnection("Server=34.118.112.126;Port=3306;database=homematicDB;User Id=root;Password=;charset=utf8");
         private string hashPassword;
-        
-        //private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -40,18 +37,7 @@ namespace MobileAppProject
             btnInsert = FindViewById<Button>(Resource.Id.XbtnInsert);
             btnIntra = FindViewById<Button>(Resource.Id.XbtnIntra);
             btnInsert.Click += BtnInsert_Click;
-            btnIntra.Click += BtnIntra_Click;
-          
         }
-
-        private void BtnIntra_Click(object sender, EventArgs e)
-        {
-            //User.setUser(etUsername.Text);
-          
-            Intent nextActivity = new Intent(this, typeof(TemperatureChart));
-            StartActivity(nextActivity);
-        }
-
         private void BtnInsert_Click(object sender, EventArgs e)
         {
 
@@ -70,12 +56,8 @@ namespace MobileAppProject
 
                     HashConfiguration hashConfig = new HashConfiguration();
                     hashPassword = hashConfig.HashPassword(etPassword.Text);
-
-                  //  MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM Users WHERE email = @username AND passwrd = @password", con);
                     MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM users WHERE email = @username AND passwrd = @password", con);
-                  //  MySqlCommand cmdStatus = new MySqlCommand("SELECT is_admin FROM Users WHERE email = @username AND passwrd = @password", con);
                     MySqlCommand cmdStatus = new MySqlCommand("SELECT is_admin FROM users WHERE email = @username AND passwrd = @password", con);
-                  //  MySqlCommand cmdID = new MySqlCommand("SELECT device_id FROM Users WHERE email=@username AND passwrd=@password", con);
                     MySqlCommand cmdID = new MySqlCommand("SELECT device_id FROM users WHERE email=@username AND passwrd=@password", con);
                     cmd.Parameters.AddWithValue("@username", etUsername.Text);
                     cmd.Parameters.AddWithValue("@password", hashPassword);
@@ -158,19 +140,12 @@ namespace MobileAppProject
                 con.Close();
             }
 
-
-
-
         }
-
         private void CheckFirstLogin(int length)
         {
             if (length != 16)
             {
                 User.setDeviceId(currentDeviceID);
-                
-
-                //  string query = "UPDATE Users SET device_id = @deviceid WHERE email=@username AND passwrd=@password";
                 string query = "UPDATE users SET device_id = @deviceid WHERE email=@username AND passwrd=@password";
                 MySqlCommand cmdsetID = new MySqlCommand(query, con);
                 cmdsetID.Parameters.AddWithValue("@username", etUsername.Text);

@@ -117,8 +117,6 @@ namespace MobileAppProject
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
-
-                   // MySqlCommand cmd = new MySqlCommand("SELECT * FROM Users", con);
                     MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", con);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -219,7 +217,7 @@ namespace MobileAppProject
 
                             tableLayout.AddView(tableRow);
                         }
-                         reader.Close(); // DACA NU MERGE, TREBUIE COMENTAT
+                         reader.Close();
                     }
 
                     cmd.ExecuteNonQuery();
