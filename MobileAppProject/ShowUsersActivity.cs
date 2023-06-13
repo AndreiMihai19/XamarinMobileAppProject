@@ -219,7 +219,7 @@ namespace MobileAppProject
 
                             tableLayout.AddView(tableRow);
                         }
-                         reader.Close(); // DACA NU MERGE, TREBUIE COMENTAT
+                         reader.Close();
                     }
 
                     cmd.ExecuteNonQuery();
