@@ -22,6 +22,7 @@ namespace MobileAppProject
         private TextView txtName;
         private SeekBar skbLight;
         private Button btnAddActivity;
+        private Button btnBack;
         private int presetID;
         private int selectedValue;
         private int progressValue;
@@ -39,7 +40,7 @@ namespace MobileAppProject
             skbLight = FindViewById<SeekBar>(Resource.Id.seekBarPersonalizedActivity);
             nrpTemperature = FindViewById<NumberPicker>(Resource.Id.numberPicker1);
             btnAddActivity = FindViewById<Button>(Resource.Id.XbtnaddActivity);
-
+            btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
 
             nrpTemperature = FindViewById<NumberPicker>(Resource.Id.numberPicker1);
             nrpTemperature.MinValue = 10;
@@ -50,7 +51,7 @@ namespace MobileAppProject
             skbLight.ProgressChanged += SeekBar_ProgressChanged;
             nrpTemperature.ValueChanged += NumberPicker_ValueChanged;
             btnAddActivity.Click += AddActivity_Clicked;
-
+            btnBack.Click += btnBack_Clicked;
         }
 
         private void SeekBar_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
@@ -66,6 +67,8 @@ namespace MobileAppProject
 
         private void AddActivity_Clicked(object sender, EventArgs e) 
         {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
             MySqlCommand cmdId = new MySqlCommand("SELECT preset_id FROM Presets ORDER BY preset_id DESC LIMIT 1;", connection);
             object lastId = cmdId.ExecuteScalar();
             presetID = Convert.ToInt32(lastId);
@@ -83,6 +86,20 @@ namespace MobileAppProject
             cmd.Parameters.AddWithValue("@option_code", Activities.getOptionCode());
             cmd.ExecuteNonQuery();
 
+
+            alertDialog.SetMessage($"Activity {txtName.Text} was created!");
+            alertDialog.SetNeutralButton("Ok", delegate
+            {
+                alertDialog.Dispose();
+            });
+            alertDialog.Show();
+
+        }
+
+        private void btnBack_Clicked(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(AdminActivity));
+            StartActivity(nextActivity);
         }
 
         protected override void OnDestroy()
