@@ -19,7 +19,7 @@ namespace MobileAppProject
     {
         private Button btnLight;
         private Button btnTemperature;
-        private Button btnInsert;
+        private Button btnBack;
         private Button btnLightChart;
         private Button btnTempChart;
         private Button btnDoor;
@@ -42,7 +42,7 @@ namespace MobileAppProject
             SetContentView(Resource.Layout.menu_activity);
             btnLight = FindViewById<Button>(Resource.Id.XbtnLight);
             btnTemperature = FindViewById<Button>(Resource.Id.XbtnTemperature);
-            btnInsert = FindViewById<Button>(Resource.Id.XbtnBack);
+            btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             btnTempChart = FindViewById<Button>(Resource.Id.XbtnTempChart);
             btnLightChart = FindViewById<Button>(Resource.Id.XbtnLightChart);
             btnDoor = FindViewById<Button>(Resource.Id.XbtnDoor);
@@ -54,12 +54,21 @@ namespace MobileAppProject
             tvTemperature = FindViewById<TextView>(Resource.Id.tvTemperature);
             tvDoor2 = FindViewById<TextView>(Resource.Id.tvDoor);
             btnLight.Click += BtnLight_Clicked;
-            btnInsert.Click += BtnBack_Click;
+            btnBack.Click += BtnBack_Click;
             btnTemperature.Click += BtnTemperature_Clicked;
             btnDoor.Click += BtnDoor_Clicked;
             btnActivity.Click += BtnActivity_Clicked;
             btnTempChart.Click += BtnTempChart_Clicked;
             btnLightChart.Click += BtnLightChart_Clicked;
+
+            if (User.isAdmin == true)
+            {
+                btnBack.Text = "Back";
+            }
+            else
+            {
+                btnBack.Text = "Logout";
+            }
 
             activityCheck();
             UpdateDoorStatusUser();

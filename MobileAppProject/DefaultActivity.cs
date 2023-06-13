@@ -21,18 +21,12 @@ namespace MobileAppProject
     {
      
         private Button btnBack;
-        private Button btnJobActivity;
-        private Button btnHolidayActivity;
-        private Button btnWeekendActivity;
-        private Button btnManualActivity;
         private Button btnSelectPreset;
-        private TextView tvCurentActivityDoor;
         private TextView tvDoorStatus;
         private TextView tvUser;
         private Spinner presetSpinner;
         private int lastID;
-        private string firstItem;
-     //   private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
 
         protected override void OnCreate(Bundle savedInstanceState)

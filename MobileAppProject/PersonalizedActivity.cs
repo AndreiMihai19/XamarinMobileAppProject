@@ -18,6 +18,8 @@ namespace MobileAppProject
     [Activity(Label = "PersonalizedActivity")]
     public class PersonalizedActivity : Activity
     {
+        private TextView tvDoorStatus;
+        private TextView tvUser;
         private NumberPicker nrpTemperature;
         private TextView txtName;
         private SeekBar skbLight;
@@ -26,7 +28,8 @@ namespace MobileAppProject
         private int presetID;
         private int selectedValue;
         private int progressValue;
-        //   private MySqlConnection con = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        private TextView tvLight;
+        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,9 +39,12 @@ namespace MobileAppProject
 
             SetContentView(Resource.Layout.personalized_activity);
 
+            tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
+            tvUser = FindViewById<TextView>(Resource.Id.username);
             txtName = FindViewById<TextView>(Resource.Id.txtPersonalizedActivity);
             skbLight = FindViewById<SeekBar>(Resource.Id.seekBarPersonalizedActivity);
             nrpTemperature = FindViewById<NumberPicker>(Resource.Id.numberPicker1);
+            tvLight = FindViewById<TextView>(Resource.Id.tvLight);
             btnAddActivity = FindViewById<Button>(Resource.Id.XbtnaddActivity);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
 
@@ -52,11 +58,28 @@ namespace MobileAppProject
             nrpTemperature.ValueChanged += NumberPicker_ValueChanged;
             btnAddActivity.Click += AddActivity_Clicked;
             btnBack.Click += btnBack_Clicked;
+
+            UpdateDoorStatusUser();
+            skbLight.Progress = Parameters.getLight();
         }
 
+        private void UpdateDoorStatusUser()
+        {
+            if (Parameters.getDoorStatus() == 0)
+            {
+                tvDoorStatus.Text = "Close";
+            }
+            else
+            {
+                tvDoorStatus.Text = "Open";
+            }
+            tvUser.Text = User.getUser();
+        }
         private void SeekBar_ProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)
         {
             progressValue = e.Progress;
+
+            tvLight.Text = progressValue.ToString() + "%";
         }
 
         private void NumberPicker_ValueChanged(object sender, NumberPicker.ValueChangeEventArgs e)
