@@ -58,7 +58,7 @@ namespace MobileAppProject.Classes
         public static void setOptionCode(int temperature, int light)
         {
             string cod;
-            if((temperature<30)&&(temperature>10)) 
+            if((temperature<36)&&(temperature>9)) 
             {
                 cod= temperature.ToString() + ".";
                 if((light>=0)&&(light<10)) 

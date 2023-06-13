@@ -47,7 +47,6 @@ namespace MobileAppProject
 
             btnSelectPreset = FindViewById<Button>(Resource.Id.XbtnSelectPreset);
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
-            tvCurentActivityDoor = FindViewById<TextView>(Resource.Id.textCurentActivityDoor);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
             tvUser = FindViewById<TextView>(Resource.Id.username);
             presetSpinner = FindViewById<Spinner>(Resource.Id.spinnerPresets);

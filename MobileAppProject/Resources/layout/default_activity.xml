@@ -69,7 +69,7 @@
                 android:fontFamily="@font/roboto_black"/>
 
             <TextClock
-                android:format24Hour="hh:mm:ss"
+                android:format24Hour="hh:mm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -110,50 +110,13 @@
         android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="100dp"
         android:fontFamily="@font/roboto_black"
         
         />
-    <TextView
-        android:id="@+id/textCurentActivityLight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/roboto_black"
-        
-        />
-    <TextView
-        android:id="@+id/textCurentActivityTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/roboto_black"
-        
-        />
-    <TextView
-        android:id="@+id/textCurentActivityDoor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Option Code"
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:textColor="#0aa0b0"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
-        android:fontFamily="@font/roboto_black"
-        
-        />
+  
+   
     <Spinner
         android:id="@+id/spinnerPresets" 
         android:layout_width="match_parent"
@@ -162,31 +125,40 @@
         style="@style/SpinnerStyle"
         />
 
-
-     <Button
-        android:id="@+id/XbtnSelectPreset"
-        android:text="Select"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:textColor="#000000"
-        android:fontFamily="@font/roboto_black"
-        android:backgroundTint="#E9AB17" 
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="15dp">
 
-
-
-    <Button
+        <Button
         android:id="@+id/XbtnBack"
         android:text="Back"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:layout_marginTop="10dp"
         android:textColor="#000000"
         android:fontFamily="@font/roboto_black"
         android:backgroundTint="#E9AB17" 
         />
+
+        <Button
+        android:id="@+id/XbtnSelectPreset"
+        android:text="Select"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/roboto_black"
+        android:backgroundTint="#E9AB17" 
+        />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -72,7 +72,7 @@
                 android:fontFamily="@font/roboto_black"/>
 
             <TextClock
-                android:format24Hour="hh:mm:ss"
+                android:format24Hour="hh:mm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -114,7 +114,7 @@
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:paddingBottom="60dp"
-        android:paddingTop="60dp"
+        android:paddingTop="30dp"
         android:fontFamily="@font/roboto_black"
            
             />
@@ -217,11 +217,6 @@
         android:textColor="#ffffff"
 
         />
-
-
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

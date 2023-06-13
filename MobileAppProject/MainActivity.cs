@@ -41,18 +41,19 @@ namespace MobileAppProject
             btnInsert.Click += BtnInsert_Click;
             btnIntra.Click += BtnIntra_Click;
           
-            Activities.ClearAllPresets();
+            
         }
 
         private void BtnIntra_Click(object sender, EventArgs e)
         {
             User.setUser(etUsername.Text);
-          
+
             Intent nextActivity = new Intent(this, typeof(TemperatureChart));
             StartActivity(nextActivity);
         }
         private void BtnInsert_Click(object sender, EventArgs e)
         {
+            Activities.ClearAllPresets();
 
             var toast = Toast.MakeText(this, "Please wait...", ToastLength.Short);
             toast.SetGravity(GravityFlags.Center, 0, 0);
