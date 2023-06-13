@@ -38,7 +38,6 @@ namespace MobileAppProject
             connection.Open();     
 
             SetContentView(Resource.Layout.menu_activity);
-
             btnLight = FindViewById<Button>(Resource.Id.XbtnLight);
             btnTemperature = FindViewById<Button>(Resource.Id.XbtnTemperature);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnBack);
@@ -50,19 +49,14 @@ namespace MobileAppProject
             tvLight = FindViewById<TextView>(Resource.Id.tvLight);
             tvTemperature = FindViewById<TextView>(Resource.Id.tvTemperature);
             tvDoor2 = FindViewById<TextView>(Resource.Id.tvDoor);
-
-
             btnLight.Click += BtnLight_Clicked;
             btnInsert.Click += BtnBack_Click;
             btnTemperature.Click += BtnTemperature_Clicked;
             btnDoor.Click += BtnDoor_Clicked;
             btnActivity.Click += BtnActivity_Clicked;
-
             activityCheck();
             UpdateDoorStatusUser();
-
         }
-
         private void UpdateDoorStatusUser()
         {
             if (Parameters.getDoorStatus() == 0)
@@ -85,7 +79,6 @@ namespace MobileAppProject
         {
             tvActivityName.Text = Parameters.getCurrentPreset();
         }
-
         private void BtnActivity_Clicked(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(ActivityMenuSelection));
@@ -100,8 +93,6 @@ namespace MobileAppProject
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-
-
             if (User.isAdmin==true)
             {
                 Intent nextActivity = new Intent(this, typeof(AdminActivity));
@@ -112,7 +103,6 @@ namespace MobileAppProject
                 Intent nextActivity = new Intent(this, typeof(MainActivity));
                 StartActivity(nextActivity);
             }
-
         }
 
         private void BtnLight_Clicked(object sender, EventArgs e)
@@ -120,13 +110,11 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(LightActivity));
             StartActivity(nextActivity);
         }
-
         private void BtnTemperature_Clicked(object sender, EventArgs e)
         {
             Intent nextActivity = new Intent(this, typeof(TemperatureActivity));
             StartActivity(nextActivity);
         }
-
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -137,8 +125,5 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
-
-
     }
-
 }

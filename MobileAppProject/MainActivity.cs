@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Widget;
@@ -52,7 +51,6 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(TemperatureChart));
             StartActivity(nextActivity);
         }
-
         private void BtnInsert_Click(object sender, EventArgs e)
         {
 
@@ -187,11 +185,7 @@ namespace MobileAppProject
                 connection.Close();
             }
 
-
-
-
         }
-
         private void CheckFirstLogin(int length)
         {
             if (length != 16)
