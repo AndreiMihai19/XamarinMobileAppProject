@@ -147,7 +147,7 @@ namespace MobileAppProject
 
         private void btnBack_Clicked(object sender, EventArgs e)
         {
-            Intent nextActivity = new Intent(this, typeof(MenuActivity));
+            Intent nextActivity = new Intent(this, typeof(ActivityMenuSelection));
             StartActivity(nextActivity);
         }
 

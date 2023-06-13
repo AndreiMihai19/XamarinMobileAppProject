@@ -21,7 +21,6 @@ namespace MobileAppProject
         private EditText etUsername;
         private EditText etPassword;
         private Button btnInsert;
-        private Button btnIntra;
         private string currentDeviceID;
         private string hashPassword;
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
@@ -37,20 +36,11 @@ namespace MobileAppProject
             etUsername = FindViewById<EditText>(Resource.Id.XetUsername);
             etPassword = FindViewById<EditText>(Resource.Id.XetPassword);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnInsert);
-            btnIntra = FindViewById<Button>(Resource.Id.XbtnIntra);
             btnInsert.Click += BtnInsert_Click;
-            btnIntra.Click += BtnIntra_Click;
           
             
         }
 
-        private void BtnIntra_Click(object sender, EventArgs e)
-        {
-            User.setUser(etUsername.Text);
-
-            Intent nextActivity = new Intent(this, typeof(TemperatureChart));
-            StartActivity(nextActivity);
-        }
         private void BtnInsert_Click(object sender, EventArgs e)
         {
             Activities.ClearAllPresets();
@@ -106,6 +96,7 @@ namespace MobileAppProject
 
                                     User.setUser(etUsername.Text);
                                     User.isAdmin = true;
+                                    User.setDeviceId(currentDeviceID);
                                     Intent nextActivity = new Intent(this, typeof(AdminActivity));
                                     StartActivity(nextActivity);
                                 }
@@ -114,13 +105,14 @@ namespace MobileAppProject
                                     CheckFirstLogin(device_id.Length);
 
                                     User.setUser(etUsername.Text);
+                                    User.setDeviceId(currentDeviceID);
                                     Intent nextActivity = new Intent(this, typeof(MenuActivity));
                                     StartActivity(nextActivity);
                                 }
                             }
                             else
                             {
-                                alertDialog.SetMessage($"{etUsername.Text} or password is not correct!");
+                                alertDialog.SetMessage($"Username or password is not correct!");
                                 alertDialog.SetNeutralButton("Ok", delegate
                                 {
                                     alertDialog.Dispose();

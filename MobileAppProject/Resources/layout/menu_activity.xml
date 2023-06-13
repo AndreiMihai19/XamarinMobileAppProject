@@ -106,7 +106,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
 
@@ -253,7 +253,7 @@
     <Button
         android:id="@+id/XbtnLight"
         android:layout_width="330dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/light_bulb"
         android:text="Light"
@@ -266,7 +266,7 @@
     <Button
         android:id="@+id/XbtnTemperature"
         android:layout_width="330dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/temperature"
         android:text="Temperature"
@@ -279,10 +279,36 @@
     <Button
         android:id="@+id/XbtnDoor"
         android:layout_width="330dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/door"
         android:text="Door"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:background="#E9AB17"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_black"/>
+
+     <Button
+        android:id="@+id/XbtnTempChart"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/chart"
+        android:text="Temperature Chart"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:background="#E9AB17"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_black"/>
+
+      <Button
+        android:id="@+id/XbtnLightChart"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/chart"
+        android:text="Light Chart"
         android:textSize="20dp"
         android:textColor="#000000"
         android:background="#E9AB17"

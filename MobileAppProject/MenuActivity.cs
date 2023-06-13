@@ -20,6 +20,8 @@ namespace MobileAppProject
         private Button btnLight;
         private Button btnTemperature;
         private Button btnInsert;
+        private Button btnLightChart;
+        private Button btnTempChart;
         private Button btnDoor;
         private Button btnActivity;
         private TextView tvActivityName;
@@ -41,6 +43,8 @@ namespace MobileAppProject
             btnLight = FindViewById<Button>(Resource.Id.XbtnLight);
             btnTemperature = FindViewById<Button>(Resource.Id.XbtnTemperature);
             btnInsert = FindViewById<Button>(Resource.Id.XbtnBack);
+            btnTempChart = FindViewById<Button>(Resource.Id.XbtnTempChart);
+            btnLightChart = FindViewById<Button>(Resource.Id.XbtnLightChart);
             btnDoor = FindViewById<Button>(Resource.Id.XbtnDoor);
             btnActivity = FindViewById<Button>(Resource.Id.XbtnActivity);
             tvActivityName = FindViewById<TextView>(Resource.Id.textViewActivityName);
@@ -54,9 +58,26 @@ namespace MobileAppProject
             btnTemperature.Click += BtnTemperature_Clicked;
             btnDoor.Click += BtnDoor_Clicked;
             btnActivity.Click += BtnActivity_Clicked;
+            btnTempChart.Click += BtnTempChart_Clicked;
+            btnLightChart.Click += BtnLightChart_Clicked;
+
             activityCheck();
             UpdateDoorStatusUser();
         }
+
+        private void BtnTempChart_Clicked(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(TemperatureChart));
+            StartActivity(nextActivity);
+        }
+
+        private void BtnLightChart_Clicked(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(LightChart));
+            StartActivity(nextActivity);
+        }
+
+
         private void UpdateDoorStatusUser()
         {
             if (Parameters.getDoorStatus() == 0)

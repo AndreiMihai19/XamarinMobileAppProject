@@ -1,30 +1,23 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Hardware.Camera2.Params;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MikePhil.Charting.Charts;
-using MikePhil.Charting.Components;
 using MikePhil.Charting.Data;
-using MikePhil.Charting.Formatter;
+using MobileAppProject.Classes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using Java.Lang;
-using MySql.Data.MySqlClient;
-using System.Data;
-using MobileAppProject.Classes;
-using static Android.Renderscripts.ScriptGroup;
-using System.Globalization;
-
 
 namespace MobileAppProject
 {
-    [Activity(Label = "TemperatureChart")]
-    public class TemperatureChart : Activity
+    [Activity(Label = "LightChart")]
+    public class LightChart : Activity
     {
         //  private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
@@ -32,7 +25,6 @@ namespace MobileAppProject
         private Button btnBack;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-
             base.OnCreate(savedInstanceState);
 
             connection.Open();
@@ -40,9 +32,6 @@ namespace MobileAppProject
 
             btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             lineChart = FindViewById<LineChart>(Resource.Id.line_chart);
-
-
-
 
             List<DataPoint> dataPoints = GetDataPoints();
             dataPoints.Sort((x, y) => TimeSpan.Compare(x.Time, y.Time));
@@ -54,7 +43,7 @@ namespace MobileAppProject
                 entries.Add(entry);
             }
 
-            LineDataSet lineDataSet = new LineDataSet(entries, "Temperature (°C)");
+            LineDataSet lineDataSet = new LineDataSet(entries, "Light (%)");
             LineData lineData = new LineData(lineDataSet);
 
 
@@ -79,19 +68,20 @@ namespace MobileAppProject
             StartActivity(nextActivity);
         }
 
+
         private List<DataPoint> GetDataPoints()
         {
             DateTime twentyFourHoursAgo = DateTime.Now.AddHours(-24);
 
             MySqlCommand cmdTemp = new MySqlCommand("SELECT * FROM Actions WHERE device_id=@device_id AND action_type= @action_type AND date_time >= @twentyFourHoursAgo", connection);
-            cmdTemp.Parameters.AddWithValue("@device_id",User.getDeviceId());
-            cmdTemp.Parameters.AddWithValue("@action_type", "temperature");
+            cmdTemp.Parameters.AddWithValue("@device_id", User.getDeviceId());
+            cmdTemp.Parameters.AddWithValue("@action_type", "light");
             cmdTemp.Parameters.AddWithValue("@twentyFourHoursAgo", twentyFourHoursAgo);
 
             MySqlDataReader reader = cmdTemp.ExecuteReader();
 
             List<DataPoint> dataPoints = new List<DataPoint>();
-            
+
 
             while (reader.Read())
             {
@@ -105,13 +95,13 @@ namespace MobileAppProject
 
                 DataPoint newDataPoint = new DataPoint();
                 newDataPoint.Time = new TimeSpan(hour, minute, second);
-                newDataPoint.Value =value_action;
+                newDataPoint.Value = value_action;
                 dataPoints.Add(newDataPoint);
             }
             reader.Close();
 
-        return dataPoints;
-    }
+            return dataPoints;
+        }
 
 
 
@@ -120,7 +110,7 @@ namespace MobileAppProject
             public TimeSpan Time { get; set; }
             public float Value { get; set; }
         }
-    
+
 
         protected override void OnDestroy()
         {
@@ -133,7 +123,4 @@ namespace MobileAppProject
             }
         }
     }
-
-
-
 }
