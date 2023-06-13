@@ -128,7 +128,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/default_activity_final"
-        android:text="Default Activities"
+        android:text="Activities"
         android:textSize="23dp"
         android:fontFamily="@font/roboto_black"/>
 
@@ -140,7 +140,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:drawableLeft="@drawable/personalized_activity_final"
-        android:text="Personalized Activities"
+        android:text="Create Activity"
         android:textSize="23dp"
         android:fontFamily="@font/roboto_black"/>
 

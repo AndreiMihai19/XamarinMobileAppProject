@@ -79,6 +79,7 @@
     <Compile Include="DefaultActivity.cs" />
     <Compile Include="DoorActivity.cs" />
     <Compile Include="GetIMEI.cs" />
+    <Compile Include="LightChart.cs" />
     <Compile Include="PersonalizedActivity.cs" />
     <Compile Include="ShowUsersActivity.cs" />
     <Compile Include="SplashScreen.cs" />
@@ -259,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\temperature_chart.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\light_chart.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

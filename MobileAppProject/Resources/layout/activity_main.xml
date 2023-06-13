@@ -95,16 +95,5 @@
         android:fontFamily="@font/roboto_black"
         android:backgroundTint="#E9AB17" 
         />
-    <Button
-        android:id="@+id/XbtnIntra"
-        android:text="Grafic Temperatura prototip"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:textColor="#000000"
-        android:fontFamily="@font/roboto_black"
-        android:backgroundTint="#E9AB17" 
-        />
-
+   
 </LinearLayout>
