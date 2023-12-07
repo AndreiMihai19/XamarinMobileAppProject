@@ -23,12 +23,12 @@ namespace MobileAppProject
         private TextView tvUser;
         private TextView tvLight;
         //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            connection.Open();  
+            //connection.Open();  
 
             SetContentView(Resource.Layout.light_activity);
 
@@ -53,12 +53,14 @@ namespace MobileAppProject
             tvLight.Text = progress.ToString()+"%";
             Parameters.setLight(progress);
             Parameters.setCurrentPreset("manual");
-
+            
+            /*
             string query = "UPDATE Parameters SET light_intensity = @light, current_preset=@current_preset";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@light", Parameters.getLight());
             command.Parameters.AddWithValue("@current_preset", Parameters.getCurrentPreset());
             command.ExecuteNonQuery();
+            */
 
         }
 
@@ -77,8 +79,10 @@ namespace MobileAppProject
 
         private void btnBack_Clicked(object sender, EventArgs e)
         {
+            /*
             int lastID;
 
+            
             MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM Actions ORDER BY action_id DESC LIMIT 1;", connection);
             object lastId = cmdId.ExecuteScalar();
             lastID = Convert.ToInt32(lastId);
@@ -96,12 +100,13 @@ namespace MobileAppProject
             cmdTemperature.Parameters.AddWithValue("@value_action", Actions.getValueAction());
             cmdTemperature.Parameters.AddWithValue("@date_time", Actions.getActionTime());
             cmdTemperature.ExecuteNonQuery();
-
+            */
 
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
         }
 
+        /*
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -112,5 +117,6 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
+        */
     }
 }

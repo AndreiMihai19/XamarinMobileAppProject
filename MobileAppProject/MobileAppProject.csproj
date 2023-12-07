@@ -73,9 +73,11 @@
     <Compile Include="ActivityMenuSelection.cs" />
     <Compile Include="Classes\Actions.cs" />
     <Compile Include="Classes\Activities.cs" />
+    <Compile Include="Classes\ListOfUsers.cs" />
     <Compile Include="Classes\HashConfiguration.cs" />
     <Compile Include="Classes\Parameters.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\UserCredentials.cs" />
     <Compile Include="DefaultActivity.cs" />
     <Compile Include="DoorActivity.cs" />
     <Compile Include="GetIMEI.cs" />

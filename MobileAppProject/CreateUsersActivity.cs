@@ -17,6 +17,7 @@ namespace MobileAppProject
     [Activity(Label = "CreateUsersActivity")]
     public class CreateUsersActivity : Activity
     {
+
         private EditText etDeviceId;
         private EditText etUsername;
         private EditText etPassword;
@@ -28,7 +29,7 @@ namespace MobileAppProject
         private TextView tvDoorStatus;
         private TextView tvUser;
         //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,11 +38,11 @@ namespace MobileAppProject
 
             etUsername = FindViewById<EditText>(Resource.Id.XcreateUsername);
             etPassword = FindViewById<EditText>(Resource.Id.XcreatePassword);
-            etFirstName = FindViewById<EditText>(Resource.Id.XcreateFirstName); 
-            etLastName = FindViewById<EditText>(Resource.Id.XcreateLastName); 
-            etCNP = FindViewById<EditText>(Resource.Id.XcreateCNP); 
+            etFirstName = FindViewById<EditText>(Resource.Id.XcreateFirstName);
+            etLastName = FindViewById<EditText>(Resource.Id.XcreateLastName);
+            etCNP = FindViewById<EditText>(Resource.Id.XcreateCNP);
             btnAdd = FindViewById<Button>(Resource.Id.XbtnaddUser);
-            btnBack = FindViewById<Button> (Resource.Id.XbtnBack);
+            btnBack = FindViewById<Button>(Resource.Id.XbtnBack);
             tvDoorStatus = FindViewById<TextView>(Resource.Id.door_status);
             tvUser = FindViewById<TextView>(Resource.Id.username);
 
@@ -68,6 +69,7 @@ namespace MobileAppProject
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
+            /*
             try
             {
 
@@ -120,7 +122,37 @@ namespace MobileAppProject
             {
                 connection.Close();
             }
+            */
 
+            if (etUsername.Text.Length <= 0 || etPassword.Text.Length <= 0 || etFirstName.Text.Length <= 0 || etLastName.Text.Length <= 0 || etCNP.Text.Length <= 0)  
+            {
+                alertDialog.SetMessage($"We have an error here!");
+                alertDialog.SetNeutralButton("Ok", delegate
+                {
+                    alertDialog.Dispose();
+                });
+
+                alertDialog.Show();
+            }
+            else
+            {
+                alertDialog.SetMessage($"{etUsername.Text} was created!");
+                alertDialog.SetNeutralButton("Ok", delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+
+                Random random = new Random();
+
+                string deviceID = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", 16)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+
+                UserCredentials user = new UserCredentials(deviceID, etUsername.Text, etPassword.Text, etFirstName.Text, etLastName.Text, etCNP.Text);
+                ListOfUsers.AddUser(user);
+            }
+          
+            
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

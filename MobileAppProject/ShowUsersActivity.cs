@@ -30,7 +30,7 @@ namespace MobileAppProject
         private Button btnBack;
 
        // private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+       // private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -112,6 +112,7 @@ namespace MobileAppProject
 
             tableLayout.AddView(tableRowOne);
 
+            /*
             try
             {
 
@@ -235,6 +236,106 @@ namespace MobileAppProject
             {
                 connection.Close();
             }
+            */
+
+            foreach(UserCredentials user in ListOfUsers.GetList())
+            {
+                string device_id = user.GetDeviceID();
+                string username = user.GetUsername();
+                string first_name = user.GetFirstName();
+                string last_name = user.GetLastName();
+                string cnp = user.GetCNP();
+
+                TableRow tableRow = new TableRow(this);
+                tableRow.Clickable = true;
+
+                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.WrapContent);
+                layoutParams.LeftMargin = 40;
+                layoutParams.RightMargin = 0;
+                tableRow.LayoutParameters = layoutParams;
+                tableRow.SetBackgroundResource(Resource.Drawable.inner_border);
+
+                TextView txtDeviceID = new TextView(this)
+                {
+                    Text = device_id,
+                    TextSize = 10,
+                    Gravity = GravityFlags.Center
+                };
+
+                var layoutParamsDeviceID = new TableRow.LayoutParams
+                {
+                    Weight = 1
+
+                };
+                txtDeviceID.LayoutParameters = layoutParamsDeviceID;
+                txtDeviceID.SetBackgroundResource(Resource.Drawable.inner_border);
+
+                TextView txtUsername = new TextView(this)
+                {
+                    Text = username,
+                    TextSize = 10,
+                    Gravity = GravityFlags.Center
+                };
+
+                var layoutParamsUsername = new TableRow.LayoutParams
+                {
+                    Weight = 1
+                };
+                txtUsername.LayoutParameters = layoutParamsUsername;
+                txtUsername.SetBackgroundResource(Resource.Drawable.inner_border);
+
+                TextView txtFirstName = new TextView(this)
+                {
+                    Text = first_name,
+                    TextSize = 10,
+                    Gravity = GravityFlags.Center
+                };
+                var layoutParamsFirstName = new TableRow.LayoutParams
+                {
+                    Weight = 1
+                };
+                txtFirstName.LayoutParameters = layoutParamsFirstName;
+                txtFirstName.SetBackgroundResource(Resource.Drawable.inner_border);
+
+                TextView txtLastName = new TextView(this)
+                {
+                    Text = last_name,
+                    TextSize = 10,
+                    Gravity = GravityFlags.Center
+                };
+                var layoutParamsLastName = new TableRow.LayoutParams
+                {
+                    Weight = 1
+                };
+                txtLastName.LayoutParameters = layoutParamsLastName;
+                txtLastName.SetBackgroundResource(Resource.Drawable.inner_border);
+
+                TextView txtCNP = new TextView(this)
+                {
+                    Text = cnp,
+                    TextSize = 10,
+                    Gravity = GravityFlags.Center
+                };
+                var layoutParamsCNP = new TableRow.LayoutParams
+                {
+                    Weight = 1
+                };
+                txtCNP.LayoutParameters = layoutParamsCNP;
+                txtCNP.SetBackgroundResource(Resource.Drawable.inner_border);
+
+
+                tableRow.AddView(txtDeviceID);
+                tableRow.AddView(txtUsername);
+                tableRow.AddView(txtFirstName);
+                tableRow.AddView(txtLastName);
+                tableRow.AddView(txtCNP);
+
+                tableRow.Click += TableRow_Click;
+
+                tableLayout.AddView(tableRow);
+            }
+
+
 
             btnBack.Click += btnBack_Clicked;
 
@@ -247,6 +348,7 @@ namespace MobileAppProject
             TextView usernameTextView = (TextView)selectedRow.GetChildAt(1);
             string selectedUsername = usernameTextView.Text;
             string selectedPassword = null;
+            /*
             try
             {
 
@@ -270,6 +372,7 @@ namespace MobileAppProject
             {
                 connection.Close();
             }
+            */
 
             Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
 
@@ -321,7 +424,7 @@ namespace MobileAppProject
 
                 builderDelete.SetPositiveButton("Yes", (s, args) =>
                 {
-                    DeleteUserAndPassword(selectedUsername);
+                   DeleteUserAndPassword(selectedUsername);
                 });
 
                 builderDelete.SetNegativeButton("No", (s, args) =>
@@ -356,8 +459,10 @@ namespace MobileAppProject
             tvUser.Text = User.getUser();
         }
 
+        
         private void DeleteUserAndPassword(string username)
         {
+            /*
             try
             {
 
@@ -382,6 +487,10 @@ namespace MobileAppProject
             {
                 connection.Close();
             }
+        */
+            UserCredentials userToRemove = ListOfUsers.GetList().Single(u => u.GetUsername().Equals(username));
+
+            ListOfUsers.RemoveUser(userToRemove);
 
             var toast = Toast.MakeText(this, "Please wait...", ToastLength.Short);
 
@@ -391,12 +500,13 @@ namespace MobileAppProject
 
             Recreate();
         }
-
+       
         private void EditUserAndPassword(string oldUsername,string oldPassword,string newUsername, string newPassword)
         {
             HashConfiguration hashConfig = new HashConfiguration();
             var hashPassword = hashConfig.HashPassword(newPassword);
 
+            /*
             try
             {
 
@@ -427,6 +537,13 @@ namespace MobileAppProject
             {
                 connection.Close();
             }
+            */
+
+
+            UserCredentials modifiedUser = ListOfUsers.GetList().Single(u => u.GetUsername().Equals(oldUsername));
+
+            modifiedUser.SetUsername(newUsername);
+            modifiedUser.SetPassword(newPassword);
 
             var toast =  Toast.MakeText(this, "Please wait...", ToastLength.Short);
             toast.SetGravity(GravityFlags.Center, 0, 0);
@@ -436,6 +553,7 @@ namespace MobileAppProject
 
             Recreate();
         }
+        
 
         private void btnBack_Clicked(object sender, EventArgs e)
         {

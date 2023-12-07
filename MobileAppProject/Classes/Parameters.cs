@@ -13,9 +13,9 @@ namespace MobileAppProject.Classes
 {
     internal class Parameters
     {
-        private static int DoorStatus;
-        private static float Temperature;
-        private static int Light;
+        private static int DoorStatus = 0;
+        private static float Temperature = 10;
+        private static int Light = 50;
         private static string CurrentPreset;
 
         public static float getTemperature()

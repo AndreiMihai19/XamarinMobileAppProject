@@ -30,12 +30,12 @@ namespace MobileAppProject
         private int progressValue;
         private TextView tvLight;
         //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            connection.Open();
+            //connection.Open();
 
             SetContentView(Resource.Layout.personalized_activity);
 
@@ -92,6 +92,7 @@ namespace MobileAppProject
         {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
+            /*
             MySqlCommand cmdId = new MySqlCommand("SELECT preset_id FROM Presets ORDER BY preset_id DESC LIMIT 1;", connection);
             object lastId = cmdId.ExecuteScalar();
             presetID = Convert.ToInt32(lastId);
@@ -108,6 +109,7 @@ namespace MobileAppProject
             cmd.Parameters.AddWithValue("@device_id", Activities.getDeviceId());
             cmd.Parameters.AddWithValue("@option_code", Activities.getOptionCode());
             cmd.ExecuteNonQuery();
+            */
 
 
             alertDialog.SetMessage($"Activity {txtName.Text} was created!");
@@ -125,6 +127,7 @@ namespace MobileAppProject
             StartActivity(nextActivity);
         }
 
+        /*
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -135,5 +138,6 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
+        */
     }
 }

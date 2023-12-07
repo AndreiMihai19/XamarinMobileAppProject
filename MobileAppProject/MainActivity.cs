@@ -10,6 +10,7 @@ using System;
 using System.Data;
 using Android.Provider;
 using Android.Views;
+using Android.Opengl;
 
 
 namespace MobileAppProject
@@ -23,8 +24,8 @@ namespace MobileAppProject
         private Button btnInsert;
         private string currentDeviceID;
         private string hashPassword;
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-       // private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,6 +52,7 @@ namespace MobileAppProject
 
             Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
 
+            /*
             try
             {
 
@@ -177,8 +179,33 @@ namespace MobileAppProject
             {
                 connection.Close();
             }
+            */
+
+            //if (etUsername.Text.Length <= 0 || etPassword.Text.Length <= 0) 
+            //{
+            //    alertDialog.SetMessage($"Username or password is incorrect!!!");
+            //    alertDialog.SetNeutralButton("Ok", delegate
+            //    {
+            //        alertDialog.Dispose();
+            //    });
+
+            //    alertDialog.Show();
+            //}
+            //else
+            //{
+                User.setUser(etUsername.Text);
+                User.isAdmin = true;
+                User.setDeviceId(currentDeviceID);
+
+                UserCredentials user = new UserCredentials(currentDeviceID, etUsername.Text, etPassword.Text, "Admin", "Andmin", "1234567890123");
+                ListOfUsers.AddUser(user);
+
+                Intent nextActivity = new Intent(this, typeof(AdminActivity));
+                StartActivity(nextActivity);
+            //}
 
         }
+        /*
         private void CheckFirstLogin(int length)
         {
             if (length != 16)
@@ -192,6 +219,7 @@ namespace MobileAppProject
                 cmdsetID.ExecuteNonQuery();
             }
         }
+        */
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

@@ -27,7 +27,7 @@ namespace MobileAppProject
         private Spinner presetSpinner;
         private int lastID;
         //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,7 +35,8 @@ namespace MobileAppProject
 
             Android.App.AlertDialog.Builder alertDialog = new Android.App.AlertDialog.Builder(this);
 
-            connection.Open();
+            
+           // connection.Open();
 
             SetContentView(Resource.Layout.default_activity);
 
@@ -45,7 +46,7 @@ namespace MobileAppProject
             tvUser = FindViewById<TextView>(Resource.Id.username);
             presetSpinner = FindViewById<Spinner>(Resource.Id.spinnerPresets);
 
-            btnSelectPreset.Click += btnSelectPreset_Clicked;
+           // btnSelectPreset.Click += btnSelectPreset_Clicked;
             btnBack.Click += btnBack_Clicked;
      
             UpdateDoorStatusUser();
@@ -70,6 +71,7 @@ namespace MobileAppProject
             tvUser.Text = User.getUser();
         }
 
+        /*
         private void btnSelectPreset_Clicked(object sender, EventArgs e)
         {
             string selectedPreset = presetSpinner.SelectedItem.ToString();
@@ -136,7 +138,7 @@ namespace MobileAppProject
             cmdLight.ExecuteNonQuery();
 
         }
-
+        */
 
 
         private void btnBack_Clicked(object sender, EventArgs e)
@@ -145,6 +147,7 @@ namespace MobileAppProject
             StartActivity(nextActivity);
         }
 
+        /*
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -155,7 +158,7 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
-
+        */
 
     }
 }

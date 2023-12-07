@@ -21,7 +21,6 @@ namespace MobileAppProject
         private Button btnBack;
         private Button btnIMEI;
         private TextView tvIMEI;
-        //Activity activity = this;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,7 +34,6 @@ namespace MobileAppProject
             btnBack.Click += btn_back_Clicked;
             btnIMEI.Click += btn_imei_Clicked;
 
-            // Create your application here
         }
 
             
@@ -44,13 +42,11 @@ namespace MobileAppProject
         private void btn_imei_Clicked(object sender, EventArgs e)
         {
             Vibrator vibrator = (Vibrator)GetSystemService(VibratorService);
-            vibrator.Vibrate(100); // 100 milisecunde
+            vibrator.Vibrate(100); 
 
-            // Pentru o vibrație personalizată
-            long[] pattern = { 0, 100}; // Durate în milisecunde între pauze și vibrații
-            vibrator.Vibrate(VibrationEffect.CreateWaveform(pattern, -1)); // -1 pentru a se repeta o singură dată, sau un indice pentru a specifica un punct de început
+            long[] pattern = { 0, 100}; 
+            vibrator.Vibrate(VibrationEffect.CreateWaveform(pattern, -1)); 
 
-            // Pentru a verifica dacă dispozitivul suportă vibrația
             bool hasVibrator = vibrator.HasVibrator;
 
             string androidID = Settings.Secure.GetString(ContentResolver, Settings.Secure.AndroidId);

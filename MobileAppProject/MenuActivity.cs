@@ -32,12 +32,12 @@ namespace MobileAppProject
         private TextView tvDoor2;
 
         //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            connection.Open();     
+            //connection.Open();     
 
             SetContentView(Resource.Layout.menu_activity);
             btnLight = FindViewById<Button>(Resource.Id.XbtnLight);
@@ -76,14 +76,14 @@ namespace MobileAppProject
 
         private void BtnTempChart_Clicked(object sender, EventArgs e)
         {
-            Intent nextActivity = new Intent(this, typeof(TemperatureChart));
-            StartActivity(nextActivity);
+          //  Intent nextActivity = new Intent(this, typeof(TemperatureChart));
+           // StartActivity(nextActivity);
         }
 
         private void BtnLightChart_Clicked(object sender, EventArgs e)
         {
-            Intent nextActivity = new Intent(this, typeof(LightChart));
-            StartActivity(nextActivity);
+           // Intent nextActivity = new Intent(this, typeof(LightChart));
+           // StartActivity(nextActivity);
         }
 
 
@@ -145,6 +145,7 @@ namespace MobileAppProject
             Intent nextActivity = new Intent(this, typeof(TemperatureActivity));
             StartActivity(nextActivity);
         }
+        /*
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -155,5 +156,6 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
+        */
     }
 }

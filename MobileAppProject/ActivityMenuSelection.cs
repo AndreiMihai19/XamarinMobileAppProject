@@ -38,8 +38,8 @@ namespace MobileAppProject
             UpdateDoorStatusUser();
 
             GradientDrawable buttonBackground = new GradientDrawable();
-            buttonBackground.SetColor(Android.Graphics.Color.White); // Setează culoarea fundalului butonului
-            buttonBackground.SetStroke(2, Android.Graphics.Color.Black); // Setează grosimea și culoarea marginii
+            buttonBackground.SetColor(Android.Graphics.Color.White); 
+            buttonBackground.SetStroke(2, Android.Graphics.Color.Black); 
             buttonBackground.SetCornerRadius(5); 
 
         }

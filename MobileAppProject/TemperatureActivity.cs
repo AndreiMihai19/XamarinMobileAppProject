@@ -26,12 +26,12 @@ namespace MobileAppProject
         private TextView tvTemperature;
   
         //private MySqlConnection connection = new MySqlConnection("Server=34.30.254.246;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
-        private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
+        //private MySqlConnection connection = new MySqlConnection("Server=34.118.112.126;Port=3306;database=HomeAutomation;User Id=root;Password=1234;charset=utf8");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            connection.Open();
+           // connection.Open();
 
             SetContentView(Resource.Layout.temperature_activity);
 
@@ -57,35 +57,38 @@ namespace MobileAppProject
         {
             if (Parameters.getTemperature() < 35)
             {
-                Parameters.setTemperature((float)(Parameters.getTemperature() + 0.5));
+                Parameters.setTemperature((float)(Parameters.getTemperature() + 1));
                 updateTemperature();
             }
 
             Parameters.setCurrentPreset("manual");
 
+            /*
             string query = "UPDATE Parameters SET temperature = @temperature, current_preset=@current_preset";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
             command.Parameters.AddWithValue("@current_preset", Parameters.getCurrentPreset());
             command.ExecuteNonQuery();
-
+            */
         }
 
         private void btnMinus_Clicked(object sender, EventArgs e)
         {
             if (Parameters.getTemperature() > 10)
             {
-                Parameters.setTemperature((float)(Parameters.getTemperature() - 0.5));
+                Parameters.setTemperature((float)(Parameters.getTemperature() - 1));
                 updateTemperature();
             }
 
             Parameters.setCurrentPreset("manual");
 
+            /*
             string query = "UPDATE Parameters SET temperature = @temperature, current_preset=@current_preset";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@temperature", Parameters.getTemperature());
             command.Parameters.AddWithValue("@current_preset", Parameters.getCurrentPreset());
             command.ExecuteNonQuery();
+            */
         }
 
         private void updateTemperature()
@@ -110,6 +113,7 @@ namespace MobileAppProject
         private void btnBack_Clicked(object sender, EventArgs e)
         {
             int lastID;
+            /*
           //  MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM actions ORDER BY action_id DESC LIMIT 1;", connection);
             MySqlCommand cmdId = new MySqlCommand("SELECT action_id FROM Actions ORDER BY action_id DESC LIMIT 1;", connection);
             object lastId = cmdId.ExecuteScalar();
@@ -128,11 +132,13 @@ namespace MobileAppProject
             cmdTemperature.Parameters.AddWithValue("@value_action", Actions.getValueAction());
             cmdTemperature.Parameters.AddWithValue("@date_time", Actions.getActionTime());
             cmdTemperature.ExecuteNonQuery();
+            */
 
             Intent nextActivity = new Intent(this, typeof(MenuActivity));
             StartActivity(nextActivity);
         }
 
+        /*
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -143,6 +149,7 @@ namespace MobileAppProject
                 connection.Dispose();
             }
         }
+        */
     }
 
 
